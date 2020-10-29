@@ -32,7 +32,7 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Online", "In-Store"],
+        labels: ["Earnings", "Expenses"],
         datasets: [{
             label: "Sales",
             backgroundColor: "#4e73df",
