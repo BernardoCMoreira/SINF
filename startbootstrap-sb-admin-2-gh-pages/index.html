@@ -287,23 +287,46 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <!-- Dropdown to select year-->
+
+
+                        <div class="col-8 col-md-4">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="gender3">Fiscal Year</label>
+                                </div>
+                                <select class="custom-select" id="gender3">
+                                      <option selected>Choose...</option>
+                                      <option value="1">2018/2019</option>
+                                      <option value="2">2019/2020</option>
+                                      <option value="3">2020/2021</option>
+                                    </select>
+                            </div>
+                        </div>
+
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
+
+
+
+
+
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Total Sales (Monthly) Card Example -->
+                        <!-- Gross Margin (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Number of Sales(unit)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">30 597 142</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gross Margin(%)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">20,1%</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-percentage fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -312,11 +335,11 @@
 
                         <!-- Total revenue (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Revennue($m)</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Sales($m)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$21,418</div>
                                         </div>
                                         <div class="col-auto">
@@ -507,3 +530,13 @@
 </body>
 
 </html>
+
+<script>
+    $(function() {
+        $(".dropdown-menu").on('click', 'li a', function() {
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
+
+    });
+</script>
