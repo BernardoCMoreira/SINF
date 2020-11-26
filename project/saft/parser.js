@@ -11,6 +11,12 @@ module.exports = {
                 throw err;
             }
 
+            parsedContent = result.AuditFile;
+            delete parsedContent['xmlns:xsi'];
+            delete parsedContent['xmlns:xsd'];
+            delete parsedContent['xsi:schemaLocation'];
+            delete parsedContent.xmlns;
+
             // `result` is a JavaScript object -> convert it to a JSON string
             const json = JSON.stringify(result, null, 4);
 

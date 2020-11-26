@@ -1,18 +1,16 @@
 var express = require('express');
 var path = require('path');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
+var json_server = require('json-server');
 require('dotenv/config');
 
 //parse file 
 var parser = require('./saft/parser.js');
 parser.parse();
 
-//Connect and load database 
-mongoose.connect(
-    process.env.DB_CONNECTION, //DB_CONNECTION=mongodb+srv://sinfan:<sinfan2020>@cluster0.j8viv.mongodb.net/<sinfan>?retryWrites=true&w=majority
-    { useNewUrlParser: true },
-    () => console.log("Connected to MongoDB !")
-);
+//Connect and load json database 
+var server = json_server.router('saft.json');
+const db = server.db.__wrapped__;
 
 //Init app
 var app = express();
@@ -28,6 +26,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 var pages = require('./routes/routes.js');
 app.use('/', pages);
 
+//Set api routes with json server
+app.use('/api', server); //TODO: meter o exemplo q ta no fim e os outros q vao ser precisos numa pasta api por ex e exportar os modulos
+
 // Start server
 var port = 3000;
 app.listen(port, function(){
@@ -36,3 +37,16 @@ app.listen(port, function(){
 
 
 //para correr: node app.js 
+module.exports = db;
+
+
+
+/* Exemplo */
+/* Para ir buscar o ano diretamente ao json server com base no saft:
+
+app.get('/api/year', (req, res) => {
+    res.json({ year: (db.AuditFile.Header[0].FiscalYear) });
+});
+
+*/
+
