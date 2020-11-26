@@ -1,19 +1,20 @@
 var express = require('express');
 var path = require('path');
-//var mongoose = require('mongoose');
-var json_server = require('json-server');
+var json_server = require('json-server'); //em vez de mongodb pq é mais facil de usar :D
 require('dotenv/config');
+const request = require('request');
+
 
 //parse file 
 var parser = require('./saft/parser.js');
 parser.parse();
 
 //Connect and load json database 
-var server = json_server.router('saft.json');
+const server = json_server.router('saft.json');
 const db = server.db.__wrapped__;
 
 //Init app
-var app = express();
+const app = express();
 
 //View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,30 +24,56 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
 //Set routes 
-var pages = require('./routes/routes.js');
+var pages = require('./routes/pages.js');
 app.use('/', pages);
 
-//Set api routes with json server
-app.use('/api', server); //TODO: meter o exemplo q ta no fim e os outros q vao ser precisos numa pasta api por ex e exportar os modulos
+var inventoryController = require('./routes/api/primavera/inventory.js');
+var financialController = require('./routes/api/primavera/financial.js');
+var salesController = require('./routes/api/json-server/sales.js');
+
+app.use('/api/primavera', inventoryController);
+app.use('/api/primavera', financialController);
+
+
+//Set api routes with json server -> acho que nao é a melhor maneira p fazer isso, mas funciona :D
+app.use('/api/json-server', salesController); 
 
 // Start server
-var port = 3000;
-app.listen(port, function(){
-    console.log("Server started on port " + port);
-})
-
-
-//para correr: node app.js 
-module.exports = db;
-
-
-
-/* Exemplo */
-/* Para ir buscar o ano diretamente ao json server com base no saft:
-
-app.get('/api/year', (req, res) => {
-    res.json({ year: (db.AuditFile.Header[0].FiscalYear) });
+app.listen(process.env.PORT, function() {
+    console.log("Server started on port " + process.env.PORT);
 });
 
-*/
+// Set primavera tokens
+const loginPrimavera = () => {
+    const options = {
+        method: 'POST',
+        url: 'https://identity.primaverabss.com/connect/token',
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+        formData: {
+            client_id: process.env.CLIENT_ID,
+            client_secret: process.env.CLIENT_SECRET,
+            scope: 'application',
+            grant_type: 'client_credentials',
+        },
+    };
 
+    request(options, function(error, response, body) {
+        if (error) throw new Error(error);
+
+        const jsonF = JSON.parse(response.body);
+        global.primaveraRequests = request.defaults({
+            headers: { Authorization: `Bearer ${jsonF.access_token}` },
+        });
+    });
+};
+
+loginPrimavera();
+
+module.exports.db = db;
+
+/* Para exportar direito:
+No ficheiro que tem os dados que se quer exportar:: variavel deve ser const + fazer module.export.NOME_DA_VARIAVEL = NOME_DA_VARIAVEL
+No ficheiro para onde se quer exportar:: var object = require(path para o ficheiro que tem a var originalmente) + object.NOME_DA_VARIAVEL
+*/
