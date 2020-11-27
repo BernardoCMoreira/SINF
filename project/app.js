@@ -27,16 +27,13 @@ app.use(express.static(path.join(__dirname, '/public')));
 var pages = require('./routes/pages.js');
 app.use('/', pages);
 
-var inventoryController = require('./routes/api/primavera/inventory.js');
-var financialController = require('./routes/api/primavera/financial.js');
-var salesController = require('./routes/api/json-server/sales.js');
+var inventoryController = require('./routes/api/inventory.js');
+var financialController = require('./routes/api/financial.js');
+var salesController = require('./routes/api/sales.js');
 
-app.use('/api/primavera', inventoryController);
-app.use('/api/primavera', financialController);
-
-
-//Set api routes with json server -> acho que nao é a melhor maneira p fazer isso, mas funciona :D
-app.use('/api/json-server', salesController); 
+app.use('/api', inventoryController);
+app.use('/api', financialController);
+app.use('/api', salesController); 
 
 // Start server
 app.listen(process.env.PORT, function() {
