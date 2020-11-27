@@ -30,10 +30,7 @@ app.use('/', pages);
 var inventoryController = require('./routes/api/inventory.js');
 var financialController = require('./routes/api/financial.js');
 var salesController = require('./routes/api/sales.js');
-
-app.use('/api', inventoryController);
-app.use('/api', financialController);
-app.use('/api', salesController); 
+const { default: Axios } = require('axios');
 
 // Start server
 app.listen(process.env.PORT, function() {
@@ -67,6 +64,12 @@ const loginPrimavera = () => {
 };
 
 loginPrimavera();
+
+
+app.use('/api', inventoryController);
+app.use('/api', financialController);
+app.use('/api', salesController); 
+
 
 module.exports.db = db;
 
