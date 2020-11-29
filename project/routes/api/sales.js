@@ -8,6 +8,7 @@ router.get('/year', (req, res) => {
 })
 
 router.get('/sales/customers', (req, res) => {
+
     const options = {
         method: 'GET',
         url: `https://my.jasminsoftware.com/api/${process.env.TENANT_KEY}/${process.env.ORGANIZATION_KEY}/salesCore/customerParties`,
@@ -15,7 +16,6 @@ router.get('/sales/customers', (req, res) => {
             'Content-Type': 'application/json',
         },
     };
-
     if (!global.primaveraRequests) {
         return res.json({ msg: 'Primavera token missing' });
     }

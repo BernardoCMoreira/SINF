@@ -4,7 +4,6 @@ var json_server = require('json-server'); //em vez de mongodb pq é mais facil d
 require('dotenv/config');
 const request = require('request');
 
-
 //parse file 
 var parser = require('./saft/parser.js');
 parser.parse();
@@ -30,6 +29,7 @@ app.use('/', pages);
 var inventoryController = require('./routes/api/inventory.js');
 var financialController = require('./routes/api/financial.js');
 var salesController = require('./routes/api/sales.js');
+
 const { default: Axios } = require('axios');
 
 // Start server
@@ -63,12 +63,11 @@ const loginPrimavera = () => {
     });
 };
 
-loginPrimavera();
-
-
 app.use('/api', inventoryController);
 app.use('/api', financialController);
-app.use('/api', salesController); 
+app.use('/api', salesController);
+
+loginPrimavera();
 
 
 module.exports.db = db;
