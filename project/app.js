@@ -69,7 +69,6 @@ app.use('/api', salesController);
 
 loginPrimavera();
 
-
 module.exports.db = db;
 
 /* Para exportar direito:

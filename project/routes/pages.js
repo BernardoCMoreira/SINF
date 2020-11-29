@@ -4,6 +4,7 @@ var object = require("../data_processing/inventory");
 var dataSales = require("../data_processing/sales");
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
+
 router.get("/dashboard", function(req, res) {
     res.render("dashboard", {
         title: "OVERVIEW",
@@ -23,12 +24,15 @@ router.get("/inventory", function(req, res) {
     });
 });
 
-router.get("/sales", function(req, res) {
+router.get("/sales", async function(req, res) {
 
     res.render("sales", {
         title: "Sales",
         product: dataSales.getCostumers.call(),
+        // Só para teste! É suposto chamar uma função que calcule o valor final de vendas!
+        totalSalesValue: await dataSales.getCostumers(),
     });
+
 });
 
 router.get("/purchases", function(req, res) {
