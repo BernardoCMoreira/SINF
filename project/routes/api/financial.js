@@ -1,25 +1,19 @@
 require('dotenv/config');
 var express = require('express');
 var router = express.Router();
+var app = require("../../app"); //Info vai estar na db
 
-router.get('/financial/products', (req, res) => {
-    const options = {
-        method: 'GET',
-        url: `https://my.jasminsoftware.com/api/${process.env.TENANT_KEY}/${process.env.ORGANIZATION_KEY}/materialsCore/materialsItems`,
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
 
-    if (!global.primaveraRequests) {
-        return res.json({ msg: 'Primavera token missing' });
-    }
+router.get('/financial/assets', (req, res) => {
+    var server = app.db; // Para usar a db
 
-    return global.primaveraRequests(options, function(error, response, body) {
-        if (error) throw new Error(error);
-        res.json(body);
-    });
+    const accounts = server.AuditFile.MasterFiles.GeneralLedgerAccounts;
+    console.log(server.AuditFile.MasterFiles[0].GeneralLedgerAccounts);
+
 });
+
+
+
 
 
 module.exports = router;
