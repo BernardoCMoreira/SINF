@@ -284,7 +284,7 @@ const liabilities = {
             name: 'Outras dividas a pagar',
             id: 'A00144',
             taxonomyCodes: [58, 60, 136],
-            ifCreditBalance: [62, 64, 114, 125, 127, 139],
+            ifCredit: [62, 64, 114, 125, 127, 139],
             value: 0,
           },
     ],
@@ -293,7 +293,7 @@ const liabilities = {
             name: 'Fornecedores',
             id: 'A00146',
             taxonomyCodes: [],
-            ifCreditBalance: [
+            ifCredit: [
               37, 38, 39, 40, 41, 42, 43, 
               44, 45, 46, 47, 48, 49, 50,
             ],
@@ -303,28 +303,28 @@ const liabilities = {
             name: 'Adiantamentos de clientes',
             id: 'A00147',
             taxonomyCodes: [23, 137],
-            ifCreditBalance: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+            ifCredit: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
             value: 0,
           },
           {
             name: 'Estado e outros entes publicos',
             id: 'A00148',
             taxonomyCodes: [72, 75, 78],
-            ifCreditBalance: [71, 76, 77, 81, 82, 83, 84, 85],
+            ifCredit: [71, 76, 77, 81, 82, 83, 84, 85],
             value: 0,
           },
           {
             name: 'Financiamentos obtidos',
             id: 'A00149',
             taxonomyCodes: [86, 88, 90, 92, 94, 96, 98, 100, 102, 104],
-            ifCreditBalance: [2, 3],
+            ifCredit: [2, 3],
             value: 0,
           },
           {
             name: 'Outras dividas a pagar',
             id: 'A00150',
             taxonomyCodes: [53, 54, 57, 59, 131, 135],
-            ifCreditBalance: [61, 63, 109, 110, 113, 124, 126, 138],
+            ifCredit: [61, 63, 109, 110, 113, 124, 126, 138],
             value: 0,
           },
           {
@@ -352,6 +352,69 @@ const liabilities = {
             value: 0,
           },
     ],
+};
+
+const proccessTaxSum = (tax, accs) => {
+    //obtem o id de todas as contas com taxonomy tax
+    const results = [];
+    let balance = 0;
+
+    accs.forEach(
+        account => {
+            if(account.TaxonomyCode == tax) {
+                balance = Number(account.ClosingDebitBalance) - Number(account.ClosingCreditBalance);
+
+                results.push({
+                    taxonomy: tax,
+                    account: account.AccountId,
+                    balanceType: balance > 0 ? 'debit' : 'credit',
+                    balanceValue: balance > 0 ? balance : -balance
+                });
+            }
+        });
+
+    return results;
+};
+
+const calculateEquity = accounts => {
+    let sum = 0;
+    let currentSum = 0;
+    const local_equity = {
+        accounts: [],
+        total: 0,
+    };
+
+    equity.forEach(
+        equityAcc => {
+            //cods (ids) das taxonomies
+            let currTaxonomy;
+            equityAcc.taxonomyCodes.forEach(taxonomy => {
+                currTaxonomy = processTaxonomySum(Math.abs(taxonomy), accounts);
+                currTaxonomy.forEach(tax => {
+                    if(taxonomy < 0) {
+                        currentSum -= tax.balanceValue;
+                    } else {
+                        currentSum += tax.balanceValue;
+                    }
+                });
+            });
+
+            //credito
+            if(equityAcc.ifCredit) {
+                equityAcc.ifCredit.forEach(credit => {
+                    currTaxonomy = proccessTaxSum(Math.abs(credit), accounts);
+                    currTaxonomy.forEach(tax => {
+                        if(tax.balanceType === 'credit') {
+                            if(credit < 0) {
+                                currentSum -= tax.balanceValue;
+                            } else {
+                                currentSum += tax.balanceValue;
+                            }
+                        }
+                });
+            }
+        }
+    );
 };
 
 module.exports = router;
