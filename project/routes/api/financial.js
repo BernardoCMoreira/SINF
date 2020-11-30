@@ -179,4 +179,179 @@ const assets = {
     ],
 };
 
+//Capital proprio
+const equity = [
+    {
+        name: 'Capital subscrito',
+        id: 'A00127',
+        taxonomyCodes: [331],
+        value: 0,
+      },
+      {
+        name: 'Acoes (quotas) proprias',
+        id: 'A00128',
+        taxonomyCodes: [-332],
+        ifCreditOrDebit: [333],
+        value: 0,
+      },
+      {
+        name: 'Outros instrumentos de capital proprio',
+        id: 'A00129',
+        taxonomyCodes: [334],
+        value: 0,
+      },
+      {
+        name: 'Premios de emissao',
+        id: 'A00130',
+        taxonomyCodes: [335],
+        value: 0,
+      },
+      {
+        name: 'Reservas legais',
+        id: 'A00131',
+        taxonomyCodes: [336],
+        value: 0,
+      },
+      {
+        name: 'Outras reservas',
+        id: 'A00132',
+        taxonomyCodes: [337],
+        value: 0,
+      },
+      {
+        name: 'Resultados transitados',
+        id: 'A00133',
+        taxonomyCodes: [],
+        ifCreditOrDebit: [338],
+        value: 0,
+      },
+      {
+        name: 'Excedentes de revalorizacao',
+        id: 'A00134',
+        taxonomyCodes: [343, -344, 345, -346],
+        value: 0,
+      },
+      {
+        name: 'Ajustamentos / outras variacoes no capital proprio',
+        id: 'A00135',
+        taxonomyCodes: [349, -350, 351],
+        ifCreditOrDebit: [339, 340, 341, 342, 347, 348, 352],
+        value: 0,
+      },
+      {
+        name: 'Resultado liquido do periodo',
+        id: 'A00137',
+        taxonomyCodes: [],
+        ifCreditOrDebit: [646],
+        value: 0,
+      },
+      {
+        name: 'Dividendos antecipados',
+        id: 'A00138',
+        taxonomyCodes: [-647],
+        value: 0,
+      },
+];
+
+//Passivo
+const liabilities = {
+    nonCurrent: [
+        {
+            name: 'Provisoes',
+            id: 'A00140',
+            taxonomyCodes: [148, 149, 150, 151, 152, 153, 154, 155],
+            value: 0,
+          },
+          {
+            name: 'Financiamentos obtidos',
+            id: 'A00141',
+            taxonomyCodes: [87, 89, 91, 93, 95, 97, 99, 101, 103, 105],
+            value: 0,
+          },
+          {
+            name: 'Responsabilidades por beneficios pos-emprego',
+            id: 'A00142',
+            taxonomyCodes: [132],
+            value: 0,
+          },
+          {
+            name: 'Passivos por impostos diferidos',
+            id: 'A00143',
+            taxonomyCodes: [134],
+            value: 0,
+          },
+          {
+            name: 'Outras dividas a pagar',
+            id: 'A00144',
+            taxonomyCodes: [58, 60, 136],
+            ifCreditBalance: [62, 64, 114, 125, 127, 139],
+            value: 0,
+          },
+    ],
+    current: [
+        {
+            name: 'Fornecedores',
+            id: 'A00146',
+            taxonomyCodes: [],
+            ifCreditBalance: [
+              37, 38, 39, 40, 41, 42, 43, 
+              44, 45, 46, 47, 48, 49, 50,
+            ],
+            value: 0,
+          },
+          {
+            name: 'Adiantamentos de clientes',
+            id: 'A00147',
+            taxonomyCodes: [23, 137],
+            ifCreditBalance: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+            value: 0,
+          },
+          {
+            name: 'Estado e outros entes publicos',
+            id: 'A00148',
+            taxonomyCodes: [72, 75, 78],
+            ifCreditBalance: [71, 76, 77, 81, 82, 83, 84, 85],
+            value: 0,
+          },
+          {
+            name: 'Financiamentos obtidos',
+            id: 'A00149',
+            taxonomyCodes: [86, 88, 90, 92, 94, 96, 98, 100, 102, 104],
+            ifCreditBalance: [2, 3],
+            value: 0,
+          },
+          {
+            name: 'Outras dividas a pagar',
+            id: 'A00150',
+            taxonomyCodes: [53, 54, 57, 59, 131, 135],
+            ifCreditBalance: [61, 63, 109, 110, 113, 124, 126, 138],
+            value: 0,
+          },
+          {
+            name: 'Diferimentos',
+            id: 'A00151',
+            taxonomyCodes: [147],
+            value: 0,
+          },
+          {
+            name: 'Passivos financeiros detidos para negociação',
+            id: 'A00152',
+            taxonomyCodes: [5, 7],
+            value: 0,
+          },
+          {
+            name: 'Outros passivos financeiros',
+            id: 'A00153',
+            taxonomyCodes: [9],
+            value: 0,
+          },
+          {
+            name: 'Passivos não currentes detidos para venda',
+            id: 'A00154',
+            taxonomyCodes: [325],
+            value: 0,
+          },
+    ],
+};
+
 module.exports = router;
