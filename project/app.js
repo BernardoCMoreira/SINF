@@ -30,7 +30,6 @@ app.use('/', pages);
 var inventoryController = require('./routes/api/inventory.js');
 var financialController = require('./routes/api/financial.js');
 var salesController = require('./routes/api/sales.js');
-const { default: Axios } = require('axios');
 
 // Start server
 app.listen(process.env.PORT, function() {
