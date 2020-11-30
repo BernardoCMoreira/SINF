@@ -57,11 +57,13 @@ const loginPrimavera = () => {
         if (error) throw new Error(error);
 
         const jsonF = JSON.parse(response.body);
+
         global.primaveraRequests = request.defaults({
             headers: { Authorization: `Bearer ${jsonF.access_token}` },
         });
     });
 };
+
 
 app.use('/api', inventoryController);
 app.use('/api', financialController);
