@@ -226,6 +226,7 @@ const equity = [
       },
 ];
 
+
 //Passivo
 const liabilities = {
     nonCurrent: [
