@@ -26,15 +26,15 @@ function calculateAssets(accounts) {
         total: 0,
     };
 
+    /* for each type of current asset:
+        - get its taxonomyCodes and get all the accounts that match these values. Then sum them according to the taxonomy code specification 
+        - get its ifDebt codes and get all the accounts that match these values. */
     balance_sheet.assets.current.forEach( asset_type => {
         let value = 0;
 
         asset_type.taxonomyCodes.forEach( taxCode => {
             getAccountsWithTaxCode(Math.abs(taxCode), accounts).forEach(account => {
-                if(taxCode > 0)
-                    value += account.balance;
-                else
-                    value -= account.balance;
+                (taxCode > 0) ? (value += account.balance) : (value -= account.balance);
             });
         });
 
@@ -42,11 +42,7 @@ function calculateAssets(accounts) {
             asset_type.ifDebt.forEach( debit => {
                 getAccountsWithTaxCode(Math.abs(debit), accounts).forEach(account => {
                     if (account.type === 'debit') {
-                        if (debit < 0) {
-                          value -= account.balance;
-                        } else {
-                          value += account.balance;
-                        }
+                        (debit > 0) ? (value += account.balance) : (value -= account.balance);
                     }
                 });
             });
