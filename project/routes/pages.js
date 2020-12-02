@@ -25,7 +25,7 @@ router.get("/inventory", function(req, res) {
 });
 
 router.get("/sales", async function(req, res) {
-    console.log(await dataSales.getSalesValue());
+    console.log(await dataSales.getOrders());
     res.render("sales", {
         title: "Sales",
         // Só para teste! É suposto chamar uma função que calcule o valor final de vendas!

@@ -57,7 +57,7 @@ const loginPrimavera = () => {
         if (error) throw new Error(error);
 
         const jsonF = JSON.parse(response.body);
-
+        console.log(jsonF.access_token);
         global.primaveraRequests = request.defaults({
             headers: { Authorization: `Bearer ${jsonF.access_token}` },
         });

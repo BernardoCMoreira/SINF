@@ -43,4 +43,16 @@ router.get('/sales/salesitems', (req, res) => {
 
 });
 
+router.get('/sales/orders', (req, res) => {
+    const options = {
+        method: 'GET',
+        url: `https://my.jasminsoftware.com/api/${process.env.TENANT_KEY}/${process.env.ORGANIZATION_KEY}/sales/orders`,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    tokenVerifier(options, res);
+
+});
+
 module.exports = router;
