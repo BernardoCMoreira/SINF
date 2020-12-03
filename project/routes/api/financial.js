@@ -9,27 +9,23 @@ var balance_sheet = require('../../utils/balance_sheet');
 router.get('/financial/assets', (req, res) => {
     var server = app.db; // Para usar a db
     const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
-    const assets = calculateAssets(accounts);
 
+    const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
+    const nonCurrentAssets = calculateAssets(balance_sheet.assets.non_current, accounts);
 
-    console.log(assets.current);
-    console.log(assets.totalCurrent);
+    console.log(nonCurrentAssets);
+    console.log(currentAssets);
+
 
 });
 
-function calculateAssets(accounts) {
+function calculateAssets(assets_template, accounts) {
     const assets = {
-        current: [],
-        nonCurrent: [],
-        totalCurrent: 0,
-        totalNonCurrent: 0,
+        asset: [],
         total: 0,
     };
 
-    /* for each type of current asset:
-        - get its taxonomyCodes and get all the accounts that match these values. Then sum them according to the taxonomy code specification 
-        - get its ifDebt codes and get all the accounts that match these values. */
-    balance_sheet.assets.current.forEach( asset_type => {
+    assets_template.forEach( asset_type => {
         let value = 0;
 
         asset_type.taxonomyCodes.forEach( taxCode => {
@@ -39,24 +35,45 @@ function calculateAssets(accounts) {
         });
 
         if(asset_type.ifDebt){
-            asset_type.ifDebt.forEach( debit => {
-                getAccountsWithTaxCode(Math.abs(debit), accounts).forEach(account => {
-                    if (account.type === 'debit') {
-                        (debit > 0) ? (value += account.balance) : (value -= account.balance);
+            asset_type.ifDebt.forEach( taxCodeDebit => {
+                getAccountsWithTaxCode(Math.abs(taxCodeDebit), accounts).forEach(account => {
+                    if (account.type === 'debit') {  //TODO: debito nao deveria ser sempre a subtrair?
+                        (taxCodeDebit > 0) ? (value += account.balance) : (value -= account.balance);
+                    }
+                });
+            });
+        };
+
+        if(asset_type.ifCredit){
+            asset_type.ifCredit.forEach( taxCodeCredit => {
+                getAccountsWithTaxCode(Math.abs(taxCodeCredit), accounts).forEach(account => {
+                    if (account.type === 'credit') {
+                        (taxCodeCredit > 0) ? (value += account.balance) : (value -= account.balance);
                     }
                 });
             });
         }
 
-        assets.current.push({
+        if(asset_type.ifCreditOrDebit){
+            asset_type.ifCreditOrDebit.forEach( taxCodeCreditOrDebit => {
+                getAccountsWithTaxCode(Math.abs(taxCodeCreditOrDebit), accounts).forEach(account => {
+                    if (account.type === 'debit')
+                        value -= account.balance;
+                    else
+                        value += account.balance;
+                });
+            });
+        }
+
+        assets.asset.push({
             asset_type: asset_type.name,
             assetID: asset_type.id,
             value: value,
         });
     });
 
-    assets.current.forEach(asset_current_type => {
-        assets.totalCurrent += asset_current_type.value;
+    assets.asset.forEach(asset_current_type => {
+        assets.total += asset_current_type.value;
     });
 
     return assets;
