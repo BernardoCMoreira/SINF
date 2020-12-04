@@ -1,77 +1,98 @@
 const axios = require("axios");
 
-var salesMap = new Map();
 const getCustomerMethod = async() => {
     return await axios.get(`http://localhost:${process.env.PORT}/api/sales/customers`)
-        //returning the firs name only
-        .then(res => JSON.parse(res.data)[0].name)
+        .then(res => createCustomersArray(res.data))
         .catch(err => console.error(err));
 };
 
-const getAllSalesValuesMethod = async() => {
-    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/salesitems`)
-        .then(res => sumArrayPriceAmount())
-        .catch(err => console.error(err))
-}
-
-const getAllSalesValuesMethod2 = async() => {
-    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/salesitems`)
-        .then(res => createSalesItemsMap(JSON.parse(res.data)))
-        .catch(err => console.error(err))
-}
-
-const getAllOrders = async() => {
+const getTotalSalesValue = async() => {
     return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
-        .then(res => createOrdersMap(JSON.parse(res.data)))
-        .catch(err => console.error(err))
+        .then(res => addAllNetTotal(res.data))
+        .catch(err => console.error(err));
+};
+
+const getNetMonthlyValues = async() => {
+    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
+    .then(res => createNetMonthlyArray(res.data))
+    .catch(err => console.error(err));
+};
+
+const getProductsAndUnits = async() => {
+    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
+    .then(res => storeProductsByUnitsSold(res.data))
+    .catch(err => console.error(err));
+};
+function createCustomersArray (data){
+    var customers = [];
+    for(let i=0; i<data.length; i++){
+        customers.push(data[i].CompanyName);
+    }
+    return customers;
 }
 
-function sumArrayPriceAmount() {
-    var total = 0;
-
-    salesMap.forEach((values, keys) => {
-        total += values.unitPrice * values.amount;
-    });
-
-    return total;
+// with taxes
+function addAllNetTotal(data){
+    let total  = 0;
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+            total += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
+        }
+    }
+    //The Total Sales value is considered in ($m) so we must divide by 1 000 000
+    return total/1000000;
 }
 
-function createOrdersMap(arr) {
+//without taxes
+function addAllGrossTotal(data){
+    let total  = 0;
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+            total += parseFloat(data[i].Invoice[k].DocumentTotals[0].GrossTotal);
+        }
+    }
+    //The Total Sales value is considered in ($m) so we must divide by 1 000 000
+    return total/1000000;
+}
 
-    for (var i in arr) {
+function createNetMonthlyArray(data){
+    //Array that will save the amount of money in sales per month
+    var monthlyValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+            var month = parseInt(data[i].Invoice[k].Period);
+            monthlyValues[month-1] += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
+        }
+    }
+    return monthlyValues;
+}
 
-        for (let k = 0; k < arr[i].documentLines.length; k++) {
-            if (salesMap.has(arr[i].documentLines[k].salesItem)) {
-                var amountSaver = salesMap.get(arr[i].documentLines[k].salesItem).amount + 1;
-                salesMap.set(arr[i].documentLines[k].salesItem, {
-                    unitPrice: arr[i].documentLines[k].unitPrice.amount,
-                    amount: amountSaver,
-                    deliveryDate: arr[i].documentLines[k].deliveryDate
-                })
-            } else {
-                salesMap.set(arr[i].documentLines[k].salesItem, {
-                    unitPrice: arr[i].documentLines[k].unitPrice.amount,
-                    amount: 1,
-                    deliveryDate: arr[i].documentLines[k].deliveryDate
-                })
+function storeProductsByUnitsSold(data){
+    var all = {};
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+       
+            var products = data[i].Invoice[k].Line;
+   
+            for(let j=0; j<products.length; j++){
+                var product = products[j];
+                var name = product.ProductCode;
+                var quantity = parseInt(product.Quantity);
+                if(name in all){
+                    all[name] += quantity;
+                } else {
+                    all[name] = quantity;
+                }
             }
+            
         }
     }
-    return salesMap;
-}
-
-function createSalesItemsMap(arr) {
-    for (var i in arr) {
-        if (arr[i].priceListLines[0] != null) {
-            salesMap.set(arr[i].itemKey, { amount: arr[i].priceListLines[0].priceAmount.amount });
-        }
-    }
-    return salesMap;
+    return all;
 }
 
 module.exports = {
     getCustomers: getCustomerMethod,
-    getSalesValue: getAllSalesValuesMethod,
-    getSalesValue2: getAllSalesValuesMethod2,
-    getOrders: getAllOrders,
+    getTotalSales: getTotalSalesValue,
+    getNetMonth: getNetMonthlyValues,
+    getProducts:getProductsAndUnits,
 };

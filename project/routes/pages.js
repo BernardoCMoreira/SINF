@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var object = require("../data_processing/inventory");
 var dataSales = require("../data_processing/sales");
+var saftSales = require("../data_processing/saft_sales_processing");
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
 
@@ -25,11 +26,12 @@ router.get("/inventory", function(req, res) {
 });
 
 router.get("/sales", async function(req, res) {
-    console.log(await dataSales.getOrders());
+    console.log("Customers : " + await dataSales.getCustomers());
+    console.log("Month Net : " + await dataSales.getNetMonth());
+    console.log("Products : " + Object.keys(await dataSales.getProducts()));
     res.render("sales", {
         title: "Sales",
-        // Só para teste! É suposto chamar uma função que calcule o valor final de vendas!
-        totalSalesValue: await dataSales.getSalesValue(),
+        totalSalesValue:await dataSales.getTotalSales(),
     });
 
 });
