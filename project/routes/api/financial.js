@@ -354,7 +354,7 @@ const liabilities = {
     ],
 };
 
-const proccessTaxSum = (tax, accs) => {
+const processTaxSum = (tax, accs) => {
     //obtem o id de todas as contas com taxonomy tax
     const results = [];
     let balance = 0;
@@ -389,7 +389,7 @@ const calculateEquity = accounts => {
             //cods (ids) das taxonomies
             let currTaxonomy;
             equityAcc.taxonomyCodes.forEach(taxonomy => {
-                currTaxonomy = processTaxonomySum(Math.abs(taxonomy), accounts);
+                currTaxonomy = processTaxSum(Math.abs(taxonomy), accounts);
                 currTaxonomy.forEach(tax => {
                     if(taxonomy < 0) {
                         currentSum -= tax.balanceValue;
@@ -400,21 +400,58 @@ const calculateEquity = accounts => {
             });
 
             //credito
-            if(equityAcc.ifCredit) {
+            if (equityAcc.ifCredit) {
                 equityAcc.ifCredit.forEach(credit => {
-                    currTaxonomy = proccessTaxSum(Math.abs(credit), accounts);
-                    currTaxonomy.forEach(tax => {
-                        if(tax.balanceType === 'credit') {
-                            if(credit < 0) {
-                                currentSum -= tax.balanceValue;
-                            } else {
-                                currentSum += tax.balanceValue;
-                            }
-                        }
+                  currTaxonomy = processTaxSum(Math.abs(credit), accounts);
+                  currTaxonomy.forEach(tax => {
+                    if (tax.balanceType === 'credit') {
+                      if (credit < 0) {
+                        currentSum -= tax.balanceValue;
+                      } else {
+                        currentSum += tax.balanceValue;
+                      }
+                    }
+                  });
                 });
-            }
-        }
-    );
+              }
+
+              //debito
+              if (equityAcc.ifDebt) {
+                equityAcc.ifDebt.forEach(debit => {
+                  currTaxonomy = processTaxSum(Math.abs(debit), accounts);
+                  currTaxonomy.forEach(tax => {
+                    if (tax.balanceType === 'debit') {
+                      if (debit < 0) {
+                        currentSum -= tax.balanceValue;
+                      } else {
+                        currentSum += tax.balanceValue;
+                      }
+                    }
+                  });
+                });
+              }
+
+              //credito **ou** debito
+              if (equityAcc.ifCreditOrDebit) {
+                equityAcc.ifCreditOrDebit.forEach(creditOrDebit => {
+                  currTaxonomy = processTaxSum(Math.abs(creditOrDebit), accounts);
+                  currTaxonomy.forEach(tax => {
+                    if (tax.balanceType === 'debit') {
+                      currentSum -= tax.balanceValue;
+                    } else {
+                      currentSum += tax.balanceValue;
+                    }
+                  });
+                });
+              }
+
+            local_equity.accounts.push({ name: equityAcc.name, value: currentSum });
+            sum += currentSum;
+            currentSum = 0;
+        });
+
+    local_equity.total = sum;
+    return local_equity;
 };
 
 module.exports = router;
