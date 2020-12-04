@@ -13,9 +13,6 @@ router.get('/financial/assets', (req, res) => {
     const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
     const nonCurrentAssets = calculateAssets(balance_sheet.assets.non_current, accounts);
 
-    console.log(nonCurrentAssets);
-    console.log(currentAssets);
-
 
 });
 
@@ -90,15 +87,14 @@ function getAccountsWithTaxCode(taxCode, accs){
         account => {
             if(account.TaxonomyCode == taxCode) {
                 balance = Number(account.ClosingDebitBalance) - Number(account.ClosingCreditBalance);
-
                 accounts.push({
                     taxonomy: taxCode,
                     account: account.AccountID,
-                    balance: (balance > 0 ? balance : -balance),
+                    balance: balance,//(balance > 0 ? balance : -balance),
                     type: balance > 0 ? 'debit' : 'credit',
                 });
             }
-        });
+    });
 
     return accounts;
 };
