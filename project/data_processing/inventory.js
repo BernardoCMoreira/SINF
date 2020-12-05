@@ -1,4 +1,19 @@
 const axios = require("axios");
+const e = require("express");
+const pagination = require("pagination");
+
+const itemsPerPage = 3;
+
+const getTotalNumberItems = async () => {
+  return await axios
+    .get(`http://localhost:${process.env.PORT}/api/inventory/products`)
+    .then((res) => calculateTotalNumberOfItems(JSON.parse(res.data)))
+    .catch((err) => console.error(err));
+};
+
+function calculateTotalNumberOfItems(itemsJSON) {
+  return itemsJSON.length;
+}
 
 const getCurrentInventoryValue = async () => {
   return await axios
@@ -38,14 +53,14 @@ function calculateTotalUnitsInStock(itemsJSON) {
   return totalStockValue;
 }
 
-const getItemList = async () => {
+const getItemList = async (pageNumber) => {
   return await axios
     .get(`http://localhost:${process.env.PORT}/api/inventory/products`)
-    .then((res) => parseItems(JSON.parse(res.data)))
+    .then((res) => parseItems(JSON.parse(res.data), pageNumber))
     .catch((err) => console.error(err));
 };
 
-function parseItems(itemsJSON) {
+function parseItems(itemsJSON, pageNumber) {
   let itemList = [];
 
   for (var object in itemsJSON) {
@@ -61,11 +76,78 @@ function parseItems(itemsJSON) {
     itemList.push(newObject);
   }
 
-  return itemList;
+  return itemList.slice(
+    (pageNumber - 1) * itemsPerPage,
+    pageNumber * itemsPerPage
+  );
 }
 
+const getPaginator = (totalNumberItems, pageNumber) => {
+  let boostrapPaginator = new pagination.TemplatePaginator({
+    prelink: "/inventory",
+    current: pageNumber,
+    rowsPerPage: itemsPerPage,
+    totalResult: totalNumberItems,
+    slashSeparator: false,
+    template: function (result) {
+      var i, len, prelink;
+      var html = '<div><ul class="pagination">';
+      if (result.pageCount < 2) {
+        html += "</ul></div>";
+        return html;
+      }
+      prelink = this.preparePreLink(result.prelink);
+      if (result.previous) {
+        html +=
+          '<li class="page-item"><a class="page-link" href="' +
+          prelink +
+          result.previous +
+          '">' +
+          this.options.translator("PREVIOUS") +
+          "</a></li>";
+      }
+      if (result.range.length) {
+        for (i = 0, len = result.range.length; i < len; i++) {
+          if (result.range[i] === result.current) {
+            html +=
+              '<li class="active page-item"><a class="page-link" href="' +
+              prelink +
+              result.range[i] +
+              '">' +
+              result.range[i] +
+              "</a></li>";
+          } else {
+            html +=
+              '<li class="page-item"><a class="page-link" href="' +
+              prelink +
+              result.range[i] +
+              '">' +
+              result.range[i] +
+              "</a></li>";
+          }
+        }
+      }
+      if (result.next) {
+        html +=
+          '<li class="page-item"><a class="page-link" href="' +
+          prelink +
+          result.next +
+          '" class="paginator-next">' +
+          this.options.translator("NEXT") +
+          "</a></li>";
+      }
+      html += "</ul></div>";
+      return html;
+    },
+  });
+
+  return boostrapPaginator;
+};
+
 module.exports = {
+  totalNumberItems: getTotalNumberItems,
   currentInventoryValue: getCurrentInventoryValue,
   totalUnitsInStock: getTotalUnitsInStock,
   itemList: getItemList,
+  paginator: getPaginator,
 };

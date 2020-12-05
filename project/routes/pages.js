@@ -17,11 +17,24 @@ router.get("/financial", function (req, res) {
 });
 
 router.get("/inventory", async function (req, res) {
+  let pageQuery = req._parsedOriginalUrl.query;
+
+  let pageNumber;
+  if (pageQuery === null) {
+    pageNumber = 1;
+  } else {
+    pageNumber = pageQuery.split("=")[pageQuery.split("=").length - 1];
+  }
+
+  let totalNumberItems = await inventoryObject.totalNumberItems();
+
   res.render("inventory", {
     title: "Inventory",
     currentInventoryValue: await inventoryObject.currentInventoryValue(),
     totalUnitsInStock: await inventoryObject.totalUnitsInStock(),
-    products: await inventoryObject.itemList(),
+    products: await inventoryObject.itemList(pageNumber),
+
+    paginator: inventoryObject.paginator(totalNumberItems, pageNumber),
   });
 });
 
