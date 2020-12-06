@@ -1,16 +1,20 @@
 const axios = require("axios");
 var moment = require('moment');
 
-/*
-const getAllPurchases= async () => {
+
+const getSuppliersInfo= async () => {
     try {
-        const dataOrders = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`)
+        let dataOrders = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`);
+        let dataInvoices = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`);
+        let filterDataOrders = suppliersListP(JSON.parse(dataOrders.data));
+        let filterDataInvoices = suppliersListD(JSON.parse(dataInvoices.data));
+        const result = finalSupplierList(filterDataOrders,filterDataInvoices);
+        return result
     } catch (error) {
       console.error(error)
-    }
-  }
-*/
-
+     } 
+}
+  
 const getAllPurchases = async() => {
     return await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`)
         .then(res => totalPurchases(JSON.parse(res.data)))
@@ -23,11 +27,10 @@ const getAllMonthlyPurchases = async() => {
         .catch(err => console.error(err))
 }
 
-const getSuppliersInfo= async() => {
-    return await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`)
-        .then(res => suppliersList(JSON.parse(res.data)))
-        .catch(err => console.error(err))
-}
+/*
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+*/
 
 const totalPurchases = (data) =>{
     var totalP = 0;
@@ -55,7 +58,7 @@ const monthlyPurchasesArray = (data) => {
     return monthlyValues;
 }
 
-const suppliersList = (data) => {
+const suppliersListP = (data) => {
     const listSuppliers = {};
 
     data.forEach(({ sellerSupplierParty,sellerSupplierPartyName,payableAmount}) => {
@@ -79,3 +82,57 @@ const suppliersList = (data) => {
       return  listSuppliers;
       //console.log(listSuppliers);
 };
+
+const suppliersListD = (data) => {
+    const listSuppliers2 = {};
+
+    data.forEach(({ sellerSupplierParty,payableAmount}) => {
+        
+        if (listSuppliers2[sellerSupplierParty]) {
+            listSuppliers2[sellerSupplierParty].value += Number(payableAmount.amount);
+          } else {
+            listSuppliers2[sellerSupplierParty] = {
+              id: sellerSupplierParty,
+              value: Number(payableAmount.amount),
+            };
+          }
+        
+        
+        //console.log(sellerSupplierParty);
+        //console.log(sellerSupplierPartyName,);
+        //console.log(payableAmount.amount);
+      });
+      //console.log(listSuppliers2);
+      return  listSuppliers2;
+      
+};
+
+const finalSupplierList = (dataP, dataD) =>{
+    
+    /*
+    const v1 ={ '0002': { id: '0002', value: 15375 },
+    '0009': { id: '0009', value: 9840 } };
+    const v2 = { '0002':
+    { id: '0002',
+      name: 'APPLE PORTUGAL, UNIPESSOAL, LDA',
+      value: 15682.5 },
+   '0014':
+    { id: '0014',
+      name: 'LG ELECTRONICS PORTUGAL, S.A.',
+      value: 1107000 },
+   '0009': { id: '0009', name: 'Samsung Sds Co.ltd.', value: 9840 } };
+*/
+   
+   Object.keys(dataP).forEach(e => {
+       if(dataD[e]!=null){
+        dataP[e].debt = dataP[e].value - dataD[e].value; }
+       else{
+        dataP[e].debt = dataP[e].value
+
+       }
+        return dataP;
+       //console.log(`key=${e}  value=${dataP[e].debt}`);
+  });
+  
+
+}
