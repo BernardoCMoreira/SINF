@@ -793,7 +793,11 @@ const calculateProfitLoss = (journals, accounts) => {
     }
   }
 
-  profitLoss.netIncome = profitLoss.ebit + income - expenses - profitLoss.taxes..reduce((acc, curr) => acc + curr.value, 0);
+  profitLoss.netIncome =
+    profitLoss.ebit +
+    income -
+    expenses -
+    profitLoss.taxes.reduce((acc, curr) => acc + curr.value, 0);
 
   return profitLoss;
 };
