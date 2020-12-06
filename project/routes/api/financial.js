@@ -44,10 +44,54 @@ router.get("/financial/liabilities", (req, res) => {
 });
 
 router.get("/financial/liabilities/current", (req, res) => {
+  var server = app.db;
   const accounts =
     server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
-  res.json(calculateLiabilities(balance_sheet.liabilities, accounts));
+  res.json(
+    calculateLiabilities(balance_sheet.liabilities, accounts).totalCurrent
+  );
 });
+
+router.get("/financial/ebitda", (req, res) => {
+  var server = app.db;
+  const journals = server.GeneralLedgerEntries.Journal;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+
+  res.json(calculateProfitLoss(journals, accounts).ebitda);
+});
+
+router.get("/financial/ebit", (req, res) => {
+  var server = app.db;
+  const journals = server.GeneralLedgerEntries.Journal;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+
+  res.json(calculateProfitLoss(journals, accounts).ebit);
+});
+
+router.get("/financial/earnings", (req, res) => {
+  const journals = server.GeneralLedgerEntries.Journal;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+
+  res.json(calculateProfitLoss(journals, accounts).netIncome);
+});
+
+router.get("/financial/profit-loss", (req, res) => {
+  var server = app.db;
+  const journals = server.GeneralLedgerEntries.Journal;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+
+  const profitLoss = calculateProfitLoss(journals, accounts);
+  res.json(profitLoss);
+});
+
+/*========================================================================================
+==========================================================================================
+==========================================================================================
+========================================================================================*/
 
 function calculateAssets(assets_template, accounts) {
   const assets = {
