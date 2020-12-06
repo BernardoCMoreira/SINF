@@ -87,6 +87,20 @@ router.get("/financial/profit-loss", (req, res) => {
   res.json(profitLoss);
 });
 
+router.get("/financial/accounts-receivable", (req, res) => {
+  var server = app.db;
+  const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
+  const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
+  var value = 0;
+
+  (currentAssets.asset).forEach(asset => {
+    if(asset.assetID === 'A00115')  
+      value = asset.value;
+  });
+
+  res.json(value);
+});
+
 /*========================================================================================
 ==========================================================================================
 ==========================================================================================

@@ -40,7 +40,7 @@ const assets = {
         value: 0,
       },
       {
-        name: 'Participacoes financeiras - metodo da equivalencia patrimonial',
+        name: 'Participacoes financeiras',
         id: 'A00106',
         taxonomyCodes: [216, 221, 226, -239, -244, -249],
         value: 0,

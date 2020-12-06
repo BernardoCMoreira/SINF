@@ -13,12 +13,14 @@ router.get("/dashboard", function (req, res) {
 
 router.get("/financial", async function (req, res) {
   const assets = (await financialData.getAssets()).data;
+  const accountsReceivable = (await financialData.getAccountsReceivable()).data;
 
+  
   res.render("financial", {
     title: "Financial",
     currentAssets: assets.current, 
     nonCurrentAssets: assets.nonCurrent,
-
+    accountsReceivable: accountsReceivable,
 
   });
 });
