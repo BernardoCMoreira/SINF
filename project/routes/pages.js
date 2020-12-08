@@ -35,4 +35,10 @@ router.get("/purchases", function (req, res) {
   });
 });
 
+router.get("/uploads", function (req, res) {
+  res.render("uploads", {
+    title: "Uploads",
+  });
+});
+
 module.exports = router;
