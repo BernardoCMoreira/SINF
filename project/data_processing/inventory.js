@@ -2,7 +2,7 @@ const axios = require("axios");
 const e = require("express");
 const pagination = require("pagination");
 
-const itemsPerPage = 3;
+const itemsPerPage = 10;
 
 const getTotalNumberItems = async () => {
   return await axios

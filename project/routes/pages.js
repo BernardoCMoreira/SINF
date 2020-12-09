@@ -31,6 +31,7 @@ router.get("/inventory", async function (req, res) {
 
   res.render("inventory", {
     title: "Inventory",
+    fiscalYears: uploadsObject.fiscalYears(),
     currentInventoryValue: await inventoryObject.currentInventoryValue(),
     totalUnitsInStock: await inventoryObject.totalUnitsInStock(),
     products: await inventoryObject.itemList(pageNumber),
