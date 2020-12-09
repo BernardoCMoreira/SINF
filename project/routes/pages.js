@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var inventoryObject = require("../data_processing/inventory");
+var uploadsObject = require("../data_processing/uploads");
 
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
@@ -47,6 +48,15 @@ router.get("/sales", function (req, res) {
 router.get("/purchases", function (req, res) {
   res.render("purchases", {
     title: "Purchases",
+  });
+});
+
+router.get("/uploads", function (req, res) {
+  res.render("uploads", {
+    title: "Uploads",
+    fiscalYears: uploadsObject.fiscalYears(),
+    SAFTAccoutingFiles: uploadsObject.SAFTAccoutingFiles(),
+    SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
   });
 });
 
