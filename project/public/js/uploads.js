@@ -20,7 +20,41 @@ function manageFile() {
 
         let JSONObject = xml2json(xml);
 
-        console.log(JSONObject);
+        let newFiscalYearElement = document.getElementById(
+          "ficalYear-" + JSONObject.AuditFile.Header.FiscalYear
+        );
+
+        if (newFiscalYearElement !== null) {
+          newFiscalYearElement.remove();
+        }
+
+        let HTMLBlock = `<div id="ficalYear-${JSONObject.AuditFile.Header.FiscalYear}" class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="checkBox-${JSONObject.AuditFile.Header.FiscalYear}">
+            <label class="custom-control-label" for="checkBox-${JSONObject.AuditFile.Header.FiscalYear}">${JSONObject.AuditFile.Header.FiscalYear}</label>
+        </div>`;
+
+        let saftListContainer = document.getElementById("SAFT-list");
+        saftListContainer.insertAdjacentHTML("beforeend", HTMLBlock);
+
+        document.getElementById("SAFT-File").value = "";
+
+        fetch("api/uploadSAFT", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(JSONObject),
+        })
+          .then(function (response) {
+            if (response.ok) {
+              console.log("SAFT upload successful");
+              return;
+            }
+            throw new Error("Request failed.");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       });
     }
   }

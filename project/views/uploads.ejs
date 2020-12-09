@@ -28,7 +28,7 @@
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="SAFT-File">
                                     <label class="custom-file-label" for="SAFT-File">
-                                        Choose SAF-T File
+                                        Choose a SAF-T File
                                     </label>
                                 </div>
                             </form>
@@ -49,8 +49,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            
+                        <div id="SAFT-list" class="card-body">
+                            <% for (let fiscalYear of fiscalYears) { %>
+                                <div id="ficalYear-<%= fiscalYear %>" class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="checkBox-<%= fiscalYear %>">
+                                    <label class="custom-control-label" for="checkBox-<%= fiscalYear %>"><%= fiscalYear %></label>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                     <!-- /.container-fluid -->
