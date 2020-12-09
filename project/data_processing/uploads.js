@@ -1,33 +1,46 @@
 const axios = require("axios");
 const e = require("express");
 
-let satfFiles = new Map();
-let currentFiscalYear;
+let saftAccountingFiles = new Map();
+let saftBillingFiles = new Map();
 
 const getEveryFiscalYear = () => {
-  return Array.from(satfFiles.keys());
+  let keys1 = Array.from(saftAccountingFiles.keys());
+  let keys2 = Array.from(saftBillingFiles.keys());
+
+  return keys1.concat(keys2.filter((item) => keys1.indexOf(item) < 0));
 };
 
-const getCurrentFiscalYear = () => {
-  return currentFiscalYear;
+const getSaftAccountingFiles = () => {
+  return saftAccountingFiles;
 };
 
-const getSAFTFile = (fiscalYear) => {
-  return satfFiles.get(fiscalYear);
+const getSaftBillingFiles = () => {
+  return saftBillingFiles;
 };
 
 const addNewSAFTFile = (fiscalYear, satfFile) => {
-  satfFiles.set(fiscalYear, satfFile);
+  if (satfFile.AuditFile.Header.FileType == "Accounting File") {
+    saftAccountingFiles.set(fiscalYear, satfFile);
+  } else if (satfFile.AuditFile.Header.FileType == "Billing File") {
+    saftBillingFiles.set(fiscalYear, satfFile);
+  }
 };
 
-const setCurrentFiscalYear = (fiscalYear) => {
-  currentFiscalYear = fiscalYear;
+const removeSAFTFile = (info) => {
+  for (let i = 0; i < info.length; i++) {
+    if (info[i].fileType == "Accounting") {
+      saftAccountingFiles.delete(info[i].fiscalYear);
+    } else if (info[i].fileType == "Billing") {
+      saftBillingFiles.delete(info[i].fiscalYear);
+    }
+  }
 };
 
 module.exports = {
   fiscalYears: getEveryFiscalYear,
-  fiscalYear: getCurrentFiscalYear,
-  SAFTFile: getSAFTFile,
-  addSAFTFile: addNewSAFTFile,
-  setFiscalYear: setCurrentFiscalYear,
+  SAFTAccoutingFiles: getSaftAccountingFiles,
+  SAFTBillingFiles: getSaftBillingFiles,
+  addNewSAFTFile: addNewSAFTFile,
+  removeSAFTFile: removeSAFTFile,
 };

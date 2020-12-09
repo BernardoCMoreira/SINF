@@ -40,6 +40,8 @@ router.get("/uploads", function (req, res) {
   res.render("uploads", {
     title: "Uploads",
     fiscalYears: uploadsObject.fiscalYears(),
+    SAFTAccoutingFiles: uploadsObject.SAFTAccoutingFiles(),
+    SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
   });
 });
 

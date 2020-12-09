@@ -20,23 +20,25 @@ function manageFile() {
 
         let JSONObject = xml2json(xml);
 
-        let newFiscalYearElement = document.getElementById(
-          "ficalYear-" + JSONObject.AuditFile.Header.FiscalYear
+        let fileType = getFileType(JSONObject);
+        if (fileType == "") {
+          alert("Invalid File!");
+          return;
+        }
+        JSONObject.AuditFile.Header["FileType"] = fileType;
+
+        let fileFiscalYear = JSONObject.AuditFile.Header.FiscalYear;
+        let fileVersion = JSONObject.AuditFile.Header.AuditFileVersion;
+
+        let fiscalYearContainer = document.getElementById(
+          "fiscalYearContainer-" + fileFiscalYear
         );
 
-        if (newFiscalYearElement !== null) {
-          newFiscalYearElement.remove();
+        if (fiscalYearContainer === null) {
+          addNewFiscalYearContainer(fileFiscalYear);
         }
 
-        let HTMLBlock = `<div id="ficalYear-${JSONObject.AuditFile.Header.FiscalYear}" class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="checkBox-${JSONObject.AuditFile.Header.FiscalYear}">
-            <label class="custom-control-label" for="checkBox-${JSONObject.AuditFile.Header.FiscalYear}">${JSONObject.AuditFile.Header.FiscalYear}</label>
-        </div>`;
-
-        let saftListContainer = document.getElementById("SAFT-list");
-        saftListContainer.insertAdjacentHTML("beforeend", HTMLBlock);
-
-        document.getElementById("SAFT-File").value = "";
+        displayFile(fileFiscalYear, fileType, fileVersion);
 
         fetch("api/uploadSAFT", {
           method: "POST",
@@ -48,6 +50,7 @@ function manageFile() {
           .then(function (response) {
             if (response.ok) {
               console.log("SAFT upload successful");
+              alert("SAF-T file upload successful!");
               return;
             }
             throw new Error("Request failed.");
@@ -87,4 +90,59 @@ function xml2json(xml) {
   } catch (e) {
     console.log(e.message);
   }
+}
+
+function getFileType(JSONObject) {
+  let fileType = "";
+  if (
+    JSONObject.AuditFile.MasterFiles.hasOwnProperty("GeneralLedgerAccounts")
+  ) {
+    fileType = "Accounting File";
+  } else {
+    fileType = "Billing File";
+  }
+
+  return fileType;
+}
+
+function addNewFiscalYearContainer(fiscalYear) {
+  let HTMLBlock = `<div class="container-fluid mb-3" id="fiscalYearContainer-${fiscalYear}">
+    <h4 class="card-title">Fiscal Year: ${fiscalYear}</h4>
+  </div>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">`;
+
+  let saftListContainer = document.getElementById("SAFT-list");
+  saftListContainer.insertAdjacentHTML("beforeend", HTMLBlock);
+}
+
+function displayFile(fiscalYear, fileType, fileVersion) {
+  let type = fileType.split(" File");
+
+  let fileElement = document.getElementById(
+    "fiscalYear-" + fiscalYear + "-" + type[0]
+  );
+
+  if (fileElement !== null) {
+    fileElement.remove();
+  }
+
+  let HTMLBlock = `<div id="fiscalYear-${fiscalYear}-${
+    type[0]
+  }" class="custom-control custom-checkbox mb-3 ml-3">
+            <input type="checkbox" class="custom-control-input" id="checkBox-${fiscalYear}-${
+    type[0]
+  }">
+            <label class="custom-control-label" for="checkBox-${fiscalYear}-${
+    type[0]
+  }">${fileType + " " + "v" + fileVersion}</label>
+        </div>`;
+
+  let saftListContainer = document.getElementById(
+    "fiscalYearContainer-" + fiscalYear
+  );
+  saftListContainer.insertAdjacentHTML("beforeend", HTMLBlock);
+
+  document.getElementById("SAFT-File").value = "";
 }

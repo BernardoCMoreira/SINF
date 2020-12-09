@@ -50,17 +50,38 @@
                             </div>
                         </div>
                         <div id="SAFT-list" class="card-body">
-                            <% for (let fiscalYear of fiscalYears) { %>
-                                <div id="ficalYear-<%= fiscalYear %>" class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkBox-<%= fiscalYear %>">
-                                    <label class="custom-control-label" for="checkBox-<%= fiscalYear %>"><%= fiscalYear %></label>
+                            
+                            <% for (let i = 0; i<fiscalYears.length; i++) { %>
+                                <div class="container-fluid mb-3" id="fiscalYearContainer-<%= fiscalYears[i] %>">
+                                    <h4 class="card-title">
+                                        Fiscal Year: <%= fiscalYears[i] %>
+                                    </h4>
+
+                                    <% if( SAFTAccoutingFiles.has(fiscalYears[i]) ) { %>
+                                        
+                                        <div id="fiscalYear-<%= fiscalYears[i] %>-<%= SAFTAccoutingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>" class="custom-control custom-checkbox mb-3 ml-3">
+                                            <input type="checkbox" class="custom-control-input" id="checkBox-<%= fiscalYears[i] %>-<%= SAFTAccoutingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>">
+                                            <label class="custom-control-label" for="checkBox-<%= fiscalYears[i] %>-<%= SAFTAccoutingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>"><%= SAFTAccoutingFiles.get(fiscalYears[i]).AuditFile.Header.FileType + " " + "v" + SAFTAccoutingFiles.get(fiscalYears[i]).AuditFile.Header.AuditFileVersion %></label>
+                                        </div>
+                                    <% } %>
+
+                                    <% if( SAFTBillingFiles.has(fiscalYears[i]) ) { %>
+                                        <% let type = SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File"); %>
+                                        <div id="fiscalYear-<%= fiscalYears[i] %>-<%= SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>" class="custom-control custom-checkbox mb-3 ml-3">
+                                            <input type="checkbox" class="custom-control-input" id="checkBox-<%= fiscalYears[i] %>-<%= SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>">
+                                            <label class="custom-control-label" for="checkBox-<%= fiscalYears[i] %>-<%= SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.FileType.split(" File")[0] %>"><%= SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.FileType + " " + "v" + SAFTBillingFiles.get(fiscalYears[i]).AuditFile.Header.AuditFileVersion %></label>
+                                        </div>
+                                    <% } %>
                                 </div>
-                            <% } %>
+                                
+                                <!-- Divider -->
+                                <hr class="sidebar-divider d-none d-md-block">
+                            <%  } %>
                         </div>
                     </div>
                     <!-- /.container-fluid -->
 
-
+                    <button id="removeFilesButton" type="button" class="btn btn-danger btn-lg float-right">Remove Files</button>
                 </div>
                 <!-- End of Main Content -->
 
@@ -71,5 +92,6 @@
         <!-- End of Page Wrapper -->
 
         <script src="/js/uploads.js" defer></script>
+        <script src="/js/removeUploadedFiles.js" defer></script>
 
         <%- include('partials/common/footer.ejs') %>

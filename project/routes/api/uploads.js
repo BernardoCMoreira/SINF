@@ -11,7 +11,17 @@ router.post("/uploadSAFT", jsonParser, (req, res) => {
     return res.sendStatus(400);
   }
 
-  uploadsObject.addSAFTFile(req.body.AuditFile.Header.FiscalYear, req.body);
+  uploadsObject.addNewSAFTFile(req.body.AuditFile.Header.FiscalYear, req.body);
+
+  res.sendStatus(200);
+});
+
+router.post("/removeSAFT", jsonParser, (req, res) => {
+  if (!req.body) {
+    return res.sendStatus(400);
+  }
+
+  uploadsObject.removeSAFTFile(req.body);
 
   res.sendStatus(200);
 });
