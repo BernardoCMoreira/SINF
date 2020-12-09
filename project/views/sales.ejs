@@ -125,7 +125,7 @@
                                             <!-- Card Body -->
                                             <div class="card-body">
                                                 <div class="chart-area">
-                                                    <canvas id="myTotalSalesChart"></canvas>
+                                                    <canvas id="myTotalSalesChart" data-monthGross = "<%= monthGross %>"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +149,7 @@
                                             <!-- Card Body -->
                                             <div class="card-body">
                                                 <div class="chart-area">
-                                                    <canvas id="myAreaChart"></canvas>
+                                                    <canvas id="myAreaChart" data-monthNet = "<%= monthNet %>"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +177,7 @@
                                             <!-- Card Body -->
                                             <div class="card-body">
                                                 <div class="chart-pie pt-4 pb-2">
-                                                    <canvas id="myPieChart"></canvas>
+                                                    <canvas id="myPieChart" data-top5 = "<%= top5 %>"></canvas>
                                                 </div>
                                                 <div class="mt-4 text-center small">
                                                     <span class="mr-2">

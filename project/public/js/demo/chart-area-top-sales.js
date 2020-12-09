@@ -1,4 +1,5 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
+
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -29,6 +30,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myTotalSalesChart");
+var monthGrossArray = ctx.dataset.monthgross.split(",");
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -46,7 +48,7 @@ var myLineChart = new Chart(ctx, {
             pointHoverBorderColor: "rgba(78, 115, 223, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: [7500000, 1500000, 3500000, 2500000, 2597000, 2000142, 1000000, 1000000, 1500000, 100000, 1500000, 5000000],
+            data: monthGrossArray,
         }],
     },
     options: {

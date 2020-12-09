@@ -18,9 +18,21 @@ const getNetMonthlyValues = async() => {
     .catch(err => console.error(err));
 };
 
+const getGrossMonthlyValues = async() => {
+    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
+    .then(res => createGrossMonthlyArray(res.data))
+    .catch(err => console.error(err));
+};
+
 const getProductsAndUnits = async() => {
     return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
     .then(res => storeProductsByUnitsSold(res.data))
+    .catch(err => console.error(err));
+};
+
+const getTop5Map = async() => {
+    return await axios.get(`http://localhost:${process.env.PORT}/api/sales/orders`)
+    .then(res => getTop5(res.data))
     .catch(err => console.error(err));
 };
 function createCustomersArray (data){
@@ -52,7 +64,7 @@ function addAllGrossTotal(data){
         }
     }
     //The Total Sales value is considered in ($m) so we must divide by 1 000 000
-    return total/1000000;
+    return Number((total/1000000).toFixed(3));
 }
 
 function createNetMonthlyArray(data){
@@ -61,10 +73,62 @@ function createNetMonthlyArray(data){
     for(let i=0; i< data.length; i++){
         for(let k=0; k<data[i].Invoice.length; k++){
             var month = parseInt(data[i].Invoice[k].Period);
+            console.log("Month : " + month + " month value : " + parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal));
             monthlyValues[month-1] += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
         }
     }
     return monthlyValues;
+}
+
+function createGrossMonthlyArray(data){
+    //Array that will save the amount of money in sales per month
+    var monthlyValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+            var month = parseInt(data[i].Invoice[k].Period);
+            console.log("Month : " + month + " month value : " + parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal));
+            monthlyValues[month-1] += parseFloat(data[i].Invoice[k].DocumentTotals[0].GrossTotal);
+        }
+    }
+    return monthlyValues;
+}
+ function getTop5(data){
+    let map = createMapWithUnitsSoldPerProduct(data);
+    let arr = new Array();
+    let i = 0;
+    while(i<5){
+        let max = 0;
+        let key = 0;
+        for (let entry of map.keys()) {
+            if(parseInt(map.get(entry)) > max){
+                max = parseInt(map.get(entry));
+                key = entry;
+            }
+        }
+        arr.push([key,map.get(key)]);
+        map.delete(key);
+        i++;
+    }
+    return arr;
+}
+function createMapWithUnitsSoldPerProduct(data){
+    var map = new Map();
+    for(let i=0; i< data.length; i++){
+        for(let k=0; k<data[i].Invoice.length; k++){
+            for(let j = 0 ; j<data[i].Invoice[k].Line.length; j++){
+                var code = data[i].Invoice[k].Line[j].ProductCode[0];
+                var quantity = parseInt(data[i].Invoice[k].Line[j].Quantity[0]);
+                if(map.has(code)){
+                    let unit = map.get(code);
+                    map.delete(code);
+                    map.set(code,  Number(unit+quantity));
+                }else{  
+                    map.set(code, quantity);
+                }
+            }
+        }
+    }
+    return map;
 }
 
 function storeProductsByUnitsSold(data){
@@ -94,5 +158,7 @@ module.exports = {
     getCustomers: getCustomerMethod,
     getTotalSales: getTotalSalesValue,
     getNetMonth: getNetMonthlyValues,
+    getGrossMonth: getGrossMonthlyValues,
     getProducts:getProductsAndUnits,
+    getTop5Map: getTop5Map,
 };
