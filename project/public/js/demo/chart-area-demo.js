@@ -29,6 +29,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+var monthNetArray = ctx.dataset.split(",");
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -46,7 +47,7 @@ var myLineChart = new Chart(ctx, {
             pointHoverBorderColor: "rgba(78, 115, 223, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: [5250, 1050, 2450, 1750, 1817.9, 1400.1, 700, 700, 1050, 700, 1050, 3500],
+            data: monthNetArray,
         }],
     },
     options: {

@@ -9,9 +9,9 @@ const totalPurchases = (data) =>{
 //filter para o ano em questão?
     data.forEach(({ documentDate, payableAmount }) => {
         totalP += payableAmount.amount;
-        console.log(payableAmount.amount);
+       // console.log(payableAmount.amount);
       });
-      console.log(totalP);
+      //console.log(totalP);
     return totalP;
 };
 
@@ -26,7 +26,7 @@ const monthlyPurchasesArray = (data) => {
       });
     
         
-      console.log(monthlyValues);
+      //console.log(monthlyValues);
     return monthlyValues;
 };
 
@@ -50,7 +50,7 @@ const suppliersList = (data) => {
         //console.log(sellerSupplierPartyName,);
         //console.log(payableAmount.amount);
       });
-      console.log(listSuppliers);
+      //console.log(listSuppliers);
       return  listSuppliers;
      
 };
@@ -74,7 +74,7 @@ const suppliersList2 = (data) => {
         //console.log(sellerSupplierPartyName,);
         //console.log(payableAmount.amount);
       });
-      console.log(listSuppliers2);
+      //console.log(listSuppliers2);
       return  listSuppliers2;
       
 };
