@@ -2,7 +2,8 @@ var express = require('express');
 var path = require('path');
 var json_server = require('json-server'); //em vez de mongodb pq é mais facil de usar :D
 require('dotenv/config');
-const request = require('request');
+var request = require('request');
+var bodyParser = require('body-parser')
 
 
 //parse file 
@@ -15,6 +16,12 @@ const db = server.db.__wrapped__;
 
 //Init app
 const app = express();
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 
 //View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +37,7 @@ app.use('/', pages);
 var inventoryController = require('./routes/api/inventory.js');
 var financialController = require('./routes/api/financial.js');
 var salesController = require('./routes/api/sales.js');
+var authController = require('./routes/api/auth.js');
 
 // Start server
 app.listen(process.env.PORT, function() {
@@ -68,6 +76,7 @@ loginPrimavera();
 app.use('/api', inventoryController);
 app.use('/api', financialController);
 app.use('/api', salesController); 
+app.use('/api', authController);
 
 
 module.exports.db = db;

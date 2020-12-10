@@ -17,7 +17,6 @@ router.get("/financial/assets", (req, res) => {
   res.json({'current': currentAssets, 
             'nonCurrent': nonCurrentAssets
           });
-
 });
 
 router.get("/financial/equity", (req, res) => {
