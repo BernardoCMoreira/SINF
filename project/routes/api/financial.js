@@ -86,24 +86,69 @@ router.get("/financial/profit-loss", (req, res) => {
   res.json(profitLoss);
 });
 
-router.get("/financial/accounts-receivable", (req, res) => {
+router.get("/financial/assets/cash", (req, res) => {
   var server = app.db;
-  const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
-  const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
-  var value = 0;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+  res.json(calculateCash(accounts));
+});
 
-  (currentAssets.asset).forEach(asset => {
-    if(asset.assetID === 'A00115')  
-      value = asset.value;
-  });
+router.get("/financial/profit-margin", (req, res) => {
+  var server = app.db;
+  const journals = server.GeneralLedgerEntries.Journal;
 
-  res.json(value);
+  const profit = calculateProfitMargin(journals);
+  res.json(profit);
 });
 
 /*========================================================================================
 ==========================================================================================
 ==========================================================================================
 ========================================================================================*/
+const calculateProfitMargin = (journal) => {
+  const revenue = getJournals(journal, "71", false);
+  const val = getJournals(journal, "61", false);
+
+  return (
+    (revenue.totalCredit -
+      revenue.totalDebit -
+      (val.totalDebit - val.totalCredit)) /
+    (revenue.totalCredit - revenue.totalDebit)
+  );
+};
+
+const calculateCash = (accounts) => {
+  const cash = ["11", "12", "13"];
+  let total = 0,
+    currAccount;
+
+  cash.forEach((acc) => {
+    currAccount = getJournals(accounts, acc, false);
+    if (currAccount) {
+      if (acc < 0) {
+        total -= currAccount.totalDebit - currAccount.totalCredit;
+      } else {
+        total += currAccount.totalDebit - currAccount.totalCredit;
+      }
+    }
+  });
+
+  return total;
+};
+
+const getAccount = (accounts, id) => {
+  if (Array.isArray(accounts)) {
+    for (var i = 0; i < accounts.length; i++) {
+      if (accounts[i].AccountID == accountId) {
+        return accounts[i];
+      }
+    }
+  } else if (accounts.AccountID == id) {
+    return accounts;
+  }
+
+  return null;
+};
 
 function calculateAssets(assets_template, accounts) {
   const assets = {
@@ -125,6 +170,7 @@ function calculateAssets(assets_template, accounts) {
         getAccountsWithTaxCode(Math.abs(taxCodeDebit), accounts).forEach(
           (account) => {
             if (account.type === "debit") {
+              //TODO: debito nao deveria ser sempre a subtrair?
               taxCodeDebit > 0
                 ? (value += account.balance)
                 : (value -= account.balance);
@@ -154,9 +200,8 @@ function calculateAssets(assets_template, accounts) {
           Math.abs(taxCodeCreditOrDebit),
           accounts
         ).forEach((account) => {
-          (account.type === "debit") 
-          ? (value -= account.balance)
-          : (value += account.balance);
+          if (account.type === "debit") value -= account.balance;
+          else value += account.balance;
         });
       });
     }
@@ -284,7 +329,7 @@ const getJournals = (entries, id, isMonthly) => {
           ? ledgerValues.totalCredit.map((ledger, index) => {
               return currJournal.totalDebit[index] + ledger;
             })
-          : (ledgerValues.totalDebit += currJournal.totalDedit);
+          : (ledgerValues.totalDebit += currJournal.totalDebit);
       }
     });
   } else if (entries.Transaction) {
@@ -318,7 +363,7 @@ function getAccountsWithTaxCode(taxCode, accs) {
       accounts.push({
         taxonomy: taxCode,
         account: account.AccountID,
-        balance: balance > 0 ? balance : -balance, //TODO: isto e preciso??? nao pode ser so balance ?
+        balance: balance > 0 ? balance : -balance,
         type: balance > 0 ? "debit" : "credit",
       });
     }
@@ -857,5 +902,19 @@ const calculateProfitLoss = (journals, accounts) => {
 
   return profitLoss;
 };
+
+router.get("/financial/accounts-receivable", (req, res) => {
+  var server = app.db;
+  const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
+  const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
+  var value = 0;
+
+  (currentAssets.asset).forEach(asset => {
+    if(asset.assetID === 'A00115')  
+      value = asset.value;
+  });
+
+  res.json(value);
+});
 
 module.exports = router;
