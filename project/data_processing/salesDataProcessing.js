@@ -47,8 +47,12 @@ function createCustomersArray (data){
 function addAllNetTotal(data){
     let total  = 0;
     for(let i=0; i< data.length; i++){
-        for(let k=0; k<data[i].Invoice.length; k++){
-            total += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
+        if(Array.isArray(data[i].Invoice)){
+            for(let k=0; k<data[i].Invoice.length; k++){
+                total += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
+            }
+        }else {
+            total += parseFloat(data[i].Invoice.DocumentTotals[0].NetTotal);
         }
     }
     //The Total Sales value is considered in ($m) so we must divide by 1 000 000
@@ -92,6 +96,7 @@ function createGrossMonthlyArray(data){
     }
     return monthlyValues;
 }
+
  function getTop5(data){
     let map = createMapWithUnitsSoldPerProduct(data);
     let arr = new Array();
@@ -161,4 +166,7 @@ module.exports = {
     getGrossMonth: getGrossMonthlyValues,
     getProducts:getProductsAndUnits,
     getTop5Map: getTop5Map,
+    addAllNetTotal: addAllNetTotal,
+    getTop5Dif:getTop5,
+    
 };

@@ -27,8 +27,8 @@
                                         </div>
                                         <select class="custom-select" id="gender3">
                                 <option selected>Choose...</option>
-                                <option value="1">2018/2019</option>
-                                <option value="2">2019/2020</option>
+                                <option value="1"><button onclick="href='/api/sales/2019'">2018/2019</button></option>
+                                <option value="2" href="/api/sales/2019">2019/2020</option>
                                 <option value="3">2020/2021</option>
                             </select>
                                     </div>
@@ -96,7 +96,6 @@
                                     </div>
                                 </div>
 
-
                                 <!-- Content Row -->
 
                                 <div class="row">
@@ -115,7 +114,10 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                         <div class="dropdown-header">Dropdown Header:</div>
-                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <% yearsList %>
+                                                        <% for(let i= 0 ; i<yearsList.length; i++){ %>
+                                                            <a class="dropdown-item" href="/sales/<%= yearsList[i] %>"> <%= yearsList[i] %> </a>
+                                                        <% } %>
                                                         <a class="dropdown-item" href="#">Another action</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" href="#">Something else here</a>
