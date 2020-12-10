@@ -4,7 +4,6 @@ var router = express.Router();
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
-
 router.post("/auth", (req, res) => {
     const { email, password } = req.body;
 
@@ -22,11 +21,14 @@ router.post("/auth", (req, res) => {
             {expiresIn: '24h'}
         );
 
-        res.header('auth-token', accessToken);
-        //res.redirect('/dashboard');
+        res.cookie('jwt', accessToken);
+        res.redirect('/dashboard');
     }
 });
 
+router.get('/logout', function(req, res) {
+    res.cookie('jwt', null);
+    res.redirect('/');
+});
 
 module.exports = router;
-
