@@ -28,11 +28,6 @@ router.get("/inventory", function(req, res) {
 });
 
 router.get("/sales", async function(req, res) {
-    console.log("Customers : " + await dataSales.getCustomers());
-    console.log("Products : " + Object.keys(await dataSales.getProducts()));
-    MonthNet = await dataSales.getNetMonth();
-    arrayTop5Products = await dataSales.getTop5Map();
-  
    
     res.render("sales", {
         title: "Sales",
