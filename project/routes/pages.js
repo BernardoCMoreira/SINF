@@ -19,9 +19,9 @@ router.get("/dashboard", auth.verifyJWT, function(req, res) {
 });
 router.get("/", function (req, res){
   res.render("login", {
-    title: "LOGIN"
+    title: "LOGIN",
   });
-})
+});
 
 
 router.get("/financial", auth.verifyJWT, function (req, res) {
@@ -54,6 +54,9 @@ router.get("/financial", auth.verifyJWT, function (req, res) {
     currentAssets: assets !== null ? assets.current : null, 
     nonCurrentAssets: assets !== null ? assets.nonCurrent : null,
     accountsReceivable: accountsReceivable,
+    equity: equity,
+    liabilities: liabilities,
+    ebitda: ebitda,
   });
 });
 
