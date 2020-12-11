@@ -1,11 +1,13 @@
 require("dotenv/config");
-const { json } = require("express");
+const {
+  json
+} = require("express");
 var express = require("express");
 var router = express.Router();
-var app = require("../../app"); //Info vai estar na db
 var balance_sheet = require("../../utils/balance_sheet");
 var profit_loss = require("../../utils/profit_loss");
 
+/*
 router.get("/financial/assets", (req, res) => {
   var server = app.db; // Para usar a db
   const accounts = 
@@ -91,7 +93,7 @@ router.get("/financial/earnings", (req, res) => {
 
 router.get("/financial/profit-loss", (req, res) => {
   var server = app.db;
-  const journals = server.AuditFile.GeneralLedgerEntries[0].Journal; 
+  const journals = server.AuditFile.GeneralLedgerEntries[0].Journal;
   const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   const profitLoss = calculateProfitLoss(journals, accounts);
@@ -121,12 +123,12 @@ router.get("/financial/accounts-receivable", (req, res) => {
   var value = 0;
 
   (currentAssets.asset).forEach(asset => {
-    if(asset.assetID === 'A00115')  
+    if (asset.assetID === 'A00115')
       value = asset.value;
   });
 
   res.json(value);
-});
+}); */
 /*========================================================================================
 ==========================================================================================
 ==========================================================================================
@@ -154,9 +156,9 @@ function calculateAssets(assets_template, accounts) {
           (account) => {
             if (account.type === "debit") {
               //TODO: debito nao deveria ser sempre a subtrair?
-              taxCodeDebit > 0
-                ? (value += account.balance)
-                : (value -= account.balance);
+              taxCodeDebit > 0 ?
+                (value += account.balance) :
+                (value -= account.balance);
             }
           }
         );
@@ -168,9 +170,9 @@ function calculateAssets(assets_template, accounts) {
         getAccountsWithTaxCode(Math.abs(taxCodeCredit), accounts).forEach(
           (account) => {
             if (account.type === "credit") {
-              taxCodeCredit > 0
-                ? (value += account.balance)
-                : (value -= account.balance);
+              taxCodeCredit > 0 ?
+                (value += account.balance) :
+                (value -= account.balance);
             }
           }
         );
@@ -253,14 +255,14 @@ const getTransactions = (transactions, id, isMonthly) => {
         currTransaction = getTransactionLines(transaction.Lines, id);
         if (isMonthly) {
           journalValues.totalCredit[
-            Math.min(parseInt(transaction.Period), 12) - 1
-          ] =
+              Math.min(parseInt(transaction.Period), 12) - 1
+            ] =
             journalValues.totalCredit[
               Math.min(parseInt(transaction.Period), 12) - 1
             ] + currTransaction.totalCredit;
           journalValues.totalDebit[
-            Math.min(parseInt(transaction.Period), 12) - 1
-          ] =
+              Math.min(parseInt(transaction.Period), 12) - 1
+            ] =
             journalValues.totalDebit[
               Math.min(parseInt(transaction.Period), 12) - 1
             ] + currTransaction.totalDebit;
@@ -274,8 +276,8 @@ const getTransactions = (transactions, id, isMonthly) => {
     currTransaction = getTransactionLines(transactions.Lines, id);
     if (isMonthly) {
       journalValues.totalCredit[
-        Math.min(parseInt(transaction.Period), 12) - 1
-      ] =
+          Math.min(parseInt(transaction.Period), 12) - 1
+        ] =
         journalValues.totalCredit[
           Math.min(parseInt(transaction.Period), 12) - 1
         ] + currTransaction.totalCredit;
@@ -303,31 +305,31 @@ const getJournals = (entries, id, isMonthly) => {
     entries.forEach((entry) => {
       if (entry.Transaction) {
         currJournal = getTransactions(entry.Transaction, id, isMonthly);
-        ledgerValues.totalCredit = isMonthly
-          ? ledgerValues.totalCredit.map((ledger, index) => {
-              return currJournal.totalCredit[index] + ledger;
-            })
-          : (ledgerValues.totalCredit += currJournal.totalCredit);
+        ledgerValues.totalCredit = isMonthly ?
+          ledgerValues.totalCredit.map((ledger, index) => {
+            return currJournal.totalCredit[index] + ledger;
+          }) :
+          (ledgerValues.totalCredit += currJournal.totalCredit);
 
-        ledgerValues.totalDebit = isMonthly
-          ? ledgerValues.totalCredit.map((ledger, index) => {
-              return currJournal.totalDebit[index] + ledger;
-            })
-          : (ledgerValues.totalDebit += currJournal.totalDebit);
+        ledgerValues.totalDebit = isMonthly ?
+          ledgerValues.totalCredit.map((ledger, index) => {
+            return currJournal.totalDebit[index] + ledger;
+          }) :
+          (ledgerValues.totalDebit += currJournal.totalDebit);
       }
     });
   } else if (entries.Transaction) {
     currJournal = getTransactions(entries.Transaction, id, isMonthly);
-    ledgerValues.totalCredit = isMonthly
-      ? ledgerValues.totalCredit.map((ledger, index) => {
-          return currJournal.totalCredit[index] + ledger;
-        })
-      : (ledgerValues.totalCredit += currJournal.totalCredit);
-    ledgerValues.totalDebit = isMonthly
-      ? ledgerValues.totalDebit.map((ledger, index) => {
-          return currJournal.totalDebit[index] + ledger;
-        })
-      : (ledgerValues.totalDebit += currJournal.totalDebit);
+    ledgerValues.totalCredit = isMonthly ?
+      ledgerValues.totalCredit.map((ledger, index) => {
+        return currJournal.totalCredit[index] + ledger;
+      }) :
+      (ledgerValues.totalCredit += currJournal.totalCredit);
+    ledgerValues.totalDebit = isMonthly ?
+      ledgerValues.totalDebit.map((ledger, index) => {
+        return currJournal.totalDebit[index] + ledger;
+      }) :
+      (ledgerValues.totalDebit += currJournal.totalDebit);
   }
 
   return ledgerValues;
@@ -454,7 +456,10 @@ const calculateEquity = (equity_template, accounts) => {
       });
     }
 
-    local_equity.accounts.push({ name: equityAcc.name, value: currentSum });
+    local_equity.accounts.push({
+      name: equityAcc.name,
+      value: currentSum
+    });
     sum += currentSum;
     currentSum = 0;
   });
@@ -626,262 +631,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
   return local_liabilities;
 };
 
-/*========================================================================================
-==========================================================================================
-==========================================================================================
-========================================================================================*/
 
-  profit_loss.revenue.forEach((rev) => {
-    let currTaxonomy;
-    rev.taxonomyCodes.forEach((taxonomy) => {
-      currTaxonomy = getTaxonomiesWithTransactions(
-        Math.abs(taxonomy),
-        accounts,
-        journals
-      );
-      currTaxonomy.forEach((tax) => {
-        if (taxonomy < 0) {
-          currentSum -= tax.balance;
-        } else {
-          currentSum += tax.balance;
-        }
-      });
-    });
-
-    //credito *OU* debito
-    if (rev.ifCreditOrDebit) {
-      rev.ifCreditOrDebit.forEach((creditOrDebit) => {
-        currTaxonomy = getTaxonomiesWithTransactions(
-          Math.abs(creditOrDebit),
-          accounts,
-          journals
-        );
-        currTaxonomy.forEach((tax) => {
-          if (tax.balanceType === "debit") {
-            currentSum -= tax.balance;
-          } else {
-            currentSum += tax.balance;
-          }
-        });
-      });
-    }
-
-  return accountIDS;
+module.exports = {
+  calculateAssets: calculateAssets,
+  calculateEquity: calculateEquity,
+  calculateLiabilities: calculateLiabilities,
 }
-
-
-  profit_loss.expenses.forEach((exp) => {
-    let currTaxonomy;
-    exp.taxonomyCodes.forEach((taxonomy) => {
-      currTaxonomy = getTaxonomiesWithTransactions(
-        Math.abs(taxonomy),
-        accounts,
-        journals
-      );
-      currTaxonomy.forEach((tax) => {
-        if (taxonomy < 0) {
-          currentSum -= tax.balance;
-        } else {
-          currentSum += tax.balance;
-        }
-      });
-    } else if (lines.CreditLine.AccountID.indexOf(accountId) === 0) {
-      totalTransactionValues.totalCredit += parseFloat(
-        lines.CreditLine.CreditAmount,
-      );
-    }
-  }
-
-    // credito *OU* debito
-    if (exp.ifCreditOrDebit) {
-      exp.ifCreditOrDebit.forEach((creditOrDebit) => {
-        currTaxonomy = getTaxonomiesWithTransactions(
-          Math.abs(creditOrDebit),
-          accounts,
-          journals
-        );
-        currTaxonomy.forEach((tax) => {
-          if (tax.balanceType === "debit") {
-            currentSum -= tax.balance;
-          } else {
-            currentSum += tax.balance;
-          }
-        });
-      });
-    } else if (lines.DebitLine.AccountID.indexOf(accountId) === 0) {
-      totalTransactionValues.totalDebit += parseFloat(
-        lines.DebitLine.DebitAmount,
-      );
-    }
-  }
-
-  return totalTransactionValues;
-};
-
-function processTransaction(transactions, accountID){
-  var totalJournalValues = {
-    totalDebit: 0,
-    totalCredit: 0,
-  };
-
-  if(Array.isArray(transactions)){
-    transactions.forEach(transaction => {
-      let currentTransactionValues; //{debit, credit}
-      
-      if (transaction.Lines && transaction.TransactionType == 'N') {
-        
-        currentTransactionValues = processTransactionLines(transaction.Lines[0], accountID);
-        
-        totalJournalValues.totalCredit += currentTransactionValues.totalCredit;
-        totalJournalValues.totalDebit += currentTransactionValues.totalDebit;
-      } // A + R
-    })
-  }
-  return totalJournalValues;
-}
-
-    inter.taxonomyCodes.forEach((taxonomy) => {
-      currTaxonomy = getTaxonomiesWithTransactions(
-        Math.abs(taxonomy),
-        accounts,
-        journals
-      );
-      currTaxonomy.forEach((tax) => {
-        if (taxonomy < 0) {
-          currentSum -= tax.balancbalanceeValue;
-        } else {
-          currentSum += tax.balance;
-        }
-      });
-    });
-
-    //credito *OU* debito
-    if (inter.ifCreditOrDebit) {
-      inter.ifCreditOrDebit.forEach((creditOrDebit) => {
-        currTaxonomy = getTaxonomiesWithTransactions(
-          Math.abs(creditOrDebit),
-          accounts,
-          journals
-        );
-        currTaxonomy.forEach((tax) => {
-          if (tax.balanceType === "debit") {
-            currentSum -= tax.balance;
-          } else {
-            currentSum += tax.balance;
-          }
-        });
-      });
-    }
-
-  journals.forEach(entry => {
-    ledgerValues = processTransaction(entry.Transaction, accountID);
-  });
-
-  
-
-    dep.taxonomyCodes.forEach((taxonomy) => {
-      currTaxonomy = getTaxonomiesWithTransactions(
-        Math.abs(taxonomy),
-        accounts,
-        journals
-      );
-      currTaxonomy.forEach((tax) => {
-        if (taxonomy < 0) {
-          currentSum -= tax.balance;
-        } else {
-          currentSum += tax.balance;
-        }
-      });
-    });
-
-    //credito *OU* debito
-    if (dep.ifCreditOrDebit) {
-      dep.ifCreditOrDebit.forEach((creditOrDebit) => {
-        currTaxonomy = getTaxonomiesWithTransactions(
-          Math.abs(creditOrDebit),
-          accounts,
-          journals
-        );
-        currTaxonomy.forEach((tax) => {
-          if (tax.balanceType === "debit") {
-            currentSum -= tax.balance;
-          } else {
-            currentSum += tax.balance;
-          }
-        });
-      });
-    }
-
-  accountsIDS.forEach(accountID => {
-    ledgerValues = calculateLedgerValues(accountID, journals);
-
-    console.log(ledgerValues);
-
-    /*balance = Number(ledgerValues.totalDebit) - Number(ledgerValues.totalCredit);
-    results.push({
-      taxonomy: taxonomy,
-      account: code,
-      balanceType: balance > 0 ? 'debit' : 'credt',
-      balanceValue: balance > 0 ? balance : -balance,
-    });*/
-    // return the same we returned before
-  });
-}
-
-calculateProfitLoss = (journals, accounts) => {
-  profit_loss.revenue.forEach(revenueAccount => {
-    let currentTaxonomy;
-    revenueAccount.taxonomyCodes.forEach(taxonomy => {
-      currentTaxonomy = processTaxonomySumViaTransactions(Math.abs(taxonomy), accounts, journals);
-      
-      /*currentTaxonomy.forEach(tax => {
-        if (taxonomy < 0) {
-          currentSum -= tax.balance;
-        } else {
-          currentSum += tax.balance;
-        }
-      });*/
-    });
-
-    //credito *OU* debito
-    if (taxAcc.ifCreditOrDebit) {
-      taxAcc.ifCreditOrDebit.forEach((creditOrDebit) => {
-        currTaxonomy = getTaxonomiesWithTransactions(
-          Math.abs(creditOrDebit),
-          accounts,
-          journals
-        );
-        currTaxonomy.forEach((tax) => {
-          if (tax.balanceType === "debit") {
-            currentSum -= tax.balance;
-          } else {
-            currentSum += tax.balance;
-          }
-        });
-      });
-    }
-
-    profitLoss.taxes.push({
-      name: taxAcc.name,
-      value: currentSum,
-    });
-
-    currentSum = 0;
-  });
-}
-
-  console.log(
-    "expenses" + profitLoss.expenses.reduce((acc, curr) => acc + curr.value, 0)
-  );
-  console.log(
-    "revenue" + profitLoss.revenue.reduce((acc, curr) => acc + curr.value, 0)
-  );
-  profitLoss.ebitda =
-    profitLoss.revenue.reduce((acc, curr) => acc + curr.value, 0) -
-    profitLoss.expenses.reduce((acc, curr) => acc + curr.value, 0);
-
-
-
-
-
-module.exports = router;

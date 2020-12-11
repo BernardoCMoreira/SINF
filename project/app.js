@@ -37,7 +37,6 @@ var pages = require("./routes/pages.js");
 app.use("/", pages);
 
 var inventoryController = require('./routes/api/inventory.js');
-var financialController = require('./routes/api/financial.js');
 var salesController = require('./routes/api/sales.js');
 var authController = require('./routes/api/auth.js');
 var uploadsController = require("./routes/api/uploads.js");
@@ -77,7 +76,6 @@ loginPrimavera();
 
 
 app.use('/api', inventoryController);
-app.use('/api', financialController);
 app.use('/api', salesController); 
 app.use('/api', authController);
 app.use("/api", uploadsController);

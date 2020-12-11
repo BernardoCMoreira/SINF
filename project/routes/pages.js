@@ -25,10 +25,12 @@ router.get("/", function (req, res){
 
 
 router.get("/financial", auth.verifyJWT, function (req, res) {
-
   let pageQuery = req._parsedOriginalUrl.query;
   let filterYear = null;
-  let assets = null;
+  let assets = null; 
+  let accountsReceivable = null;
+  let equity = null;
+  let liabilities = null;
 
   if(pageQuery !== null) {
     filterYear = pageQuery.split('=')[1];
@@ -38,14 +40,17 @@ router.get("/financial", auth.verifyJWT, function (req, res) {
 
   if(fiscalYears.length > 0 && filterYear !== null) {
     assets = financialData.getAssets(uploadsObject.SAFTAccountingSpecificFile(filterYear));
+    accountsReceivable = financialData.getAccountsReceivable(uploadsObject.SAFTAccountingSpecificFile(filterYear));
+    equity = financialData.getEquity(uploadsObject.SAFTAccountingSpecificFile(filterYear));
+    liabilities = financialData.getLiabilities(uploadsObject.SAFTAccountingSpecificFile(filterYear));
   }
   else if(fiscalYears.length > 0 && filterYear === null) {
     assets = financialData.getAssets(uploadsObject.SAFTAccountingSpecificFile(fiscalYears[0]));
+    accountsReceivable = financialData.getAccountsReceivable(uploadsObject.SAFTAccountingSpecificFile(fiscalYears[0]));
+    equity = financialData.getEquity(uploadsObject.SAFTAccountingSpecificFile(fiscalYears[0]));
+    liabilities = financialData.getLiabilities(uploadsObject.SAFTAccountingSpecificFile(fiscalYears[0]));
   }
 
-  //const accountsReceivable = (await financialData.getAccountsReceivable()).data;
-
-  const accountsReceivable = 0;
 
   res.render("financial", {
     title: "Financial",
@@ -53,10 +58,10 @@ router.get("/financial", auth.verifyJWT, function (req, res) {
     filterYear: filterYear,
     currentAssets: assets !== null ? assets.current : null, 
     nonCurrentAssets: assets !== null ? assets.nonCurrent : null,
-    accountsReceivable: accountsReceivable,
-    equity: equity,
-    liabilities: liabilities,
-    ebitda: ebitda,
+    accountsReceivable: accountsReceivable != null ? accountsReceivable : null,
+    equity: equity !== null ? equity : null,
+    liabilities: liabilities !== null ? liabilities : null,
+    //ebitda: ebitda,
   });
 });
 
