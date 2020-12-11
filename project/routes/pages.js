@@ -38,16 +38,17 @@ router.get("/sales", async function(req, res) {
     });
 });
 
-router.get("/sales/:ano", async function(req, res) {
+router.get("/sales/:ano", function(req, res) {
     let year = req.params.ano
-    console.log(year)
     let map = uploadsObject.SAFTBillingFiles();
     res.render("sales", {
         title: "Sales",
-        totalSalesValue:await dataSales.addAllNetTotal(map.get("2022").AuditFile.SourceDocuments.SalesInvoices),
-        monthGross: 0,
-        monthNet: 0,
-        top5 : await dataSales.getTop5Dif(map.get("2022").AuditFile.SourceDocuments.SalesInvoices),
+        totalSalesValue: dataSales.addAllNetTotalUploadedSAFT(map.get(year)),
+        monthGross: dataSales.createGrossMonthlyArrayUploadedSaft(map.get(year)),
+        monthNet: dataSales.createNetMonthlyArrayUploadedSaft(map.get(year)),
+        top5 : dataSales.getTop5UploadedSaft(map.get(year)),
+        yearsList: uploadsObject.fiscalYears(),
+        //top5 : await dataSales.getTop5Dif(map.get("2022").AuditFile.SourceDocuments.SalesInvoices),
     });
 });
 

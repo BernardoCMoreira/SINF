@@ -43,17 +43,18 @@ function createCustomersArray (data){
     return customers;
 }
 
+
 // with taxes
 function addAllNetTotal(data){
     let total  = 0;
     for(let i=0; i< data.length; i++){
-        if(Array.isArray(data[i].Invoice)){
+        //if(Array.isArray(data[i].Invoice)){
             for(let k=0; k<data[i].Invoice.length; k++){
                 total += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
             }
-        }else {
+        /*}else {
             total += parseFloat(data[i].Invoice.DocumentTotals[0].NetTotal);
-        }
+        }*/
     }
     //The Total Sales value is considered in ($m) so we must divide by 1 000 000
     return total/1000000;
@@ -159,6 +160,85 @@ function storeProductsByUnitsSold(data){
     return all;
 }
 
+
+// functions for objects uploaded!
+
+function addAllNetTotalUploadedSAFT(data){
+    let start = data.AuditFile.SourceDocuments.SalesInvoices.Invoice;
+    console.log(start);
+    let total = 0;
+    for(let i=0; i<start.length; i++){
+        total += parseFloat(start[i].DocumentTotals.NetTotal);
+    }
+    return total / 1000000;
+
+}
+
+function createNetMonthlyArrayUploadedSaft(data){
+    let start = data.AuditFile.SourceDocuments.SalesInvoices;
+    //Array that will save the amount of money in sales per month
+    var monthlyValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        for(let k=0; k<start.Invoice.length; k++){
+            var month = parseInt(start.Invoice[k].Period);
+            console.log("Month : " + month + " month value : " + parseFloat(start.Invoice[k].DocumentTotals.NetTotal));
+            monthlyValues[month-1] += parseFloat(start.Invoice[k].DocumentTotals.NetTotal);
+        }
+
+    return monthlyValues;
+}
+
+function createGrossMonthlyArrayUploadedSaft(data){
+    //Array that will save the amount of money in sales per month
+    var monthlyValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let start = data.AuditFile.SourceDocuments.SalesInvoices;
+
+        for(let k=0; k<start.Invoice.length; k++){
+            var month = parseInt(start.Invoice[k].Period);
+            console.log("Month : " + month + " month value : " + parseFloat(start.Invoice[k].DocumentTotals.NetTotal));
+            monthlyValues[month-1] += parseFloat(start.Invoice[k].DocumentTotals.GrossTotal);
+        }
+    
+    return monthlyValues;
+}
+function createMapWithUnitsSoldPerProductUploadedSaft(data){
+    var map = new Map();
+        for(let k=0; k<data.Invoice.length; k++){
+            for(let j = 0 ; j<data.Invoice[k].Line.length; j++){
+                var code = data.Invoice[k].Line[j].ProductCode[0];
+                var quantity = parseInt(data.Invoice[k].Line[j].Quantity[0]);
+                if(map.has(code)){
+                    let unit = map.get(code);
+                    map.delete(code);
+                    map.set(code,  Number(unit+quantity));
+                }else{  
+                    map.set(code, quantity);
+                }
+            }
+        }
+    return map;
+}
+function getTop5UploadedSaft(data){
+    let start = data.AuditFile.SourceDocuments.SalesInvoices;
+    let map = createMapWithUnitsSoldPerProductUploadedSaft(start);
+    let arr = new Array();
+    let i = 0;
+    while(i<5){
+        let max = 0;
+        let key = 0;
+        for (let entry of map.keys()) {
+            if(parseInt(map.get(entry)) > max){
+                max = parseInt(map.get(entry));
+                key = entry;
+            }
+        }
+        arr.push([key,map.get(key)]);
+        map.delete(key);
+        i++;
+    }
+    return arr;
+}
+
 module.exports = {
     getCustomers: getCustomerMethod,
     getTotalSales: getTotalSalesValue,
@@ -168,5 +248,9 @@ module.exports = {
     getTop5Map: getTop5Map,
     addAllNetTotal: addAllNetTotal,
     getTop5Dif:getTop5,
+    addAllNetTotalUploadedSAFT: addAllNetTotalUploadedSAFT,
+    createNetMonthlyArrayUploadedSaft :createNetMonthlyArrayUploadedSaft,
+    createGrossMonthlyArrayUploadedSaft : createGrossMonthlyArrayUploadedSaft,
+    getTop5UploadedSaft : getTop5UploadedSaft,
     
 };
