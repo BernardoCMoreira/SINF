@@ -4,6 +4,7 @@ var json_server = require('json-server'); //em vez de mongodb pq é mais facil d
 require('dotenv/config');
 var request = require('request');
 var bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 
 //parse file 
@@ -17,6 +18,7 @@ const db = server.db.__wrapped__;
 //Init app
 const app = express();
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({
     extended: true
