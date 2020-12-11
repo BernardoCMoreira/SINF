@@ -28,26 +28,29 @@ router.get("/inventory", function(req, res) {
 });
 
 router.get("/sales", async function(req, res) {
+
     res.render("sales", {
         title: "Sales",
         totalSalesValue:await dataSales.getTotalSales(),
         monthGross: await dataSales.getGrossMonth(),
         monthNet: await dataSales.getNetMonth(),
         top5 : await dataSales.getTop5Map(),
-        yearsList: uploadsObject.fiscalYears(),
+        yearsList: Array.from(uploadsObject.SAFTBillingFiles().keys()),
     });
 });
 
 router.get("/sales/:ano", function(req, res) {
     let year = req.params.ano
     let map = uploadsObject.SAFTBillingFiles();
+    console.log("YEARS : ");
+    console.log(map.keys());
     res.render("sales", {
         title: "Sales",
         totalSalesValue: dataSales.addAllNetTotalUploadedSAFT(map.get(year)),
         monthGross: dataSales.createGrossMonthlyArrayUploadedSaft(map.get(year)),
         monthNet: dataSales.createNetMonthlyArrayUploadedSaft(map.get(year)),
         top5 : dataSales.getTop5UploadedSaft(map.get(year)),
-        yearsList: uploadsObject.fiscalYears(),
+        yearsList: Array.from(map.keys()),
         //top5 : await dataSales.getTop5Dif(map.get("2022").AuditFile.SourceDocuments.SalesInvoices),
     });
 });
