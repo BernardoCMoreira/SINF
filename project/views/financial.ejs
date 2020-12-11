@@ -17,28 +17,16 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">                    
-                    <div class="col-8 col-md-4">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="gender3">Fiscal Year</label>
-                            </div>
-                            <select class="custom-select" id="gender3">
-                                <option selected>Choose...</option>
-                                <option value="1">2018/2019</option>
-                                <option value="2">2019/2020</option>
-                                <option value="3">2020/2021</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                </div>
+                <%- include('partials/common/filterYear.ejs') %>
 
                 <!-- KPIS -->
                 <div class="row">
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <%- include ('partials/financial/financial_kpi.ejs', {type: 'Assets', value: (currentAssets.total+nonCurrentAssets.total)/100000 }) %>    
+                        <% if(currentAssets !== null && nonCurrentAssets !== null) { %> 
+                            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Assets', value: (currentAssets.total+nonCurrentAssets.total)/100000 }) %>   
+                        <% } else { %> 
+                            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Assets', value: '-'}) %>
+                        <% } %>
                     </div>
 
                     <!-- Earnings (Monthly) Card Example -->
@@ -163,24 +151,28 @@
                                                 <th>Value ($M)</th>
                                             </tr>
                                         </thead>
-                                        <tbody>                                            
-                                            <% currentAssets.asset.forEach(asset =>{ %>
-                                                <% if(asset.value != 0) { %> 
-                                                    <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                                                <% } %> 
-                                            <% }); %> 
-                                            
-                                            <% nonCurrentAssets.asset.forEach(asset =>{ %>
-                                                <% if(asset.value != 0) { %> 
-                                                    <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                                                <% } %> 
-                                            <% }); %> 
+                                        <tbody>          
+                                            <% if(currentAssets !== null && nonCurrentAssets !== null) { %>                                  
+                                                <% currentAssets.asset.forEach(asset =>{ %>
+                                                    <% if(asset.value != 0) { %> 
+                                                        <%- include('partials/financial/bs_assets', {asset: asset}); %>
+                                                    <% } %> 
+                                                <% }); %> 
+                                                
+                                                <% nonCurrentAssets.asset.forEach(asset =>{ %>
+                                                    <% if(asset.value != 0) { %> 
+                                                        <%- include('partials/financial/bs_assets', {asset: asset}); %>
+                                                    <% } %> 
+                                                <% }); %> 
+                                            <% } %>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>Total ($M)</th>
                                                 <th></th>
-                                                <th><%- Math.round(((currentAssets.total + nonCurrentAssets.total)/100000)*100)/100 %></th>
+                                                <% if(currentAssets !== null && nonCurrentAssets !== null ) { %>     
+                                                    <th><%- Math.round(((currentAssets.total + nonCurrentAssets.total)/100000)*100)/100 %></th>
+                                                <% } %>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -211,5 +203,7 @@
     <!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
+
+<!--<script src="/js/fiscalYearFilter.js" defer></script>-->
 
 <%- include('partials/common/footer.ejs') %>

@@ -1,0 +1,2504 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<AuditFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:OECD:StandardAuditFile-Tax:PT_1.04_01">
+  <Header>
+    <AuditFileVersion>1.04_01</AuditFileVersion>
+    <CompanyID>509148328</CompanyID>
+    <TaxRegistrationNumber>509148328</TaxRegistrationNumber>
+    <TaxAccountingBasis>F</TaxAccountingBasis>
+    <CompanyName>SINFAN</CompanyName>
+    <CompanyAddress>
+      <BuildingNumber>0</BuildingNumber>
+      <StreetName>R. Dr. Roberto Frias</StreetName>
+      <AddressDetail>R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+      <City>Porto</City>
+      <PostalCode>4200-465</PostalCode>
+      <Region>Desconhecido</Region>
+      <Country xsi:type="xsd:string">PT</Country>
+    </CompanyAddress>
+    <FiscalYear>2022</FiscalYear>
+    <StartDate>2022-01-01</StartDate>
+    <EndDate>2022-12-31</EndDate>
+    <CurrencyCode xsi:type="xsd:string">EUR</CurrencyCode>
+    <DateCreated>2020-12-09</DateCreated>
+    <TaxEntity>GLOBAL</TaxEntity>
+    <ProductCompanyTaxID>503140600</ProductCompanyTaxID>
+    <SoftwareCertificateNumber>2616</SoftwareCertificateNumber>
+    <ProductID>PRIMAVERA JASMIN/PRIMAVERA Business Software Solutions</ProductID>
+    <ProductVersion>1.00</ProductVersion>
+  </Header>
+  <MasterFiles>
+    <Customer>
+      <CustomerID>0003.506884597</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>506884597</CustomerTaxID>
+      <CompanyName>PAULO DO VALE, SOCIEDADE UNIPESSOAL, LDA</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>RUA DO MESTRE RESENDE</StreetName>
+        <AddressDetail>PAULO DO VALE, SOCIEDADE UNIPESSOAL, LDA  RUA DO MESTRE RESENDE 27  7005-870 ÉVORA</AddressDetail>
+        <City>ÉVORA</City>
+        <PostalCode>7005-870</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>0004.501349472</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>501349472</CustomerTaxID>
+      <CompanyName>JOÃO FERNANDO &amp; LIMA, LDA</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>RUA PROFESSOR JOSE BONAPARTE</StreetName>
+        <AddressDetail>JOÃO FERNANDO &amp; LIMA, LDA  RUA PROFESSOR JOSE BONAPARTE 372-C/V  4430-438 VILA NOVA DE GAIA</AddressDetail>
+        <City>VILA NOVA DE GAIA</City>
+        <PostalCode>4430-438</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>0006.511021046</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>511021046</CustomerTaxID>
+      <CompanyName>MANUEL DE JESUS FREDERICO, LDA</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>FORO</StreetName>
+        <AddressDetail>MANUEL DE JESUS FREDERICO, LDA  FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+        <City>ESTREITO DE CÂMARA DE LOBOS</City>
+        <PostalCode>9325-055</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.14</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.18</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.2</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.23</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.24</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.30</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.33</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.34</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.35</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.39</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.41</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.56</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.69</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.7</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.71</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.72</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>INDIF.8</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>999999990</CustomerTaxID>
+      <CompanyName>Consumidor final</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>Desconhecido</StreetName>
+        <AddressDetail>Cliente Indiferenciado</AddressDetail>
+        <City>Desconhecido</City>
+        <PostalCode>Desconhecido</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>IPHONE11</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Telemovel marca apple</ProductDescription>
+      <ProductNumberCode>IPHONE11</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>MACBOOK</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Computador da apple</ProductDescription>
+      <ProductNumberCode>MACBOOK</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>T001</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</ProductDescription>
+      <ProductNumberCode>T001</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>TV_LG_OLED77GX6</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+      <ProductNumberCode>TV_LG_OLED77GX6</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>T003</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Tablet Huawei MatePad 10.4 - 32GB</ProductDescription>
+      <ProductNumberCode>T003</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>AIRPOD001</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Auriculares True Wireless Apple AirPods 2019</ProductDescription>
+      <ProductNumberCode>AIRPOD001</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>PS001</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Consola Sony PS4 500GB</ProductDescription>
+      <ProductNumberCode>PS001</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>W001</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Apple Watch Series 6 40mm</ProductDescription>
+      <ProductNumberCode>W001</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>TECLADO_APPLE</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</ProductDescription>
+      <ProductNumberCode>TECLADO_APPLE</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>DESK001</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Desktop Asus ExpertCenter S425MC-R5DV1PB1</ProductDescription>
+      <ProductNumberCode>DESK001</ProductNumberCode>
+    </Product>
+    <TaxTable>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>13.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>23.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>6.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>9.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>18.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>4.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>12.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>22.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>5.000000</TaxPercentage>
+      </TaxTableEntry>
+    </TaxTable>
+  </MasterFiles>
+  <SourceDocuments>
+    <SalesInvoices>
+      <NumberOfEntries>23</NumberOfEntries>
+      <TotalDebit>0</TotalDebit>
+      <TotalCredit>479495.590000</TotalCredit>
+      <Invoice>
+        <InvoiceNo>FA 2022/1</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-06T18:51:44</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>XJvY1/x4JExoso+ksZy0HR7ZAm4oBfWeLl7ckmwa7hcxPw77U0qCooP1rHH6cez8mEqXsIpetM3x+7oSDdDuZsYQs6itlxO3zHC0JmaT6yZkB0BGKow8gPWtGjAWv3m6NMDg/L+iELxnrJvihmGWnHe7pgmITkHDt8hkA3UbD7Y=</Hash>
+        <HashControl>1</HashControl>
+        <Period>01</Period>
+        <InvoiceDate>2022-01-06</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-06T18:51:43</SystemEntryDate>
+        <CustomerID>INDIF.18</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-01-06T18:52:24</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/1</OriginatingON>
+          </OrderReferences>
+          <ProductCode>PS001</ProductCode>
+          <ProductDescription>Consola Sony PS4 500GB</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.990000</UnitPrice>
+          <TaxPointDate>2022-01-06</TaxPointDate>
+          <Description>Consola Sony PS4 500GB</Description>
+          <CreditAmount>599.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>138.00</TaxPayable>
+          <NetTotal>599.99</NetTotal>
+          <GrossTotal>737.99</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/2</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T16:02:43</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>J/at7wkoXfgYAWoq6wC8t++SL8JBgS5elVs+Ey6meZxKYUQNxEL7rS9Z15FNxE8CU0sq/UFEWd7IfHLvGrXhctelWuvp2dD8mVh8kIm0/Ht7m7xpRP90FrtibwfmYKKrVqbPYBq1UTxTA7gmOkZmQ5Qo1Rh5xFRsGOzJs2OzOqU=</Hash>
+        <HashControl>1</HashControl>
+        <Period>01</Period>
+        <InvoiceDate>2022-01-08</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T16:02:43</SystemEntryDate>
+        <CustomerID>INDIF.8</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2020-12-08T16:04:13</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/2</OriginatingON>
+          </OrderReferences>
+          <ProductCode>AIRPOD001</ProductCode>
+          <ProductDescription>Auriculares True Wireless Apple AirPods 2019</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>179.990000</UnitPrice>
+          <TaxPointDate>2022-01-08</TaxPointDate>
+          <Description>Auriculares True Wireless Apple AirPods 2019</Description>
+          <CreditAmount>179.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/2</OriginatingON>
+          </OrderReferences>
+          <ProductCode>IPHONE11</ProductCode>
+          <ProductDescription>Telemovel marca apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.000000</UnitPrice>
+          <TaxPointDate>2022-01-08</TaxPointDate>
+          <Description>Telemovel marca apple</Description>
+          <CreditAmount>599.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>179.17</TaxPayable>
+          <NetTotal>778.99</NetTotal>
+          <GrossTotal>958.16</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/3</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T16:21:48</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>PNhSzRft45ru8AB5ZThOqxXqsoh+9d3hq9+PAE9GG99x4/51AJ7Tb8G33R7JOKT2ndVNk2xlEMG75z8dIcQYJBwdD3BIw8HNB+ph+ED0UldBIB0KIbsUmgTOsxPgZ6eTXI36PScENfNkogfysc6VC5htbtTvtvyo1nx4Z/HOblc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>01</Period>
+        <InvoiceDate>2022-01-08</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T16:21:48</SystemEntryDate>
+        <CustomerID>INDIF.72</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>LARGO DO CHIADO, LARGO DO CHIADO 12, 1200-108 LISBOA</StreetName>
+            <AddressDetail>O seu endereço LARGO DO CHIADO, LARGO DO CHIADO 12, 1200-108 LISBOA   1200-108 LISBOA</AddressDetail>
+            <City>LISBOA</City>
+            <PostalCode>1200-108</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-01-08T16:23:00</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/3</OriginatingON>
+          </OrderReferences>
+          <ProductCode>DESK001</ProductCode>
+          <ProductDescription>Desktop Asus ExpertCenter S425MC-R5DV1PB1</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.000000</UnitPrice>
+          <TaxPointDate>2022-02-08</TaxPointDate>
+          <Description>Desktop Asus ExpertCenter S425MC-R5DV1PB1</Description>
+          <CreditAmount>599.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>137.77</TaxPayable>
+          <NetTotal>599.00</NetTotal>
+          <GrossTotal>736.77</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/4</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T16:37:09</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>XFlUGEWnZRZkHmQBsxFT+7V8sGD5N/fe6+neTPbjPusA9b82DYqYXRgkgSviadPriQNyjbvmRO6Zg262Dmn6ehtCXfcsRVhSfglKxYb7uwTBWx8d3icUmDonFcuDUpzKjRIPlwFNqbQWDCrD/iRpu4JUhRxpqxf9BzhapYLrQGY=</Hash>
+        <HashControl>1</HashControl>
+        <Period>02</Period>
+        <InvoiceDate>2022-02-08</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T16:37:09</SystemEntryDate>
+        <CustomerID>0003.506884597</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>RUA DO MESTRE RESENDE</StreetName>
+            <AddressDetail>O seu endereço RUA DO MESTRE RESENDE 27  7005-870 ÉVORA</AddressDetail>
+            <City>ÉVORA</City>
+            <PostalCode>7005-870</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-02-08T16:38:16</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/4</OriginatingON>
+          </OrderReferences>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>2.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1167.550000</UnitPrice>
+          <TaxPointDate>2022-02-02</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>2335.100000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>122.900000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/4</OriginatingON>
+          </OrderReferences>
+          <ProductCode>AIRPOD001</ProductCode>
+          <ProductDescription>Auriculares True Wireless Apple AirPods 2019</ProductDescription>
+          <Quantity>5.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>170.990000</UnitPrice>
+          <TaxPointDate>2022-02-02</TaxPointDate>
+          <Description>Auriculares True Wireless Apple AirPods 2019</Description>
+          <CreditAmount>854.950000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>45.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>3</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/4</OriginatingON>
+          </OrderReferences>
+          <ProductCode>T001</ProductCode>
+          <ProductDescription>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</ProductDescription>
+          <Quantity>5.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>171.000000</UnitPrice>
+          <TaxPointDate>2022-02-02</TaxPointDate>
+          <Description>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</Description>
+          <CreditAmount>855.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>45.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>930.36</TaxPayable>
+          <NetTotal>4045.05</NetTotal>
+          <GrossTotal>4975.41</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/5</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T16:38:00</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>d/zSqXUGPExspnK1Pry/A89QscSTfeUqiGpRAax7aWBoPLeshhqGMH3Gtsft+doOpubJjfe5TonePnDj66RJb5Fzi0n655TK4mIraGE5JkomDaIeKNppRoCOoiO+gl8vpWEv/r8pzSM+PoFWTHB3OGHxQ7QAA5jv72qAWpapXjI=</Hash>
+        <HashControl>1</HashControl>
+        <Period>02</Period>
+        <InvoiceDate>2022-02-08</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T16:38:00</SystemEntryDate>
+        <CustomerID>INDIF.34</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-02-08T16:39:27</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/5</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TECLADO_APPLE</ProductCode>
+          <ProductDescription>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>129.990000</UnitPrice>
+          <TaxPointDate>2022-02-08</TaxPointDate>
+          <Description>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</Description>
+          <CreditAmount>129.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>29.90</TaxPayable>
+          <NetTotal>129.99</NetTotal>
+          <GrossTotal>159.89</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/6</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T17:04:55</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>O/Us+zfZgx8KEgbElnICCvhAz8OXnPLn8AYaIrsSD197UM8A6SD1q0ph4ZHdnFnaWsHr2nSYGaMWY2SsLBS4s5xTWlukjeoFgjhLiwNm1IlnUIplPBeOYBpkLlFNagmj6LAHqWwOGAs/IpC/yRkETtCqiY6waC568I/hZ/nyjuc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>02</Period>
+        <InvoiceDate>2022-02-20</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T17:04:55</SystemEntryDate>
+        <CustomerID>INDIF.33</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>RUA DO MESTRE RESENDE</StreetName>
+            <AddressDetail>O seu endereço RUA DO MESTRE RESENDE   7005-870 ÉVORA</AddressDetail>
+            <City>ÉVORA</City>
+            <PostalCode>7005-870</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-02-20T17:06:18</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/6</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TV_LG_OLED77GX6</ProductCode>
+          <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+          <Quantity>2.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>7430.300000</UnitPrice>
+          <TaxPointDate>2022-02-20</TaxPointDate>
+          <Description>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</Description>
+          <CreditAmount>14860.600000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>3417.94</TaxPayable>
+          <NetTotal>14860.60</NetTotal>
+          <GrossTotal>18278.54</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/7</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T17:09:38</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>Zi2IQ6klK2WuAb1ZyBQYYt1c0w+zSFysCcXYWgIrghllvLCFo6piPqMerNNQVVKm9JWPVg1d6rAsVNLCZjZvjU8M/m/4O71Yaxjjbl9KotnYYV7g5/w6V2si5UsJX0ygyFdWytwkLf7v+UxrjGWMMLrZBOPzCcqi9AFkw+cEHgE=</Hash>
+        <HashControl>1</HashControl>
+        <Period>02</Period>
+        <InvoiceDate>2022-02-28</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T17:09:38</SystemEntryDate>
+        <CustomerID>INDIF.39</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-02-28T17:11:06</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/7</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TECLADO_APPLE</ProductCode>
+          <ProductDescription>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>129.990000</UnitPrice>
+          <TaxPointDate>2022-02-28</TaxPointDate>
+          <Description>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</Description>
+          <CreditAmount>129.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>29.90</TaxPayable>
+          <NetTotal>129.99</NetTotal>
+          <GrossTotal>159.89</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/8</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T17:16:58</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>PRYxuhoFSrCYGQ9UAOxFXGbYlxRmvmgW6O+lTQm4PzSNqxytLJYXdooEm7IhYOYkSAgraFO25D4ob8TSYDj56obGrSiQJZMmeAAyOBoZxpMczaM7JTEXV4dxqfpmhmMUCzotf3+7aLotbOntZcH5haPvQjbxngy/EdWcnsNZQ7c=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-01</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T17:16:58</SystemEntryDate>
+        <CustomerID>0004.501349472</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>RUA PROFESSOR JOSE BONAPARTE</StreetName>
+            <AddressDetail>O seu endereço RUA PROFESSOR JOSE BONAPARTE 372-C/V  4430-438 VILA NOVA DE GAIA</AddressDetail>
+            <City>VILA NOVA DE GAIA</City>
+            <PostalCode>4430-438</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-01T17:18:16</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/8</OriginatingON>
+          </OrderReferences>
+          <ProductCode>AIRPOD001</ProductCode>
+          <ProductDescription>Auriculares True Wireless Apple AirPods 2019</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>179.990000</UnitPrice>
+          <TaxPointDate>2022-03-01</TaxPointDate>
+          <Description>Auriculares True Wireless Apple AirPods 2019</Description>
+          <CreditAmount>1799.900000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/8</OriginatingON>
+          </OrderReferences>
+          <ProductCode>IPHONE11</ProductCode>
+          <ProductDescription>Telemovel marca apple</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.990000</UnitPrice>
+          <TaxPointDate>2022-03-01</TaxPointDate>
+          <Description>Telemovel marca apple</Description>
+          <CreditAmount>5999.900000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>3</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/8</OriginatingON>
+          </OrderReferences>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1229.000000</UnitPrice>
+          <TaxPointDate>2022-03-01</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>12290.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>4620.65</TaxPayable>
+          <NetTotal>20089.80</NetTotal>
+          <GrossTotal>24710.45</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/9</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T17:51:53</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>KXB+nVqAIgItipKavbjMIvIabggQAidQLw3Hfr1cO4ypabRI3kt/jQOWdN+NfM+0eJA9t/vfir3IJ9tkvnIQu9M+EJvhEbVEL0/Mkbm4AKxGqrgBVqDjgYqLG6DEYU6KYfucVBlLROwF5pnJWO3Qd1ejCH1iMH74ks+zdHkmq4o=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-04</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T17:51:53</SystemEntryDate>
+        <CustomerID>INDIF.69</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-04T17:53:23</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/9</OriginatingON>
+          </OrderReferences>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1229.000000</UnitPrice>
+          <TaxPointDate>2022-03-04</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>1229.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/9</OriginatingON>
+          </OrderReferences>
+          <ProductCode>W001</ProductCode>
+          <ProductDescription>Apple Watch Series 6 40mm</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>439.000000</UnitPrice>
+          <TaxPointDate>2022-03-04</TaxPointDate>
+          <Description>Apple Watch Series 6 40mm</Description>
+          <CreditAmount>439.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>383.64</TaxPayable>
+          <NetTotal>1668.00</NetTotal>
+          <GrossTotal>2051.64</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/10</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T17:53:05</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>J1mGvzY6Sk8CZKDnnppyYtKMvT9SapU+8TQ7XwS8Aw822gImdQVVIQWu66M0gQ73F4Mq0B87csDMVy3ExBe6kAURTLlcOP1/Pb7yU2PE8iWJrDBOT+0sZpLimmz5x6n+IxMM9JZLch5ZgstxW4IlD2qDzwyvRxiVxTBJyOPzajs=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-04</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T17:53:05</SystemEntryDate>
+        <CustomerID>INDIF.23</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-04T17:54:04</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/10</OriginatingON>
+          </OrderReferences>
+          <ProductCode>T001</ProductCode>
+          <ProductDescription>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>180.000000</UnitPrice>
+          <TaxPointDate>2022-03-04</TaxPointDate>
+          <Description>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</Description>
+          <CreditAmount>180.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>41.40</TaxPayable>
+          <NetTotal>180.00</NetTotal>
+          <GrossTotal>221.40</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/11</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T18:26:27</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>ZQfX4mDj/dDpkYeNNnOLqZep+xpnl+fmjEpcmuGnYFw0DYqyUjwrgcj2CygJH5n7wpC8nYZ8pDSJno/R171IgYaZ2kLbFeA5/wpq+LWxsMQq2mWp9mn5NGOFzQEaRE5jpAIlSX9Cr7I09hhxOB7nWnFD3x7uqImgUghJDHIp1x0=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-09</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T18:26:27</SystemEntryDate>
+        <CustomerID>INDIF.41</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-09T18:28:00</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/11</OriginatingON>
+          </OrderReferences>
+          <ProductCode>DESK001</ProductCode>
+          <ProductDescription>Desktop Asus ExpertCenter S425MC-R5DV1PB1</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.990000</UnitPrice>
+          <TaxPointDate>2022-03-09</TaxPointDate>
+          <Description>Desktop Asus ExpertCenter S425MC-R5DV1PB1</Description>
+          <CreditAmount>599.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>138.00</TaxPayable>
+          <NetTotal>599.99</NetTotal>
+          <GrossTotal>737.99</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/12</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T18:27:02</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>YbbkkYzpsbC2neiEVRGvIwC/cZIzSqBR3bHDYw9tzyJOH5Mo3wrN7Gbb5SzX2AxmqEgaGw1JIKqC38xwGN30rYm+xcGnfJd294ZmwPtQKSJgd3fIaZ7Y3oXjZl/Ig0JsC7VDNgVhT1g2dpnvWwa3Trl2MXwn8F1w3jzVfk1pZEk=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-11</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T18:27:02</SystemEntryDate>
+        <CustomerID>INDIF.71</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-11T18:28:39</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/12</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TV_LG_OLED77GX6</ProductCode>
+          <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>7430.000000</UnitPrice>
+          <TaxPointDate>2022-03-11</TaxPointDate>
+          <Description>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</Description>
+          <CreditAmount>7430.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>1708.90</TaxPayable>
+          <NetTotal>7430.00</NetTotal>
+          <GrossTotal>9138.90</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/13</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T18:27:41</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>kBRmTWuP9nUQrXonHbXsulVOEi3XWTKq0u7Dgp9WpCBrPDOGlKM6n8+pB0BqZXk82nxbyfHvABEtbbt/0m47GrWxSgOEOnb+NyjxViDlbsPNx9cksejA6S7CE8i7Tap6zbYq3VRUZOuihUCMYKho/ElmxCPhhSLM54RdVbhmoNc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-20</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T18:27:40</SystemEntryDate>
+        <CustomerID>0006.511021046</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>FORO</StreetName>
+            <AddressDetail>O seu endereço FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+            <City>ESTREITO DE CÂMARA DE LOBOS</City>
+            <PostalCode>9325-055</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-20T18:29:13</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/13</OriginatingON>
+          </OrderReferences>
+          <ProductCode>T001</ProductCode>
+          <ProductDescription>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>180.000000</UnitPrice>
+          <TaxPointDate>2022-03-20</TaxPointDate>
+          <Description>Tablet Samsung T510 Galaxy Tab A 10.1'' Wi-Fi - 32GB - Preto</Description>
+          <CreditAmount>180.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/13</OriginatingON>
+          </OrderReferences>
+          <ProductCode>W001</ProductCode>
+          <ProductDescription>Apple Watch Series 6 40mm</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>439.990000</UnitPrice>
+          <TaxPointDate>2022-03-20</TaxPointDate>
+          <Description>Apple Watch Series 6 40mm</Description>
+          <CreditAmount>439.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>142.60</TaxPayable>
+          <NetTotal>619.99</NetTotal>
+          <GrossTotal>762.59</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/14</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T18:28:17</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>fxSGJYxlLgnuB7Shr44uBrQUFoNKoyWCFLH0wEWs6R0HpbwzQg5UxEohnFdL17yvmehdHZ/kNR+o/ogWOG53IpaNV88QRv/iXrNsIvbNrI4WuJ7NDu4bRTXJOPD30RxSTXyENU/anSBIqV4KyFtUDyvh7R67ubKxdpuDGKiSZWc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>03</Period>
+        <InvoiceDate>2022-03-27</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T18:28:17</SystemEntryDate>
+        <CustomerID>INDIF.30</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-03-27T19:29:53</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/14</OriginatingON>
+          </OrderReferences>
+          <ProductCode>IPHONE11</ProductCode>
+          <ProductDescription>Telemovel marca apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.990000</UnitPrice>
+          <TaxPointDate>2022-03-25</TaxPointDate>
+          <Description>Telemovel marca apple</Description>
+          <CreditAmount>599.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>138.00</TaxPayable>
+          <NetTotal>599.99</NetTotal>
+          <GrossTotal>737.99</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/15</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:11:52</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>hCb4csoUDwfgzFaV9wUbSuo8x8KN8mxnayVY/kJdcW7Pe6uGR0JGX9MwR3J+MFe6+yIPDlMD+Tzkws8UrK8ZhsuOLuXk+EDFCMiuoSWkqHbHwAKWAzylibf042UgT0Dk23rRgogj61pspDbVC9d61XldMJp28DwPnpSXLRMXZzA=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-03</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:11:52</SystemEntryDate>
+        <CustomerID>INDIF.2</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>RUA PROFESSOR JOSE BONAPARTE</StreetName>
+            <AddressDetail>O seu endereço RUA PROFESSOR JOSE BONAPARTE   4430-438 VILA NOVA DE GAIA</AddressDetail>
+            <City>VILA NOVA DE GAIA</City>
+            <PostalCode>4430-438</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-03T20:13:27</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/15</OriginatingON>
+          </OrderReferences>
+          <ProductCode>T003</ProductCode>
+          <ProductDescription>Tablet Huawei MatePad 10.4 - 32GB</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>199.990000</UnitPrice>
+          <TaxPointDate>2022-04-02</TaxPointDate>
+          <Description>Tablet Huawei MatePad 10.4 - 32GB</Description>
+          <CreditAmount>199.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>46.00</TaxPayable>
+          <NetTotal>199.99</NetTotal>
+          <GrossTotal>245.99</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/16</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:12:20</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>Y5DOcIGQ77m/S5g3xYUIhnJQxYKH003lnDcSoDWOuV1uWJJxJTNYUh6S+NglvIxRnO8xcYcwtjic3lVr7G6oKqsCpBAbGiXhBahw6+yIwjnU5N/emujGQWGB5iRZyQWmAKks223TVC7gV0/mFh88pStbPheh/bGMPEagl7YAFrk=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-07</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:12:20</SystemEntryDate>
+        <CustomerID>INDIF.35</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-07T20:14:01</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/16</OriginatingON>
+          </OrderReferences>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1229.000000</UnitPrice>
+          <TaxPointDate>2022-04-07</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>1229.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>282.67</TaxPayable>
+          <NetTotal>1229.00</NetTotal>
+          <GrossTotal>1511.67</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/17</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:12:48</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>hue1jmtVAS6LPzWevPkyJAYnRYG5Lm3a+K1nWyCSy8nAWpji6lFaQ0NUhEpy6kULVB6EVU8xFd0b+V9T2waTV4yn4IXZ1ObFWdunnjQquvK0gPyR3sFYnb0qeRhPSZLOIrFY/z/Rnzdy0phVwDwRIUQF+1ok9rMjqGO0+2DkREI=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-11</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:12:47</SystemEntryDate>
+        <CustomerID>INDIF.14</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-11T20:14:30</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/16</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TECLADO_APPLE</ProductCode>
+          <ProductDescription>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>129.990000</UnitPrice>
+          <TaxPointDate>2022-04-07</TaxPointDate>
+          <Description>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</Description>
+          <CreditAmount>129.990000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>29.90</TaxPayable>
+          <NetTotal>129.99</NetTotal>
+          <GrossTotal>159.89</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/18</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:13:28</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>Srv2nJ9q09vDxfBu92HWsncolLUZXSxVd8c8Fecx5faq3GexvEgcmsEQBtqIBidZMiyEXyJ7NUxUh8AKrlNBi0RJ2sT6l5tzoVSgLtpMk5jUkTYRECIjpvjYuSSYONBoRJ0jaWT+UgKw8mcy3xgHYWcnfuTlmCp8gyRxHRdSxcc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-15</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:13:28</SystemEntryDate>
+        <CustomerID>INDIF.7</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-15T20:14:58</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/17</OriginatingON>
+          </OrderReferences>
+          <ProductCode>DESK001</ProductCode>
+          <ProductDescription>Desktop Asus ExpertCenter S425MC-R5DV1PB1</ProductDescription>
+          <Quantity>2.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.990000</UnitPrice>
+          <TaxPointDate>2022-04-08</TaxPointDate>
+          <Description>Desktop Asus ExpertCenter S425MC-R5DV1PB1</Description>
+          <CreditAmount>1199.980000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>276.00</TaxPayable>
+          <NetTotal>1199.98</NetTotal>
+          <GrossTotal>1475.98</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/19</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:13:58</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>XSXRLWX0K8TFX1nPKoExw5LV33urqekgX+ryUlks0YzUmn+NDdVPHJFZIu4nKZ9aGH0cdDDLK9mlB25eCg/yVu6PPz8t1RN+XJm974tYKwdQ6H1vXRDgWdf/7cKLThM2LQxYcxKOnkLcisAYZb05/2UWWGEhClSo2zSe5HDOZ8M=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-20</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:13:58</SystemEntryDate>
+        <CustomerID>INDIF.24</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>FORO</StreetName>
+            <AddressDetail>O seu endereço FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+            <City>ESTREITO DE CÂMARA DE LOBOS</City>
+            <PostalCode>9325-055</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-20T20:15:36</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/18</OriginatingON>
+          </OrderReferences>
+          <ProductCode>AIRPOD001</ProductCode>
+          <ProductDescription>Auriculares True Wireless Apple AirPods 2019</ProductDescription>
+          <Quantity>15.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>179.990000</UnitPrice>
+          <TaxPointDate>2022-04-13</TaxPointDate>
+          <Description>Auriculares True Wireless Apple AirPods 2019</Description>
+          <CreditAmount>2699.850000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>620.97</TaxPayable>
+          <NetTotal>2699.85</NetTotal>
+          <GrossTotal>3320.82</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/20</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:14:34</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>KPoZkKtZtElcE8tPQby1j2RQFSqzYgnt7BHvlHAjCeRZCyq/g5/bB5eBvhETqp6+d09ouK4p7q9jgOg9QTNojNKPW1x6xTaifCqWo2h1wrGpO1kfV/R0NElTpSjlXoefA/ZJXdZHtf4BqaEfLwkqZafBLFFMRDN5rdLr2QfwUxc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>04</Period>
+        <InvoiceDate>2022-04-25</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:14:34</SystemEntryDate>
+        <CustomerID>0006.511021046</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>FORO</StreetName>
+            <AddressDetail>O seu endereço FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+            <City>ESTREITO DE CÂMARA DE LOBOS</City>
+            <PostalCode>9325-055</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-04-25T20:16:07</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/19</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TV_LG_OLED77GX6</ProductCode>
+          <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>7430.900000</UnitPrice>
+          <TaxPointDate>2022-04-25</TaxPointDate>
+          <Description>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</Description>
+          <CreditAmount>74309.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>17091.07</TaxPayable>
+          <NetTotal>74309.00</NetTotal>
+          <GrossTotal>91400.07</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/21</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:26:40</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>YnaAzWl6TYcDp2a3t7HgjvmBu0t+bwv3/4LDXbjSoX8x4I8EyH38zCFMbxanFFPeRusO+0w/ymZ/TQODyH2IOfZXO9woFKj4DbkMnLclc6VHA4w8yHqbWFupLD3EqOZHKFGX6hfUc+eYmCRhYReZ2+c5Uutbma88Rtkbt6cyMIw=</Hash>
+        <HashControl>1</HashControl>
+        <Period>05</Period>
+        <InvoiceDate>2022-05-01</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:26:40</SystemEntryDate>
+        <CustomerID>INDIF.56</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>O seu endereço</AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-05-01T20:28:22</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/20</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TV_LG_OLED77GX6</ProductCode>
+          <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+          <Quantity>25.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>7430.900000</UnitPrice>
+          <TaxPointDate>2022-05-01</TaxPointDate>
+          <Description>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</Description>
+          <CreditAmount>185772.500000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/20</OriginatingON>
+          </OrderReferences>
+          <ProductCode>W001</ProductCode>
+          <ProductDescription>Apple Watch Series 6 40mm</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>439.000000</UnitPrice>
+          <TaxPointDate>2022-05-01</TaxPointDate>
+          <Description>Apple Watch Series 6 40mm</Description>
+          <CreditAmount>4390.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>43737.38</TaxPayable>
+          <NetTotal>190162.50</NetTotal>
+          <GrossTotal>233899.88</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/22</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:27:54</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>bqbScGGRX8KaFrPy6u0BYY8dcP+16CLwFMBCTLEIT8FDqUpIFGDN+NAZKRaBcuRXjA7mMl50H4q3nn4ryAYkEEhGIsxPnyfI+4IkqqOcrrPP7ykIReDtaIlekb+zrKu/KGLBq4ZG1vo42320orSgUSMZV0nEuLI6ONf9eS0f9sc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>05</Period>
+        <InvoiceDate>2022-05-08</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:27:54</SystemEntryDate>
+        <CustomerID>0006.511021046</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>FORO</StreetName>
+            <AddressDetail>O seu endereço FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+            <City>ESTREITO DE CÂMARA DE LOBOS</City>
+            <PostalCode>9325-055</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-05-08T20:29:15</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/21</OriginatingON>
+          </OrderReferences>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>50.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1229.000000</UnitPrice>
+          <TaxPointDate>2022-05-05</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>61450.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/21</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TV_LG_OLED77GX6</ProductCode>
+          <ProductDescription>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>7430.900000</UnitPrice>
+          <TaxPointDate>2022-05-05</TaxPointDate>
+          <Description>TV LG OLED77GX6 (OLED - 75'' - 191 cm - 4K Ultra HD - Smart TV)</Description>
+          <CreditAmount>74309.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>3</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/21</OriginatingON>
+          </OrderReferences>
+          <ProductCode>TECLADO_APPLE</ProductCode>
+          <ProductDescription>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</ProductDescription>
+          <Quantity>25.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>180.000000</UnitPrice>
+          <TaxPointDate>2022-05-05</TaxPointDate>
+          <Description>Teclado APPLE Magic (Português - Teclado Numérico - Cinzento Sideral)</Description>
+          <CreditAmount>4500.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>32259.57</TaxPayable>
+          <NetTotal>140259.00</NetTotal>
+          <GrossTotal>172518.57</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+      <Invoice>
+        <InvoiceNo>FA 2022/23</InvoiceNo>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <InvoiceStatus>N</InvoiceStatus>
+          <InvoiceStatusDate>2020-12-08T19:28:25</InvoiceStatusDate>
+          <SourceID>up201604832@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>dl67aDWR0Njq7jo333VHqlv+n97HE9xvdIU1s++iiHZrTaxDXITo4qstBG7igUhGscJPFKrsvj0VC8WKKe8B50nWBrfD+RjSFpVDPx4i/37FrmM9FnjcvPR0R/mkRDpqTXpfNfYgFNgZzNDvQNW4zmB9aG3C/zmEepplN4duaWw=</Hash>
+        <HashControl>1</HashControl>
+        <Period>05</Period>
+        <InvoiceDate>2022-05-18</InvoiceDate>
+        <InvoiceType>FT</InvoiceType>
+        <SpecialRegimes>
+          <SelfBillingIndicator>0</SelfBillingIndicator>
+          <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+          <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+        </SpecialRegimes>
+        <SourceID>up201604832@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-08T19:28:25</SystemEntryDate>
+        <CustomerID>0004.501349472</CustomerID>
+        <ShipTo>
+          <Address>
+            <StreetName>RUA PROFESSOR JOSE BONAPARTE</StreetName>
+            <AddressDetail>O seu endereço RUA PROFESSOR JOSE BONAPARTE 372-C/V  4430-438 VILA NOVA DE GAIA</AddressDetail>
+            <City>VILA NOVA DE GAIA</City>
+            <PostalCode>4430-438</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipTo>
+        <ShipFrom>
+          <Address>
+            <StreetName>R. Dr. Roberto Frias</StreetName>
+            <AddressDetail>O Nosso Endereço  R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+            <City>Porto</City>
+            <PostalCode>4200-465</PostalCode>
+            <Region>Desconhecido</Region>
+            <Country>PT</Country>
+          </Address>
+        </ShipFrom>
+        <MovementStartTime>2022-05-18T20:30:04</MovementStartTime>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/22</OriginatingON>
+          </OrderReferences>
+          <ProductCode>T003</ProductCode>
+          <ProductDescription>Tablet Huawei MatePad 10.4 - 32GB</ProductDescription>
+          <Quantity>10.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>199.990000</UnitPrice>
+          <TaxPointDate>2022-05-18</TaxPointDate>
+          <Description>Tablet Huawei MatePad 10.4 - 32GB</Description>
+          <CreditAmount>1999.900000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <OrderReferences>
+            <OriginatingON>GR 2022/22</OriginatingON>
+          </OrderReferences>
+          <ProductCode>IPHONE11</ProductCode>
+          <ProductDescription>Telemovel marca apple</ProductDescription>
+          <Quantity>25.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.000000</UnitPrice>
+          <TaxPointDate>2022-05-18</TaxPointDate>
+          <Description>Telemovel marca apple</Description>
+          <CreditAmount>14975.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.000000</SettlementAmount>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>3904.23</TaxPayable>
+          <NetTotal>16974.90</NetTotal>
+          <GrossTotal>20879.13</GrossTotal>
+        </DocumentTotals>
+        <WithholdingTax>
+          <WithholdingTaxAmount>0.000000</WithholdingTaxAmount>
+        </WithholdingTax>
+      </Invoice>
+    </SalesInvoices>
+  </SourceDocuments>
+</AuditFile>

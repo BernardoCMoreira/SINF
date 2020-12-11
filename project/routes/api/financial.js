@@ -8,7 +8,7 @@ var profit_loss = require("../../utils/profit_loss");
 
 router.get("/financial/assets", (req, res) => {
   var server = app.db; // Para usar a db
-  const accounts =
+  const accounts = 
     server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
