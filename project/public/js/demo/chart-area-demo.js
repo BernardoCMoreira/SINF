@@ -29,7 +29,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
-var monthNetArray = ctx.dataset.split(",");
+var monthNetArray = ctx.dataset.monthly.split(",");
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {

@@ -149,7 +149,7 @@ function finalSupplierList(dataP, dataD) {
   });
 
   Object.keys(listSuppliers).forEach(e => {
-    if (dataD[e] != null) {
+    if (listSuppliers2[e] != null) {
       listSuppliers[e].debt = listSuppliers[e].value - listSuppliers2[e].value;
     }
     else {
