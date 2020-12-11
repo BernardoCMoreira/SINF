@@ -1,11 +1,11 @@
-var express = require("express");
-var path = require("path");
-var json_server = require("json-server"); //em vez de mongodb pq é mais facil de usar :D
-require("dotenv/config");
-const request = require("request");
+var express = require('express');
+var path = require('path');
+var json_server = require('json-server'); //em vez de mongodb pq é mais facil de usar :D
+require('dotenv/config');
+const request = require('request');
 
-//parse file
-var parser = require("./saft/parser.js");
+//parse file 
+var parser = require('./saft/parser.js');
 parser.parse();
 
 //Connect and load json database
