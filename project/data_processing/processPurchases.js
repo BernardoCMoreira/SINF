@@ -19,6 +19,19 @@ const getSuppliersInfo= async () => {
      } 
 }
   
+const getTop5 = async () => {
+  try {
+      let dataOrders = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`);
+
+      var result = top5Suppliers(suppliersListP(JSON.parse(dataOrders.data)));
+     
+     // console.log("sdjnnckmx");
+      //console.log(result);
+      return result
+  } catch (error) {
+    console.error(error)
+   } 
+}
  
 
 const getAllPurchases = async() => {
@@ -164,10 +177,56 @@ function finalSupplierList(dataP, dataD) {
   return listSuppliers;
 }
 
+function top5Suppliers(data) {
 
+  function sort(obj, property) {
+    const sortedEntries = Object.entries(obj)
+      .sort((a, b) => property(a[1]) < property(b[1]) ? 1 :
+        property(a[1]) > property(b[1]) ? -1 : 0);
+    return new Map(sortedEntries);
+  }
+
+
+
+  // Sort the object inside object. 
+  var sortedMap = sort(data, val => val.value);
+  // Convert to object. 
+  var sortedObj = {};
+
+  sortedMap.forEach((v, k) => { sortedObj[k] = v; });
+
+
+  function objSlice(sortedObj, lastExclusive) {
+    var filteredKeys = Object.keys(sortedObj).slice(0, lastExclusive);
+    var newObj = {};
+    filteredKeys.forEach(function (key) {
+      newObj[key] = sortedObj[key];
+    });
+    return newObj;
+  }
+
+  var newObj = objSlice(sortedObj, 5);
+
+  var result=[];
+
+  Object.keys(newObj).forEach(e => {
+    result.push(newObj[e].id);
+    result.push(newObj[e].value);
+   
+  });
+
+  
+
+return result;
+
+
+
+
+}
 
 module.exports = {
   getTotalPurchases: getAllPurchases,
   getMonthlyPurchases: getAllMonthlyPurchases,
   getListSuppliers: getSuppliersInfo,
+  getTop5Suppliers: getTop5,
 };

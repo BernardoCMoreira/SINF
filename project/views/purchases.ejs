@@ -99,24 +99,14 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-pie pt-4 pb-2">
-                                    <canvas id="myPieChart"></canvas>
+                                    <canvas id="myPieChart" data-top5 = "<%= top5Suppliers %>"></canvas>
                                 </div>
                                 <div class="mt-4 text-center small">
+
                                     <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Apple
+                                        <i hiddenclass="fas fa-circle text-primary"></i> This graph is a yearly graph that evaluates the top 5 suppliers
                                     </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> Dell
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-info"></i> Samsung
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-danger"></i> Xiaomi
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-warning"></i> Others
-                                    </span>
+                                   
                                 </div>
                             </div>
                         </div>

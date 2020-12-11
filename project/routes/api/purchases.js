@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var object = require('../../app.js');
 var moment = require('moment');
+const { json } = require('express');
 
 const totalPurchases = (data) =>{
     var totalP = 0;
@@ -45,11 +46,11 @@ const suppliersList = (data) => {
             };
           }
         
-        
-        //console.log(sellerSupplierParty);
-        //console.log(sellerSupplierPartyName,);
-        //console.log(payableAmount.amount);
       });
+
+
+
+
       //console.log(listSuppliers);
       return  listSuppliers;
      
@@ -109,6 +110,51 @@ const finalSupplierList = () =>{
 }
 
 
+
+
+const top5Suppliers = (data) =>{
+
+  function sort(obj,property) {
+    const sortedEntries = Object.entries(obj)
+      .sort((a, b) =>
+      property(a[1]) < property(b[1]) ? 1 :
+      property(a[1]) > property(b[1]) ? -1 : 0);
+    return new Map(sortedEntries);
+  }
+  
+  
+  
+  // Sort the object inside object. 
+  var sortedMap = sort(data, val => val.value); 
+  // Convert to object. 
+  var sortedObj = {}; 
+
+  sortedMap.forEach((v,k) => { sortedObj[k] = v });
+
+
+  function objSlice(sortedObj, lastExclusive) {
+    var filteredKeys = Object.keys(sortedObj).slice(0, lastExclusive);
+    var newObj = {};
+    filteredKeys.forEach(function(key){
+        newObj[key] = sortedObj[key];
+    });
+    return newObj;
+}
+var newObj = objSlice(sortedObj, 2);
+
+
+
+  //console.log(sortedObj); 
+  //console.log(newObj); 
+
+
+
+
+
+
+};
+
+
 router.get('/purchases/orders', (req, res) => {
     const options = {
         method: 'GET',
@@ -131,7 +177,7 @@ router.get('/purchases/orders', (req, res) => {
         //total=totalPurchases(JSON.parse(body));
         //suppliersList(JSON.parse(body));
         res.json(body);
-       // finalSupplierList();
+        //top5Suppliers(suppliersList(JSON.parse(body)));
         //console.log(JSON.parse(body))
     });
 });
@@ -157,6 +203,7 @@ router.get('/invoicesReceit/invoices', (req, res) => {
         //console.log(JSON.parse(body))
     });
 });
+
 
 
 

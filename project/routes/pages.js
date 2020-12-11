@@ -35,12 +35,15 @@ router.get("/purchases", async function (req, res) {
 //console.log(await dataPurchases.getMonthlyPurchases());
 //console.log(await dataPurchases.getListSuppliers());
 //console.log(await dataPurchases.getTotalPurchases());
+//console.log(await dataPurchases.getTop5Suppliers());
+
 
   res.render("purchases", {
     title: "Purchases",
     totalPurchasesValue: await dataPurchases.getTotalPurchases(),
     monthlyPurchases: await dataPurchases.getMonthlyPurchases(),
     listSuppliers: await dataPurchases.getListSuppliers(),
+    top5Suppliers : await dataPurchases.getTop5Suppliers(),
   });
 });
 
