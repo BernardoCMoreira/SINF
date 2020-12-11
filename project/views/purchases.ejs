@@ -9,16 +9,14 @@
 
         <!-- Main Content -->
         <div id="content">
-            <br>
+          <%- include('partials/common/topbar.ejs', {title: title}) %>
 
-            <%- /* include('partials/common/topbar.ejs') */ %>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">DASH_PURCHASES</h1>
                     <div class="col-8 col-md-4">
 
                         <div class="input-group mb-3">
@@ -34,10 +32,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-
-                </div>
+              </div>
 
 
 
