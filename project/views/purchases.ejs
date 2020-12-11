@@ -153,8 +153,8 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Accounts
-                                            Payable</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            Payable($m)</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">???????</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -176,94 +176,30 @@
                               <tr>
                                   <th>Supplier</th>
                                   <th>Supplier_ID</th>
-                                  <th>Warehouse_ID</th>
                                   <th>Account Payable</th>
-                                  <th>Time Limit</th>
                                   <th>Total Purchases</th>
                               </tr>
                           </thead>
-
                           <tbody>
-                              <tr>
-                                  <td>Supplier_1</td>
-                                  <td>SP_ID_1</td>
-                                  <td>WH_ID_1</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_2</td>
-                                  <td>SP_ID_2</td>
-                                  <td>WH_ID_2</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_3</td>
-                                  <td>SP_ID_3</td>
-                                  <td>WH_ID_3</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_4</td>
-                                  <td>SP_ID_4</td>
-                                  <td>WH_ID_4</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_5</td>
-                                  <td>SP_ID_5</td>
-                                  <td>WH_ID_5</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_6</td>
-                                  <td>SP_ID_6</td>
-                                  <td>WH_ID_1</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_7</td>
-                                  <td>SP_ID_7</td>
-                                  <td>WH_ID_3</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_8</td>
-                                  <td>SP_ID_8</td>
-                                  <td>WH_ID_1</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_9</td>
-                                  <td>SP_ID_9</td>
-                                  <td>WH_ID_9/td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Supplier_10</td>
-                                  <td>SP_ID_10</td>
-                                  <td>WH_ID_5</td>
-                                  <td>$138,575</td>
-                                  <td>09/09/2021</td>
-                                  <td>$200,000</td>
-                              </tr>
+                            
+                          <% Object.keys(listSuppliers).forEach(key =>{ %>
+                            <tr>
+                              <td><%= listSuppliers[key].name %></td>
+                              <td><%= listSuppliers[key].id%></td>
+                              <td><%= listSuppliers[key].debt %></td>
+                              <td><%= listSuppliers[key].value %></td>
+                            </tr>    
+                           <% }); %>
+
+                           <% Object.keys(listSuppliers).forEach(key =>{ %>
+                            <tr>
+                              <td><%= listSuppliers[key].name %></td>
+                              <td><%= listSuppliers[key].id%></td>
+                              <td><%= listSuppliers[key].debt %></td>
+                              <td><%= listSuppliers[key].value %></td>
+                            </tr>    
+                           <% }); %>
+                        
 
                           </tbody>
                       </table>
