@@ -5,15 +5,14 @@ var auth = require("../middleware/auth");
 
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
-router.get("/", auth, function (req, res){
-
-  console.log()
+router.get("/", auth, function (req, res) {
+  console.log();
   res.render("login", {
-    title: "LOGIN"
+    title: "LOGIN",
   });
-})
+});
 
-router.get("/dashboard", auth, (req, res) => { 
+router.get("/dashboard", auth, (req, res) => {
   res.render("dashboard", {
     title: "OVERVIEW",
   });
@@ -22,12 +21,18 @@ router.get("/dashboard", auth, (req, res) => {
 router.get("/financial", async function (req, res) {
   const assets = (await financialData.getAssets()).data;
   const accountsReceivable = (await financialData.getAccountsReceivable()).data;
+  const equity = (await financialData.getEquity()).data;
+  const liabilities = (await financialData.getLiabilities()).data;
+  const ebitda = (await financialData.getEBITDA()).data;
 
   res.render("financial", {
     title: "Financial",
-    currentAssets: assets.current, 
+    currentAssets: assets.current,
     nonCurrentAssets: assets.nonCurrent,
     accountsReceivable: accountsReceivable,
+    equity: equity,
+    liabilities: liabilities,
+    ebitda: ebitda,
   });
 });
 

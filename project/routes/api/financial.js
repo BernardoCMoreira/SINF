@@ -12,32 +12,45 @@ router.get("/financial/assets", (req, res) => {
     server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
-  const nonCurrentAssets = calculateAssets(balance_sheet.assets.non_current, accounts);
+  const nonCurrentAssets = calculateAssets(
+    balance_sheet.assets.non_current,
+    accounts
+  );
 
-  res.json({'current': currentAssets, 
-            'nonCurrent': nonCurrentAssets
-          });
+  res.json({ current: currentAssets, nonCurrent: nonCurrentAssets });
+});
+
+router.get("/financial/accounts-receivable", (req, res) => {
+  var server = app.db;
+  const accounts =
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
+  const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
+  var value = 0;
+
+  currentAssets.asset.forEach((asset) => {
+    if (asset.assetID === "A00115") value = asset.value;
+  });
+
+  res.json(value);
 });
 
 router.get("/financial/equity", (req, res) => {
   var server = app.db;
   const accounts =
-    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   const equity = calculateEquity(balance_sheet.equity, accounts);
 
-  //console.log(equity);
   res.json(parseFloat(equity.total));
 });
 
 router.get("/financial/liabilities", (req, res) => {
   var server = app.db;
   const accounts =
-    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   const liabilities = calculateLiabilities(balance_sheet.liabilities, accounts);
 
-  //console.log(liabilities);
   res.json(parseFloat(liabilities.total));
 });
 
@@ -52,9 +65,9 @@ router.get("/financial/liabilities/current", (req, res) => {
 
 router.get("/financial/ebitda", (req, res) => {
   var server = app.db;
-  const journals = server.GeneralLedgerEntries.Journal;
+  const journals = server.AuditFile.GeneralLedgerEntries[0].Journal;
   const accounts =
-    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts.Account;
+    server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
 
   res.json(calculateProfitLoss(journals, accounts).ebitda);
 });
@@ -226,31 +239,33 @@ const getTransactionLines = (lines, id) => {
     totalDebit: 0,
   };
 
-  if (lines.CreditLine) {
-    if (Array.isArray(lines.CreditLine)) {
-      lines.CreditLine.forEach((credit) => {
-        if (credit.AccountID.indexOf(id) === 0) {
-          transactionValues.totalCredit += parseFloat(credit.CreditAmount);
-        }
-      });
-    } else if (lines.CreditLine.AccountID.indexOf(id) === 0) {
-      transactionValues.totalCredit += parseFloat(
-        lines.CreditLine.CreditAmount
-      );
+  lines.forEach((line) => {
+    if (line.CreditLine) {
+      if (Array.isArray(line.CreditLine)) {
+        line.CreditLine.forEach((credit) => {
+          if (credit.AccountID == id) {
+            transactionValues.totalCredit += parseFloat(credit.CreditAmount);
+          }
+        });
+      } else if (line.CreditLine.AccountID == id) {
+        transactionValues.totalCredit += parseFloat(
+          line.CreditLine.CreditAmount
+        );
+      }
     }
-  }
 
-  if (lines.DebitLine) {
-    if (Array.isArray(lines.DebitLine)) {
-      lines.DebitLine.forEach((debit) => {
-        if (debit.AccountID.indexOf(id) === 0) {
-          transactionValues.totalDebit += parseFloat(debit.DebitAmount);
-        }
-      });
-    } else if (lines.DebitLine.AccountID.indexOf(id) === 0) {
-      transactionValues.totalDebit += parseFloat(lines.DebitLine.DebitAmount);
+    if (line.DebitLine) {
+      if (Array.isArray(line.DebitLine)) {
+        line.DebitLine.forEach((debit) => {
+          if (debit.AccountID == id) {
+            transactionValues.totalDebit += parseFloat(debit.DebitAmount);
+          }
+        });
+      } else if (line.DebitLine.AccountID == id) {
+        transactionValues.totalDebit += parseFloat(line.DebitLine.DebitAmount);
+      }
     }
-  }
+  });
 
   return transactionValues;
 };
@@ -266,7 +281,6 @@ const getTransactions = (transactions, id, isMonthly) => {
     transactions.forEach((transaction) => {
       if (transaction.Lines && transaction.TransactionType == "N") {
         currTransaction = getTransactionLines(transaction.Lines, id);
-
         if (isMonthly) {
           journalValues.totalCredit[
             Math.min(parseInt(transaction.Period), 12) - 1
@@ -391,8 +405,8 @@ const getTaxonomiesWithTransactions = (taxonomy, accounts, journals) => {
     results.push({
       taxonomy: taxonomy,
       account: code,
-      balanceType: balance > 0 ? "debit" : "credt",
-      balanceValue: balance > 0 ? balance : -balance,
+      balanceType: balance > 0 ? "debit" : "credit",
+      balance: balance > 0 ? balance : -balance,
     });
   });
 
@@ -414,9 +428,9 @@ const calculateEquity = (equity_template, accounts) => {
       currTaxonomy = getAccountsWithTaxCode(Math.abs(taxonomy), accounts);
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -428,9 +442,9 @@ const calculateEquity = (equity_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "credit") {
             if (credit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -444,9 +458,9 @@ const calculateEquity = (equity_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
             if (debit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -462,9 +476,9 @@ const calculateEquity = (equity_template, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -498,9 +512,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
       currTaxonomy = getAccountsWithTaxCode(Math.abs(taxonomy), accounts);
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -512,9 +526,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "credit") {
             if (credit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -528,9 +542,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
             if (debit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -546,9 +560,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -570,9 +584,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
       currTaxonomy = getAccountsWithTaxCode(Math.abs(taxonomy), accounts);
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -584,9 +598,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "credit") {
             if (credit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -600,9 +614,9 @@ calculateLiabilities = (liabilities_template, accounts) => {
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
             if (debit < 0) {
-              currentSum -= tax.balanceValue;
+              currentSum -= tax.balance;
             } else {
-              currentSum += tax.balanceValue;
+              currentSum += tax.balance;
             }
           }
         });
@@ -618,16 +632,16 @@ calculateLiabilities = (liabilities_template, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
     }
 
     local_liabilities.nonCurrent.push({
-      name: liabilityAccount.name,
+      name: liaAcc.name,
       value: currentSum,
     });
 
@@ -665,9 +679,9 @@ const calculateProfitLoss = (journals, accounts) => {
       );
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -682,9 +696,9 @@ const calculateProfitLoss = (journals, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -708,9 +722,9 @@ const calculateProfitLoss = (journals, accounts) => {
       );
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -725,9 +739,9 @@ const calculateProfitLoss = (journals, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -752,9 +766,9 @@ const calculateProfitLoss = (journals, accounts) => {
       );
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balancbalanceeValue;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -769,9 +783,9 @@ const calculateProfitLoss = (journals, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -795,9 +809,9 @@ const calculateProfitLoss = (journals, accounts) => {
       );
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -812,9 +826,9 @@ const calculateProfitLoss = (journals, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -839,9 +853,9 @@ const calculateProfitLoss = (journals, accounts) => {
       );
       currTaxonomy.forEach((tax) => {
         if (taxonomy < 0) {
-          currentSum -= tax.balanceValue;
+          currentSum -= tax.balance;
         } else {
-          currentSum += tax.balanceValue;
+          currentSum += tax.balance;
         }
       });
     });
@@ -856,9 +870,9 @@ const calculateProfitLoss = (journals, accounts) => {
         );
         currTaxonomy.forEach((tax) => {
           if (tax.balanceType === "debit") {
-            currentSum -= tax.balanceValue;
+            currentSum -= tax.balance;
           } else {
-            currentSum += tax.balanceValue;
+            currentSum += tax.balance;
           }
         });
       });
@@ -872,6 +886,12 @@ const calculateProfitLoss = (journals, accounts) => {
     currentSum = 0;
   });
 
+  console.log(
+    "expenses" + profitLoss.expenses.reduce((acc, curr) => acc + curr.value, 0)
+  );
+  console.log(
+    "revenue" + profitLoss.revenue.reduce((acc, curr) => acc + curr.value, 0)
+  );
   profitLoss.ebitda =
     profitLoss.revenue.reduce((acc, curr) => acc + curr.value, 0) -
     profitLoss.expenses.reduce((acc, curr) => acc + curr.value, 0);
@@ -902,19 +922,5 @@ const calculateProfitLoss = (journals, accounts) => {
 
   return profitLoss;
 };
-
-router.get("/financial/accounts-receivable", (req, res) => {
-  var server = app.db;
-  const accounts = server.AuditFile.MasterFiles[0].GeneralLedgerAccounts[0].Account;
-  const currentAssets = calculateAssets(balance_sheet.assets.current, accounts);
-  var value = 0;
-
-  (currentAssets.asset).forEach(asset => {
-    if(asset.assetID === 'A00115')  
-      value = asset.value;
-  });
-
-  res.json(value);
-});
 
 module.exports = router;
