@@ -30,37 +30,38 @@ var inventoryController = require("./routes/api/inventory.js");
 var financialController = require("./routes/api/financial.js");
 var salesController = require("./routes/api/sales.js");
 var uploadsController = require("./routes/api/uploads.js");
+var purchasesController = require('./routes/api/purchases.js');
 const { default: Axios } = require("axios");
 
 // Start server
-app.listen(process.env.PORT, function () {
-  console.log("Server started on port " + process.env.PORT);
+app.listen(process.env.PORT, function() {
+    console.log("Server started on port " + process.env.PORT);
 });
 
 // Set primavera tokens
 const loginPrimavera = () => {
-  const options = {
-    method: "POST",
-    url: "https://identity.primaverabss.com/connect/token",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    formData: {
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      scope: "application",
-      grant_type: "client_credentials",
-    },
-  };
+    const options = {
+        method: "POST",
+        url: "https://identity.primaverabss.com/connect/token",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        formData: {
+            client_id: process.env.CLIENT_ID,
+            client_secret: process.env.CLIENT_SECRET,
+            scope: "application",
+            grant_type: "client_credentials",
+        },
+    };
 
-  request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    request(options, function(error, response, body) {
+        if (error) throw new Error(error);
 
-    const jsonF = JSON.parse(response.body);
-    global.primaveraRequests = request.defaults({
-      headers: { Authorization: `Bearer ${jsonF.access_token}` },
+        const jsonF = JSON.parse(response.body);
+        global.primaveraRequests = request.defaults({
+            headers: { Authorization: `Bearer ${jsonF.access_token}` },
+        });
     });
-  });
 };
 
 loginPrimavera();
@@ -69,7 +70,7 @@ app.use("/api", inventoryController);
 app.use("/api", financialController);
 app.use("/api", salesController);
 app.use("/api", uploadsController);
-
+app.use('/api', purchasesController);
 module.exports.db = db;
 
 /* Para exportar direito:
