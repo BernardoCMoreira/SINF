@@ -56,22 +56,7 @@ router.get("/sales/:ano", function(req, res) {
     });
 });
 
-router.get("/purchases", function(req, res) {
-    res.render("purchases", {
-        title: "Purchases",
-    });
-});
-
-router.get("/uploads", function(req, res) {
-    res.render("uploads", {
-        title: "Uploads",
-        fiscalYears: uploadsObject.SAFTBillingFiles(),
-        SAFTAccoutingFiles: uploadsObject.SAFTAccoutingFiles(),
-        SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
-    });
-});
 router.get("/purchases", async function(req, res) {
-
     //console.log(await dataPurchases.getMonthlyPurchases());
     //console.log(await dataPurchases.getListSuppliers());
     //console.log(await dataPurchases.getTotalPurchases());
@@ -84,5 +69,14 @@ router.get("/purchases", async function(req, res) {
         top5Suppliers: await dataPurchases.getTop5Suppliers(),
     });
 });
+router.get("/uploads", function(req, res) {
+    res.render("uploads", {
+        title: "Uploads",
+        fiscalYears: uploadsObject.SAFTBillingFiles(),
+        SAFTAccoutingFiles: uploadsObject.SAFTAccoutingFiles(),
+        SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
+    });
+});
+
 
 module.exports = router;
