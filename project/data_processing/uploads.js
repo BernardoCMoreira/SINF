@@ -11,12 +11,36 @@ const getEveryFiscalYear = () => {
   return keys1.concat(keys2.filter((item) => keys1.indexOf(item) < 0));
 };
 
+const getAccountingFiscalYears = () => {
+  return Array.from(saftAccountingFiles.keys());
+};
+
+const getBillingFiscalYears = () => {
+  return Array.from(saftBillingFiles.keys());
+};
+
 const getSaftAccountingFiles = () => {
   return saftAccountingFiles;
 };
 
+const getSaftAccountingFile = (year) => {
+  if (saftAccountingFiles.size == 0) {
+    return {};
+  }
+
+  return saftAccountingFiles.get(year);
+};
+
 const getSaftBillingFiles = () => {
   return saftBillingFiles;
+};
+
+const getSaftBillingFile = (year) => {
+  if (saftBillingFiles.size == 0) {
+    return {};
+  }
+
+  return saftBillingFiles.get(year);
 };
 
 const addNewSAFTFile = (fiscalYear, satfFile) => {
@@ -39,8 +63,12 @@ const removeSAFTFile = (info) => {
 
 module.exports = {
   fiscalYears: getEveryFiscalYear,
-  SAFTAccoutingFiles: getSaftAccountingFiles,
+  accountingFiscalYears: getAccountingFiscalYears,
+  billingFiscalYears: getBillingFiscalYears,
+  SAFTAccountingFiles: getSaftAccountingFiles,
   SAFTBillingFiles: getSaftBillingFiles,
+  SAFTAccountingSpecificFile: getSaftAccountingFile,
+  SAFTBillingSpecificFile: getSaftBillingFile,
   addNewSAFTFile: addNewSAFTFile,
   removeSAFTFile: removeSAFTFile,
 };

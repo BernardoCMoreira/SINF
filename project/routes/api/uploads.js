@@ -4,7 +4,7 @@ var router = express.Router();
 var bodyParser = require("body-parser");
 var uploadsObject = require("../../data_processing/uploads");
 
-var jsonParser = bodyParser.json({ limit: "100mb" });
+var jsonParser = bodyParser.json({ limit: "500mb" });
 
 router.post("/uploadSAFT", jsonParser, (req, res) => {
   if (!req.body) {

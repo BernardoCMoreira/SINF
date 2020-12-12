@@ -1,11 +1,13 @@
-var express = require('express');
-var path = require('path');
-var json_server = require('json-server'); //em vez de mongodb pq é mais facil de usar :D
-require('dotenv/config');
-const request = require('request');
+var express = require("express");
+var path = require("path");
+var json_server = require("json-server"); //em vez de mongodb pq é mais facil de usar :D
+require("dotenv/config");
+var request = require("request");
+var bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
-//parse file 
-var parser = require('./saft/parser.js');
+//parse file
+var parser = require("./saft/parser.js");
 parser.parse();
 
 //Connect and load json database
@@ -14,6 +16,15 @@ const db = server.db.__wrapped__;
 
 //Init app
 const app = express();
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(cookieParser());
+
+app.use(
+  bodyParser.urlencoded({
+    limit: "100mb",
+    extended: true,
+  })
+);
 
 //View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -27,10 +38,10 @@ var pages = require("./routes/pages.js");
 app.use("/", pages);
 
 var inventoryController = require("./routes/api/inventory.js");
-var financialController = require("./routes/api/financial.js");
 var salesController = require("./routes/api/sales.js");
+var authController = require("./routes/api/auth.js");
 var uploadsController = require("./routes/api/uploads.js");
-const { default: Axios } = require("axios");
+var purchasesController = require("./routes/api/purchases.js");
 
 // Start server
 app.listen(process.env.PORT, function () {
@@ -66,10 +77,10 @@ const loginPrimavera = () => {
 loginPrimavera();
 
 app.use("/api", inventoryController);
-app.use("/api", financialController);
 app.use("/api", salesController);
+app.use("/api", authController);
 app.use("/api", uploadsController);
-
+app.use("/api", purchasesController);
 module.exports.db = db;
 
 /* Para exportar direito:
