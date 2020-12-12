@@ -73,7 +73,6 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         equity: equity,
         liabilities: liabilities,
         accountsPayable: accountsPayable,
-        //ebitda: ebitda,
     });
 });
 

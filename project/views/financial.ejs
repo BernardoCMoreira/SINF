@@ -89,23 +89,8 @@
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                       Accounts payable ($m)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <%- (Math.round(((accountsPayable/100000)) * 100) / 100).toFixed(2); %> </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card border-left-primary shadow py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      EBITDA / EBIT ($m)</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"> FALTA </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <%- (Math.round(((accountsPayable/100000)) * 100) / 100).toFixed(2); %> </div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -116,54 +101,133 @@
           </div>
           <div class="col-lg-6 mb-4">
             <!-- DataTales Example -->
-            <!-- Tab panel: (git lbaw); apagar js -->
             <div class="card shadow mb-4">
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h4 class="m-0 font-weight-bold text-primary"> Balance Sheet </h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Type</th>
-                        <th>ID</th>
-                        <th>Value ($M)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% if(currentAssets !== null && nonCurrentAssets !== null) { %>
-                      <% currentAssets.asset.forEach(asset =>{ %>
-                      <% if(asset.value !== 0) { %>
-                      <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                      <% } %>
-                      <% }); %>
+                <div id="balanceSheet" class="container">
 
-                      <% nonCurrentAssets.asset.forEach(asset =>{ %>
-                      <% if(asset.value !== 0) { %>
-                      <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                      <% } %>
-                      <% }); %>
-                      <% } %>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Total ($M)</th>
-                        <th></th>
-                        <% if(currentAssets !== null && nonCurrentAssets !== null ) { %>
-                        <th><%- Math.round(((currentAssets.total + nonCurrentAssets.total)/100000)*100)/100 %></th>
-                        <% } %>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item"><a id="show-assets" class="btn page-link">Assets</a></li>
-                    <li class="page-item"><a id="show-liabilities" class="btn page-link">Liabilities</a></li>
-                    <li class="page-item"><button id="show-equity" class="btn page-link" onclick="teste(`<% currentAssets %>`)" >Equity</button></li>
+                  <ul class="nav nav-tabs">
+                    <li style="padding: 0.5rem;">
+                      <a href="#assets" data-toggle="tab">Assets</a>
+                    </li>
+                    <li style="padding: 0.5rem;">
+                      <a href="#liabilities" data-toggle="tab">Liabilities</a>
+                    </li>
+                    <li style="padding: 0.5rem;">
+                      <a href="#equity" data-toggle="tab">Equity</a>
+                    </li>
                   </ul>
-                </nav>
+
+                  <div class="tab-content ">
+                    <div class="tab-pane active" id="assets">
+                      <p style="margin-bottom: 0;" class="text-center small">Assets</p>
+                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Type</th>
+                            <th>ID</th>
+                            <th>Value ($M)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if(currentAssets !== null && nonCurrentAssets !== null) { %>
+                          <% currentAssets.asset.forEach(asset =>{ %>
+                          <% if(asset.value !== 0) { %>
+                          <%- include('partials/financial/bs_assets', {asset: asset}); %>
+                          <% } %>
+                          <% }); %>
+
+                          <% nonCurrentAssets.asset.forEach(asset =>{ %>
+                          <% if(asset.value !== 0) { %>
+                          <%- include('partials/financial/bs_assets', {asset: asset}); %>
+                          <% } %>
+                          <% }); %>
+                          <% } %>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>Total ($M)</th>
+                            <th></th>
+                            <% if(currentAssets !== null && nonCurrentAssets !== null ) { %>
+                            <th><%- Math.round(((currentAssets.total + nonCurrentAssets.total)/100000)*100)/100 %></th>
+                            <% } %>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+
+                    <div class="tab-pane" id="liabilities">
+                      <p style="margin-bottom: 0;" class="text-center small">Liabilities</p>
+                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Type</th>
+                            <th>ID</th>
+                            <th>Value ($M)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if(liabilities !== null) { %>
+                          <% liabilities.current.forEach(account =>{ %>
+                          <% if(account.value !== 0) { %>
+                          <%- include('partials/financial/bs_liabilities', {account: account}); %>
+                          <% } %>
+                          <% }); %>
+
+                          <% liabilities.nonCurrent.forEach(account =>{ %>
+                          <% if(account.value !== 0) { %>
+                          <%- include('partials/financial/bs_liabilities', {account: account}); %>
+                          <% } %>
+                          <% }); %>
+                          <% } %>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>Total ($M)</th>
+                            <th></th>
+                            <% if(liabilities !== null) { %>
+                            <th><%- Math.round(((liabilities.total)/100000)*100)/100 %></th>
+                            <% } %>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+
+                    <div class="tab-pane" id="equity">
+                      <p style="margin-bottom: 0;" class="text-center small">Equity</p>
+                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Type</th>
+                            <th>ID</th>
+                            <th>Value ($M)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% if(equity !== null) { %>
+                          <% equity.accounts.forEach(account =>{ %>
+                          <% if(account.value !== 0) { %>
+                          <%- include('partials/financial/bs_equity', {account: account}); %>
+                          <% } %>
+                          <% }); %>
+
+                          <% } %>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>Total ($M)</th>
+                            <th></th>
+                            <% if(equity !== null) { %>
+                            <th><%- Math.round(((equity.total)/100000)*100)/100 %></th>
+                            <% } %>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- Approach -->

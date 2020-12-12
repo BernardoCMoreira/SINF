@@ -458,6 +458,7 @@ const calculateEquity = (equity_template, accounts) => {
 
     local_equity.accounts.push({
       name: equityAcc.name,
+      id: equityAcc.id,
       value: currentSum
     });
     sum += currentSum;
