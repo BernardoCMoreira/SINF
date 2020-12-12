@@ -29,6 +29,20 @@ const getAccountsReceivableMethod = (SAFTFile) => {
   return value;
 };
 
+
+const getAccountsPayableMethod = (SAFTFile) => {
+  const accounts = SAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts.Account;
+  const liabilities = auxFinancialMethods.calculateLiabilities(balance_sheet.liabilities, accounts);
+  const currentLiabilities = liabilities.current;
+  var value = 0;
+
+  currentLiabilities.forEach((asset) => {
+    if(asset.id === "A00146") value = asset.value;
+  });
+
+  return value;
+};
+
 const getEquityMethod = (SAFTFile) => {
   const accounts = SAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts.Account;
   const equity = auxFinancialMethods.calculateEquity(balance_sheet.equity, accounts);
@@ -55,6 +69,7 @@ const getEBITDAMethod = async () => {
 module.exports = {
   getAssets: getAssetsMethod,
   getAccountsReceivable: getAccountsReceivableMethod,
+  getAccountsPayableMethod: getAccountsPayableMethod,
   getEquity: getEquityMethod,
   getLiabilities: getLiabilitiesMethod,
   getEBITDA: getEBITDAMethod,

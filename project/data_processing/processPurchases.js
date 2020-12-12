@@ -53,9 +53,10 @@ const getAllMonthlyPurchases = async() => {
 
 function totalPurchases(data) {
     var totalP = 0;
+
     //filter para o ano em questão?
-    data.forEach(({ documentDate, payableAmount }) => {
-        totalP += payableAmount.amount;
+    data.forEach(({ documentStatusDescription, payableAmount }) => {
+        if (documentStatusDescription == "Completed") totalP += payableAmount.amount;
         // console.log(payableAmount.amount);
     });
     // console.log(totalP);
@@ -66,10 +67,10 @@ function monthlyPurchasesArray(data) {
 
     var monthlyValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    data.forEach(({ documentDate, payableAmount }) => {
+    data.forEach(({ documentDate, payableAmount, documentStatusDescription }) => {
         const month = moment(documentDate).month();
 
-        monthlyValues[month] += payableAmount.amount;
+        if (documentStatusDescription == "Completed") monthlyValues[month] += payableAmount.amount;
     });
 
 
