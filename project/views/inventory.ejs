@@ -13,24 +13,8 @@
 
             <div class="container-fluid">
 
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
-                    <div class="col-8 col-md-4">
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="gender3">Fiscal Year</label>
-                            </div>
-                            <select class="custom-select" id="gender3">
-                                <option selected>Choose...</option>
-                                <option value="1">2018/2019</option>
-                                <option value="2">2019/2020</option>
-                                <option value="3">2020/2021</option>
-                            </select>
-                        </div>
-                    </div>
-
-               </div>
+                <!-- Page Heading -->
+                <%- include('partials/common/filterYear.ejs') %>
 
                 <div class="container-fluid">
 
@@ -43,11 +27,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Current inventory value ($m)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2,480</div>
+                                                Current inventory value (€m)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <%= currentInventoryValue.toFixed(2) %>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +48,9 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
                                                 units in stock</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">23456</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <%= totalUnitsInStock %>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -83,7 +71,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">31 days</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -115,66 +103,28 @@
                                             <th>Product</th>
                                             <th>Description</th>
                                             <th>Current stock</th>
-                                            <th>Unit Price ($)</th>
+                                            <th>Calculated Unit Cost (€)</th>
+                                            <th>Last Unit Cost (€)</th>
+                                            <th>Average Price (€)</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
-                                        <tr>
-                                            <td>Apple iPhone 8 - 64GB</td>
-                                            <td>System Architecture</td>
-                                            <td>61</td>
-                                            <td>400.00 </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Xiaomi Redmi Note 9 Pro - 64GB</td>
-                                            <td>System Architecture</td>
-                                            <td>63</td>
-                                            <td>229.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Samsung Galaxy A30s - 128GB</td>
-                                            <td>System Architecture</td>
-                                            <td>66</td>
-                                            <td>360.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Samsung Galaxy S20 - 128GB</td>
-                                            <td>System Architecture</td>
-                                            <td>22</td>
-                                            <td>780.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Computador Portátil HP Laptop 15s-eq0011np</td>
-                                            <td>System Architecture</td>
-                                            <td>33</td>
-                                            <td>1000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Apple MacBook Pro 13'' Retina i7-2,3GHz | 16GB | 512GB </td>
-                                            <td>System Architecture</td>
-                                            <td>61</td>
-                                            <td>2300.00 </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Apple Watch Series 6 40mm </td>
-                                            <td>System Architecture</td>
-                                            <td>59</td>
-                                            <td>430.00 </td>
-                                        </tr>
-
+                                        <% for (var product in products) { %>
+                                            <tr>
+                                                <td> <%= products[product].name %> </td>
+                                                <td> <%= products[product].description %> </td>
+                                                <td> <%= products[product].currentStock %> </td>
+                                                <td> <%= products[product].unitPrice %> </td>
+                                                <td> <%= products[product].lastUnitCost %> </td>
+                                                <td> <%= products[product].avgPrice %> </td>
+                                            </tr>
+                                        <% } %>
                                     </tbody>
-
                                 </table>
                             </div>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
+
+                            <%- paginator.render() %>
                         </div>
                     </div>
                     <!-- /.container-fluid -->
