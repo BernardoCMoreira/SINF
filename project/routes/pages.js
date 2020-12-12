@@ -63,8 +63,8 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         title: "Financial",
         fiscalYears: fiscalYears,
         filterYear: filterYear,
-        currentAssets: assets.current,
-        nonCurrentAssets: assets.nonCurrent,
+        currentAssets: assets != null ? assets.current : null,
+        nonCurrentAssets: assets != null ? assets.nonCurrent : null,
         accountsReceivable: accountsReceivable,
         equity: equity,
         liabilities: liabilities,
@@ -112,7 +112,9 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
 
         for (let i = 0; i < fiscalYears.length; i++) {
-            barChartArray[i] = [fiscalYears[i], totalSalesValue];
+            let aux = uploadsObject.SAFTBillingSpecificFile(fiscalYears[i]);
+            let value = dataSales.addAllNetTotalUploadedSAFT(aux);
+            barChartArray[i] = [fiscalYears[i], value];
         }
 
     } else if (fiscalYears.length > 0 && filterYear === null) {
@@ -132,7 +134,8 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
 
         for (let i = 0; i < fiscalYears.length; i++) {
             let aux = uploadsObject.SAFTBillingSpecificFile(fiscalYears[i]);
-            barChartArray[i] = [fiscalYears[i], dataSales.addAllNetTotalUploadedSAFT(aux)];
+            let value = dataSales.addAllNetTotalUploadedSAFT(aux);
+            barChartArray[i] = [fiscalYears[i], value];
         }
     }
     console.log(barChartArray);
