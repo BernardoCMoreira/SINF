@@ -1,4 +1,5 @@
 const axios = require("axios");
+var dataPurchases = require("../data_processing/processPurchases");
 
 const getCustomerMethod = async() => {
     return await axios
@@ -276,6 +277,14 @@ function getTop5UploadedSaft(data) {
     return arr;
 }
 
+async function grossProfitCalc(totalSales) {
+    let pur = await dataPurchases.getTotalPurchases();
+    return totalSales - pur;
+}
+
+async function grossMarginCalc(totalSales) {
+    return await grossProfitCalc(totalSales) * 100 / totalSales;
+}
 module.exports = {
     getCustomers: getCustomerMethod,
     getTotalSales: getTotalSalesValue,
@@ -289,4 +298,6 @@ module.exports = {
     createNetMonthlyArrayUploadedSaft: createNetMonthlyArrayUploadedSaft,
     createGrossMonthlyArrayUploadedSaft: createGrossMonthlyArrayUploadedSaft,
     getTop5UploadedSaft: getTop5UploadedSaft,
+    grossProfitCalc: grossProfitCalc,
+    grossMarginCalc: grossMarginCalc,
 };
