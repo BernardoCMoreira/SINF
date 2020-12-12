@@ -66,12 +66,22 @@ function parseItems(itemsJSON, pageNumber) {
   for (var object in itemsJSON) {
     let newObject = {};
 
+    if (
+      itemsJSON[object].materialsItemWarehouses[0].calculatedUnitCost.amount ==
+        0 &&
+      itemsJSON[object].materialsItemWarehouses[0].lastUnitCost.amount == 0
+    ) {
+      continue;
+    }
+
     newObject.name = itemsJSON[object].itemKey;
     newObject.description = itemsJSON[object].description;
     newObject.currentStock =
       itemsJSON[object].materialsItemWarehouses[0].stockBalance;
     newObject.unitPrice =
       itemsJSON[object].materialsItemWarehouses[0].calculatedUnitCost.amount;
+    newObject.lastUnitCost =
+      itemsJSON[object].materialsItemWarehouses[0].lastUnitCost.amount + "?";
 
     itemList.push(newObject);
   }

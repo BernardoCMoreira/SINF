@@ -123,7 +123,8 @@
                                             <th>Product</th>
                                             <th>Description</th>
                                             <th>Current stock</th>
-                                            <th>Unit Price (€)</th>
+                                            <th>Calculated Unit Cost (€)</th>
+                                            <th>Last Unit Cost (€)</th>
                                         </tr>
                                     </thead>
 
@@ -134,6 +135,7 @@
                                                 <td> <%= products[product].description %> </td>
                                                 <td> <%= products[product].currentStock %> </td>
                                                 <td> <%= products[product].unitPrice %> </td>
+                                                <td> <%= products[product].lastUnitCost %> </td>
                                             </tr>
                                         <% } %>
                                     </tbody>
