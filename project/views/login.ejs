@@ -1,0 +1,28 @@
+
+<%- include('partials/common/header.ejs') %>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://image.flaticon.com/icons/png/512/1024/1024965.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" id="login-form" action="/api/auth"> 
+      <input type="email" id="login" class="fadeIn second" name="email" placeholder="Email" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <small> Please, contact our team to get your credentials </small>
+    </div>
+
+  </div>
+</div>
+  
+<%- include('partials/common/footer.ejs') %>

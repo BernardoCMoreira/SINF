@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<AuditFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:OECD:StandardAuditFile-Tax:PT_1.04_01">
+  <Header>
+    <AuditFileVersion>1.04_01</AuditFileVersion>
+    <CompanyID>509148328</CompanyID>
+    <TaxRegistrationNumber>509148328</TaxRegistrationNumber>
+    <TaxAccountingBasis>F</TaxAccountingBasis>
+    <CompanyName>SINFAN</CompanyName>
+    <CompanyAddress>
+      <BuildingNumber>0</BuildingNumber>
+      <StreetName>R. Dr. Roberto Frias</StreetName>
+      <AddressDetail>R. Dr. Roberto Frias   4200-465 Porto</AddressDetail>
+      <City>Porto</City>
+      <PostalCode>4200-465</PostalCode>
+      <Region>Desconhecido</Region>
+      <Country xsi:type="xsd:string">PT</Country>
+    </CompanyAddress>
+    <FiscalYear>2020</FiscalYear>
+    <StartDate>2020-12-01</StartDate>
+    <EndDate>2020-12-31</EndDate>
+    <CurrencyCode xsi:type="xsd:string">EUR</CurrencyCode>
+    <DateCreated>2020-12-04</DateCreated>
+    <TaxEntity>GLOBAL</TaxEntity>
+    <ProductCompanyTaxID>503140600</ProductCompanyTaxID>
+    <SoftwareCertificateNumber>2616</SoftwareCertificateNumber>
+    <ProductID>PRIMAVERA JASMIN/PRIMAVERA Business Software Solutions</ProductID>
+    <ProductVersion>1.00</ProductVersion>
+  </Header>
+  <MasterFiles>
+    <Customer>
+      <CustomerID>0003.506884597</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>506884597</CustomerTaxID>
+      <CompanyName>PAULO DO VALE, SOCIEDADE UNIPESSOAL, LDA</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>RUA DO MESTRE RESENDE</StreetName>
+        <AddressDetail>PAULO DO VALE, SOCIEDADE UNIPESSOAL, LDA  RUA DO MESTRE RESENDE 27  7005-870 ÉVORA</AddressDetail>
+        <City>ÉVORA</City>
+        <PostalCode>7005-870</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Customer>
+      <CustomerID>0006.511021046</CustomerID>
+      <AccountID>Desconhecido</AccountID>
+      <CustomerTaxID>511021046</CustomerTaxID>
+      <CompanyName>MANUEL DE JESUS FREDERICO, LDA</CompanyName>
+      <BillingAddress>
+        <BuildingNumber>Desconheci</BuildingNumber>
+        <StreetName>FORO</StreetName>
+        <AddressDetail>MANUEL DE JESUS FREDERICO, LDA  FORO   9325-055 ESTREITO DE CÂMARA DE LOBOS</AddressDetail>
+        <City>ESTREITO DE CÂMARA DE LOBOS</City>
+        <PostalCode>9325-055</PostalCode>
+        <Region>Desconhecido</Region>
+        <Country>PT</Country>
+      </BillingAddress>
+      <Telephone>Desconhecido</Telephone>
+      <Fax>Desconhecido</Fax>
+      <Email>Desconhecido</Email>
+      <Website>Desconhecido</Website>
+      <SelfBillingIndicator>0</SelfBillingIndicator>
+    </Customer>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>IPHONE11</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Telemovel marca apple</ProductDescription>
+      <ProductNumberCode>IPHONE11</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>MACBOOK</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Computador da apple</ProductDescription>
+      <ProductNumberCode>MACBOOK</ProductNumberCode>
+    </Product>
+    <Product>
+      <ProductType>P</ProductType>
+      <ProductCode>GALAXYS20</ProductCode>
+      <ProductGroup>Sem família</ProductGroup>
+      <ProductDescription>Samsung Galaxy S20 8gb-128gb</ProductDescription>
+      <ProductNumberCode>GALAXYS20</ProductNumberCode>
+    </Product>
+    <TaxTable>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>13.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>23.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>6.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>9.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>18.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-AC</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>4.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>INT</TaxCode>
+        <Description>Taxa Intermédia</Description>
+        <TaxPercentage>12.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>ISE</TaxCode>
+        <Description>Isento</Description>
+        <TaxPercentage>0.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>NOR</TaxCode>
+        <Description>Taxa Normal</Description>
+        <TaxPercentage>22.000000</TaxPercentage>
+      </TaxTableEntry>
+      <TaxTableEntry>
+        <TaxType>IVA</TaxType>
+        <TaxCountryRegion>PT-MA</TaxCountryRegion>
+        <TaxCode>RED</TaxCode>
+        <Description>Taxa Reduzida</Description>
+        <TaxPercentage>5.000000</TaxPercentage>
+      </TaxTableEntry>
+    </TaxTable>
+  </MasterFiles>
+  <SourceDocuments>
+    <WorkingDocuments>
+      <NumberOfEntries>2</NumberOfEntries>
+      <TotalDebit>0</TotalDebit>
+      <TotalCredit>13077.850000</TotalCredit>
+      <WorkDocument>
+        <DocumentNumber>ECL 2020/3</DocumentNumber>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <WorkStatus>N</WorkStatus>
+          <WorkStatusDate>2020-12-02T18:09:32</WorkStatusDate>
+          <SourceID>up201604014@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>WGtMeDMRmUNqbHwIh8gheHWcZv5B6tbX+lfVg2FyFEgpmSWqfvkKX9tz7q9SsjvNczfbPdHgX8G79EXAV7k7Uufepkl1o7iAhb1BpXm6q1GtIKDVakHCkOv2o/6RxlCm/Gnsi9biuABeBJsAVWGH2x7kuIP9SRM8APtOlkkEIOM=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <WorkDate>2020-12-02</WorkDate>
+        <WorkType>NE</WorkType>
+        <SourceID>up201604014@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-02T18:09:32</SystemEntryDate>
+        <CustomerID>0003.506884597</CustomerID>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>IPHONE11</ProductCode>
+          <ProductDescription>Telemovel marca apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>599.0000000000000000</UnitPrice>
+          <TaxPointDate>2020-12-02</TaxPointDate>
+          <Description>Telemovel marca apple</Description>
+          <CreditAmount>599.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <ProductCode>MACBOOK</ProductCode>
+          <ProductDescription>Computador da apple</ProductDescription>
+          <Quantity>1.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1229.0000000000000000</UnitPrice>
+          <TaxPointDate>2020-12-02</TaxPointDate>
+          <Description>Computador da apple</Description>
+          <CreditAmount>1229.000000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>420.44</TaxPayable>
+          <NetTotal>1828.00</NetTotal>
+          <GrossTotal>2248.44</GrossTotal>
+        </DocumentTotals>
+      </WorkDocument>
+      <WorkDocument>
+        <DocumentNumber>ECL 2020/4</DocumentNumber>
+        <ATCUD>0</ATCUD>
+        <DocumentStatus>
+          <WorkStatus>N</WorkStatus>
+          <WorkStatusDate>2020-12-03T09:12:40</WorkStatusDate>
+          <SourceID>up201604014@fe.up.pt</SourceID>
+          <SourceBilling>P</SourceBilling>
+        </DocumentStatus>
+        <Hash>RwuNlfhsG9cO49T/i47iIlYRQzAzyPzQ7qDSNBps8safT08gs42xOjTd5wfHlp2whAgEStisDpUzoDo6cYPuNxNKpyxdmXpw+B/hLu2nescE2kJuNujqyNHE9yquF8wfrAQ8M8hMD96izXXx+A0LjbXP4HOI9XCjEDSy8azecZc=</Hash>
+        <HashControl>1</HashControl>
+        <Period>12</Period>
+        <WorkDate>2020-12-03</WorkDate>
+        <WorkType>NE</WorkType>
+        <SourceID>up201604014@fe.up.pt</SourceID>
+        <SystemEntryDate>2020-12-03T09:12:40</SystemEntryDate>
+        <CustomerID>0006.511021046</CustomerID>
+        <Line>
+          <LineNumber>1</LineNumber>
+          <ProductCode>GALAXYS20</ProductCode>
+          <ProductDescription>Samsung Galaxy S20 8gb-128gb</ProductDescription>
+          <Quantity>15.000000</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>749.9900000000000000</UnitPrice>
+          <TaxPointDate>2020-12-03</TaxPointDate>
+          <Description>Samsung Galaxy S20 8gb-128gb</Description>
+          <CreditAmount>11249.850000</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.000000</TaxPercentage>
+          </Tax>
+        </Line>
+        <DocumentTotals>
+          <TaxPayable>2587.47</TaxPayable>
+          <NetTotal>11249.85</NetTotal>
+          <GrossTotal>13837.32</GrossTotal>
+        </DocumentTotals>
+      </WorkDocument>
+    </WorkingDocuments>
+  </SourceDocuments>
+</AuditFile>

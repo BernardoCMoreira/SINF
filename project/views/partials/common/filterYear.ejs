@@ -1,0 +1,21 @@
+<div class="row justify-content-center mb-4">
+    <div class="col-8 col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="gender3">Fiscal Year</label>
+            </div>
+            <select id="fiscalYearSelector" class="custom-select" id="gender3">
+                <%  if(filterYear !== null ) { %>
+                <option id="fiscalYearOption-<%= filterYear %>" value="<%= filterYear %>"><%= filterYear %></option>
+                <% } %>
+
+                <% for (let i = 0; i<fiscalYears.length; i++) { %>
+                <%  if(filterYear === fiscalYears[i] ) { %>
+                <% continue; %>
+                <% } %>
+                <option id="fiscalYearOption-<%= fiscalYears[i] %>" value="<%= i %>"><%= fiscalYears[i] %></option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+</div>

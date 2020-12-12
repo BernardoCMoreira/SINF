@@ -11,9 +11,23 @@ const getEveryFiscalYear = () => {
   return keys1.concat(keys2.filter((item) => keys1.indexOf(item) < 0));
 };
 
+const getAccountingFiscalYears = () => {
+
+  return Array.from(saftAccountingFiles.keys());
+};
+
 const getSaftAccountingFiles = () => {
   return saftAccountingFiles;
 };
+
+const getSaftAccountingFile = (year) => {
+
+  if(saftAccountingFiles.size == 0) {
+    return {};
+  }
+
+  return saftAccountingFiles.get(year);
+}
 
 const getSaftBillingFiles = () => {
   return saftBillingFiles;
@@ -39,8 +53,10 @@ const removeSAFTFile = (info) => {
 
 module.exports = {
   fiscalYears: getEveryFiscalYear,
-  SAFTAccoutingFiles: getSaftAccountingFiles,
+  accountingFiscalYears: getAccountingFiscalYears,
+  SAFTAccountingFiles: getSaftAccountingFiles,
   SAFTBillingFiles: getSaftBillingFiles,
+  SAFTAccountingSpecificFile: getSaftAccountingFile,
   addNewSAFTFile: addNewSAFTFile,
   removeSAFTFile: removeSAFTFile,
 };
