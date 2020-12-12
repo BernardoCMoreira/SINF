@@ -11,146 +11,180 @@ var MonthNet;
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
 
-router.get("/dashboard", auth.verifyJWT, function(req, res) {
-    res.render("dashboard", {
-        title: "OVERVIEW",
-    });
+router.get("/dashboard", auth.verifyJWT, function (req, res) {
+  res.render("dashboard", {
+    title: "OVERVIEW",
+  });
 });
-router.get("/", function(req, res) {
-    res.render("login", {
-        title: "LOGIN",
-    });
-});
-
-router.get("/financial", auth.verifyJWT, function(req, res) {
-    let pageQuery = req._parsedOriginalUrl.query;
-    let filterYear = null;
-    let assets = null;
-    let accountsReceivable = null;
-    let equity = null;
-    let liabilities = null;
-
-    if (pageQuery !== null) {
-        filterYear = pageQuery.split("=")[1];
-    }
-
-    let fiscalYears = uploadsObject.accountingFiscalYears();
-
-    if (fiscalYears.length > 0 && filterYear !== null) {
-        let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
-            filterYear
-        );
-        assets = financialData.getAssets(accountingSAFTFile);
-        accountsReceivable = financialData.getAccountsReceivable(
-            accountingSAFTFile
-        );
-        equity = financialData.getEquity(accountingSAFTFile);
-        liabilities = financialData.getLiabilities(accountingSAFTFile);
-    } else if (fiscalYears.length > 0 && filterYear === null) {
-        let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
-            fiscalYears[0]
-        );
-
-        assets = financialData.getAssets(accountingSAFTFile);
-        accountsReceivable = financialData.getAccountsReceivable(
-            accountingSAFTFile
-        );
-        equity = financialData.getEquity(accountingSAFTFile);
-        liabilities = financialData.getLiabilities(accountingSAFTFile);
-    }
-
-    res.render("financial", {
-        title: "Financial",
-        fiscalYears: fiscalYears,
-        filterYear: filterYear,
-        currentAssets: assets.current,
-        nonCurrentAssets: assets.nonCurrent,
-        accountsReceivable: accountsReceivable,
-        equity: equity,
-        liabilities: liabilities,
-        //ebitda: ebitda,
-    });
+router.get("/", function (req, res) {
+  res.render("login", {
+    title: "LOGIN",
+  });
 });
 
-router.get("/inventory", async function (req, res) {
+router.get("/financial", auth.verifyJWT, function (req, res) {
   let pageQuery = req._parsedOriginalUrl.query;
+  let filterYear = null;
+  let assets = null;
+  let accountsReceivable = null;
+  let equity = null;
+  let liabilities = null;
+
+  if (pageQuery !== null) {
+    filterYear = pageQuery.split("=")[1];
+  }
+
+  let fiscalYears = uploadsObject.accountingFiscalYears();
+
+  if (fiscalYears.length > 0 && filterYear !== null) {
+    let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
+      filterYear
+    );
+    assets = financialData.getAssets(accountingSAFTFile);
+    accountsReceivable = financialData.getAccountsReceivable(
+      accountingSAFTFile
+    );
+    equity = financialData.getEquity(accountingSAFTFile);
+    liabilities = financialData.getLiabilities(accountingSAFTFile);
+  } else if (fiscalYears.length > 0 && filterYear === null) {
+    let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
+      fiscalYears[0]
+    );
+
+    assets = financialData.getAssets(accountingSAFTFile);
+    accountsReceivable = financialData.getAccountsReceivable(
+      accountingSAFTFile
+    );
+    equity = financialData.getEquity(accountingSAFTFile);
+    liabilities = financialData.getLiabilities(accountingSAFTFile);
+  }
+
+  res.render("financial", {
+    title: "Financial",
+    fiscalYears: fiscalYears,
+    filterYear: filterYear,
+    currentAssets: assets.current,
+    nonCurrentAssets: assets.nonCurrent,
+    accountsReceivable: accountsReceivable,
+    equity: equity,
+    liabilities: liabilities,
+    //ebitda: ebitda,
+  });
+});
+
+router.get("/inventory", auth.verifyJWT, async function (req, res) {
+  let pageQuery = req._parsedOriginalUrl.query;
+  let filterYear = null;
+
+  let fiscalYears = uploadsObject.billingFiscalYears();
 
   let pageNumber;
   if (pageQuery === null) {
     pageNumber = 1;
   } else {
-    pageNumber = pageQuery.split("=")[pageQuery.split("=").length - 1];
+    let querySplit = pageQuery.split("&");
+
+    if (querySplit.length == 2) {
+      if (querySplit[0].split("=")[0] == "page") {
+        pageNumber = querySplit[0].split("=")[1];
+        filterYear = querySplit[1].split("=")[1];
+      } else {
+        filterYear = querySplit[0].split("=")[1];
+        pageNumber = querySplit[1].split("=")[1];
+      }
+    } else if (querySplit.length == 1) {
+      if (querySplit[0].split("=")[0] == "page") {
+        pageNumber = querySplit[0].split("=")[1];
+      } else {
+        filterYear = querySplit[0].split("=")[1];
+        pageNumber = 1;
+      }
+    }
   }
 
   let totalNumberItems = await inventoryObject.totalNumberItems();
+  let billingSAFTFile = null;
+
+  if (fiscalYears.length > 0 && filterYear !== null) {
+    billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
+  } else if (fiscalYears.length > 0 && filterYear === null) {
+    filterYear = fiscalYears[0];
+    billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
+  }
 
   res.render("inventory", {
     title: "Inventory",
-    fiscalYears: uploadsObject.fiscalYears(),
+    fiscalYears: fiscalYears,
+    filterYear: filterYear,
     currentInventoryValue: await inventoryObject.currentInventoryValue(),
     totalUnitsInStock: await inventoryObject.totalUnitsInStock(),
-    products: await inventoryObject.itemList(pageNumber),
+    products: await inventoryObject.itemList(pageNumber, billingSAFTFile),
 
-    paginator: inventoryObject.paginator(totalNumberItems, pageNumber),
+    paginator: inventoryObject.paginator(
+      totalNumberItems,
+      pageNumber,
+      filterYear
+    ),
   });
-router.get("/sales", auth.verifyJWT, async function(req, res) {
-    let pageQuery = req._parsedOriginalUrl.query;
-    let filterYear = null;
-    let fiscalYears = uploadsObject.billingFiscalYears();
+});
 
-    if (pageQuery !== null) {
-        filterYear = pageQuery.split("=")[1];
-    }
+router.get("/sales", auth.verifyJWT, async function (req, res) {
+  let pageQuery = req._parsedOriginalUrl.query;
+  let filterYear = null;
+  let fiscalYears = uploadsObject.billingFiscalYears();
 
-    let totalSalesValue = null;
-    let monthGross = null;
-    let monthNet = null;
-    let top5 = null;
-    let grossMargin = null;
-    let grossProfit = null;
+  if (pageQuery !== null) {
+    filterYear = pageQuery.split("=")[1];
+  }
 
-    if (fiscalYears.length > 0 && filterYear !== null) {
-        let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
+  let totalSalesValue = null;
+  let monthGross = null;
+  let monthNet = null;
+  let top5 = null;
+  let grossMargin = null;
+  let grossProfit = null;
 
-        totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
+  if (fiscalYears.length > 0 && filterYear !== null) {
+    let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
 
-        monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
+    totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
 
-        monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
+    monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
 
-        top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
+    monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
 
-        grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
+    top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
 
-        grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
+    grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
 
-    } else if (fiscalYears.length > 0 && filterYear === null) {
-        let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
+    grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
+  } else if (fiscalYears.length > 0 && filterYear === null) {
+    let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
 
-        totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
+    totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
 
-        monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
+    monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
 
-        monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
+    monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
 
-        top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
+    top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
 
-        grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
+    grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
 
-        grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
-    }
+    grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
+  }
 
-    res.render("sales", {
-        title: "Sales",
-        fiscalYears: fiscalYears,
-        filterYear: filterYear,
-        totalSalesValue: totalSalesValue,
-        monthGross: monthGross,
-        monthNet: monthNet,
-        top5: top5,
-        grossProfit: grossProfit,
-        grossMargin: grossMargin,
-    });
+  res.render("sales", {
+    title: "Sales",
+    fiscalYears: fiscalYears,
+    filterYear: filterYear,
+    totalSalesValue: totalSalesValue,
+    monthGross: monthGross,
+    monthNet: monthNet,
+    top5: top5,
+    grossProfit: grossProfit,
+    grossMargin: grossMargin,
+  });
 });
 
 // router.get("/sales/:ano", function (req, res) {
@@ -169,23 +203,23 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
 //   });
 // });
 
-router.get("/purchases", auth.verifyJWT, async function(req, res) {
-    res.render("purchases", {
-        title: "Purchases",
-        totalPurchasesValue: await dataPurchases.getTotalPurchases(),
-        monthlyPurchases: await dataPurchases.getMonthlyPurchases(),
-        listSuppliers: await dataPurchases.getListSuppliers(),
-        top5Suppliers: await dataPurchases.getTop5Suppliers(),
-    });
+router.get("/purchases", auth.verifyJWT, async function (req, res) {
+  res.render("purchases", {
+    title: "Purchases",
+    totalPurchasesValue: await dataPurchases.getTotalPurchases(),
+    monthlyPurchases: await dataPurchases.getMonthlyPurchases(),
+    listSuppliers: await dataPurchases.getListSuppliers(),
+    top5Suppliers: await dataPurchases.getTop5Suppliers(),
+  });
 });
 
-router.get("/uploads", auth.verifyJWT, function(req, res) {
-    res.render("uploads", {
-        title: "Uploads",
-        fiscalYears: uploadsObject.fiscalYears(),
-        SAFTAccoutingFiles: uploadsObject.SAFTAccountingFiles(),
-        SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
-    });
+router.get("/uploads", auth.verifyJWT, function (req, res) {
+  res.render("uploads", {
+    title: "Uploads",
+    fiscalYears: uploadsObject.fiscalYears(),
+    SAFTAccoutingFiles: uploadsObject.SAFTAccountingFiles(),
+    SAFTBillingFiles: uploadsObject.SAFTBillingFiles(),
+  });
 });
 
 module.exports = router;

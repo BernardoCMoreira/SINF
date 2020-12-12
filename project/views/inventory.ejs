@@ -13,24 +13,8 @@
 
             <div class="container-fluid">
 
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
-                    <div class="col-8 col-md-4">
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="gender3">Fiscal Year</label>
-                            </div>
-                            <select class="custom-select" id="gender3">
-                                <option selected>Choose...</option>
-                                <% for (let i = 0; i<fiscalYears.length; i++) { %>
-                                    <option value="<%= i %>"><%= fiscalYears[i] %></option>
-                                <% } %>
-                            </select>
-                        </div>
-                    </div>
-
-               </div>
+                <!-- Page Heading -->
+                <%- include('partials/common/filterYear.ejs') %>
 
                 <div class="container-fluid">
 
@@ -121,6 +105,7 @@
                                             <th>Current stock</th>
                                             <th>Calculated Unit Cost (€)</th>
                                             <th>Last Unit Cost (€)</th>
+                                            <th>Average Price (€)</th>
                                         </tr>
                                     </thead>
 
@@ -132,6 +117,7 @@
                                                 <td> <%= products[product].currentStock %> </td>
                                                 <td> <%= products[product].unitPrice %> </td>
                                                 <td> <%= products[product].lastUnitCost %> </td>
+                                                <td> <%= products[product].avgPrice %> </td>
                                             </tr>
                                         <% } %>
                                     </tbody>
