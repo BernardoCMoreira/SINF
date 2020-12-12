@@ -262,6 +262,7 @@ async function grossProfitCalc(totalSales) {
 async function grossMarginCalc(totalSales) {
     return await grossProfitCalc(totalSales) * 100 / totalSales;
 }
+
 module.exports = {
     getCustomers: getCustomerMethod,
     getTotalSales: getTotalSalesValue,

@@ -29,16 +29,26 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
+var bars = ctx.dataset.barchart.split(',');
+var barsYears = [];
+var barsValues = [];
+for (let i = 0; i < bars.length; i++) {
+    if (i == 0 || i % 2 == 0) {
+        barsYears.push(bars[i]);
+    } else {
+        barsValues.push(Number(bars[i]));
+    }
+}
 var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["2017", "2018"],
+        labels: barsYears,
         datasets: [{
-            label: "Sales(units)",
+            label: "Sales($M): ",
             backgroundColor: "#4e73df",
             hoverBackgroundColor: "#2e59d9",
             borderColor: "#4e73df",
-            data: [33000000, 30597142],
+            data: barsValues,
         }],
     },
     options: {
@@ -68,12 +78,12 @@ var myBarChart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     min: 0,
-                    max: 35000000,
+                    max: 15,
                     maxTicksLimit: 5,
                     padding: 10,
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
-                        return number_format(value);
+                        return Number(value);
                     }
                 },
                 gridLines: {
@@ -103,7 +113,7 @@ var myBarChart = new Chart(ctx, {
             callbacks: {
                 label: function(tooltipItem, chart) {
                     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                    return datasetLabel + number_format(tooltipItem.yLabel);
+                    return datasetLabel + Number(tooltipItem.yLabel);
                 }
             }
         },

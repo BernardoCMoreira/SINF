@@ -94,6 +94,7 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
     let top5 = null;
     let grossMargin = null;
     let grossProfit = null;
+    let barChartArray = [];
 
     if (fiscalYears.length > 0 && filterYear !== null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
@@ -110,6 +111,10 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
 
         grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
 
+        for (let i = 0; i < fiscalYears.length; i++) {
+            barChartArray[i] = [fiscalYears[i], totalSalesValue];
+        }
+
     } else if (fiscalYears.length > 0 && filterYear === null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
 
@@ -124,8 +129,13 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
 
         grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
-    }
 
+        for (let i = 0; i < fiscalYears.length; i++) {
+            let aux = uploadsObject.SAFTBillingSpecificFile(fiscalYears[i]);
+            barChartArray[i] = [fiscalYears[i], dataSales.addAllNetTotalUploadedSAFT(aux)];
+        }
+    }
+    console.log(barChartArray);
     res.render("sales", {
         title: "Sales",
         fiscalYears: fiscalYears,
@@ -136,6 +146,7 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         top5: top5,
         grossProfit: Math.round((grossProfit + Number.EPSILON) * 100) / 100,
         grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
+        barChartValues: barChartArray,
     });
 });
 
