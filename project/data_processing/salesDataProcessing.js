@@ -85,12 +85,6 @@ function createNetMonthlyArray(data) {
     for (let i = 0; i < data.length; i++) {
         for (let k = 0; k < data[i].Invoice.length; k++) {
             var month = parseInt(data[i].Invoice[k].Period);
-            console.log(
-                "Month : " +
-                month +
-                " month value : " +
-                parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal)
-            );
             monthlyValues[month - 1] += parseFloat(
                 data[i].Invoice[k].DocumentTotals[0].NetTotal
             );
@@ -105,12 +99,7 @@ function createGrossMonthlyArray(data) {
     for (let i = 0; i < data.length; i++) {
         for (let k = 0; k < data[i].Invoice.length; k++) {
             var month = parseInt(data[i].Invoice[k].Period);
-            console.log(
-                "Month : " +
-                month +
-                " month value : " +
-                parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal)
-            );
+
             monthlyValues[month - 1] += parseFloat(
                 data[i].Invoice[k].DocumentTotals[0].GrossTotal
             );
@@ -184,7 +173,7 @@ function storeProductsByUnitsSold(data) {
 
 function addAllNetTotalUploadedSAFT(data) {
     let start = data.AuditFile.SourceDocuments.SalesInvoices.Invoice;
-    console.log(start);
+
     let total = 0;
     for (let i = 0; i < start.length; i++) {
         total += parseFloat(start[i].DocumentTotals.NetTotal);
@@ -199,12 +188,7 @@ function createNetMonthlyArrayUploadedSaft(data) {
 
     for (let k = 0; k < start.Invoice.length; k++) {
         var month = parseInt(start.Invoice[k].Period);
-        console.log(
-            "Month : " +
-            month +
-            " month value : " +
-            parseFloat(start.Invoice[k].DocumentTotals.NetTotal)
-        );
+
         monthlyValues[month - 1] += parseFloat(
             start.Invoice[k].DocumentTotals.NetTotal
         );
@@ -220,12 +204,7 @@ function createGrossMonthlyArrayUploadedSaft(data) {
 
     for (let k = 0; k < start.Invoice.length; k++) {
         var month = parseInt(start.Invoice[k].Period);
-        console.log(
-            "Month : " +
-            month +
-            " month value : " +
-            parseFloat(start.Invoice[k].DocumentTotals.NetTotal)
-        );
+
         monthlyValues[month - 1] += parseFloat(
             start.Invoice[k].DocumentTotals.GrossTotal
         );
@@ -238,8 +217,6 @@ function createMapWithUnitsSoldPerProductUploadedSaft(data) {
     var map = new Map();
     for (let k = 0; k < data.Invoice.length; k++) {
         for (let j = 0; j < data.Invoice[k].Line.length; j++) {
-            console.log(data.Invoice[k]);
-            console.log(data.Invoice[k].Line[j]);
             var code = data.Invoice[k].Line[j].ProductCode;
             var quantity = parseInt(data.Invoice[k].Line[j].Quantity);
             if (map.has(code)) {

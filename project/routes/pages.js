@@ -130,12 +130,12 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         title: "Sales",
         fiscalYears: fiscalYears,
         filterYear: filterYear,
-        totalSalesValue: totalSalesValue,
+        totalSalesValue: Math.round((totalSalesValue + Number.EPSILON) * 100) / 100,
         monthGross: monthGross,
         monthNet: monthNet,
         top5: top5,
-        grossProfit: grossProfit,
-        grossMargin: grossMargin,
+        grossProfit: Math.round((grossProfit + Number.EPSILON) * 100) / 100,
+        grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
     });
 });
 
