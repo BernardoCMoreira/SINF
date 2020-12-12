@@ -545,6 +545,7 @@ calculateLiabilities = (liabilities_template, accounts) => {
 
     local_liabilities.current.push({
       name: liaAcc.name,
+      id: liaAcc.id,
       value: currentSum,
     });
 
@@ -617,6 +618,7 @@ calculateLiabilities = (liabilities_template, accounts) => {
 
     local_liabilities.nonCurrent.push({
       name: liaAcc.name,
+      id: liaAcc.id,
       value: currentSum,
     });
 

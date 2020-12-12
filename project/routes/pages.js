@@ -27,6 +27,7 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
     let filterYear = null;
     let assets = null;
     let accountsReceivable = null;
+    let accountsPayable = null;
     let equity = null;
     let liabilities = null;
 
@@ -44,6 +45,8 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         accountsReceivable = financialData.getAccountsReceivable(
             accountingSAFTFile
         );
+        accountsPayable = financialData.getAccountsPayableMethod(accountingSAFTFile);
+        
         equity = financialData.getEquity(accountingSAFTFile);
         liabilities = financialData.getLiabilities(accountingSAFTFile);
     } else if (fiscalYears.length > 0 && filterYear === null) {
@@ -55,6 +58,7 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         accountsReceivable = financialData.getAccountsReceivable(
             accountingSAFTFile
         );
+        accountsPayable = financialData.getAccountsPayableMethod(accountingSAFTFile);
         equity = financialData.getEquity(accountingSAFTFile);
         liabilities = financialData.getLiabilities(accountingSAFTFile);
     }
@@ -68,6 +72,7 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         accountsReceivable: accountsReceivable,
         equity: equity,
         liabilities: liabilities,
+        accountsPayable: accountsPayable,
         //ebitda: ebitda,
     });
 });
@@ -170,12 +175,36 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
 // });
 
 router.get("/purchases", auth.verifyJWT, async function(req, res) {
+    let pageQuery = req._parsedOriginalUrl.query;
+    let filterYear = null;
+    let accountsPayable = null;
+
+    if (pageQuery !== null) {
+        filterYear = pageQuery.split("=")[1];
+    }
+
+    let fiscalYears = uploadsObject.accountingFiscalYears();
+
+    if (fiscalYears.length > 0 && filterYear !== null) {
+        let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(filterYear);
+        accountsPayable = financialData.getAccountsPayableMethod(accountingSAFTFile);
+    } else if (fiscalYears.length > 0 && filterYear === null) {
+        let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
+            fiscalYears[0]
+        );
+        accountsPayable = financialData.getAccountsPayableMethod(accountingSAFTFile);
+    }
+
+
     res.render("purchases", {
         title: "Purchases",
+        fiscalYears: fiscalYears,
+        filterYear: filterYear,
         totalPurchasesValue: await dataPurchases.getTotalPurchases(),
         monthlyPurchases: await dataPurchases.getMonthlyPurchases(),
         listSuppliers: await dataPurchases.getListSuppliers(),
         top5Suppliers: await dataPurchases.getTop5Suppliers(),
+        accountsPayable: accountsPayable,
     });
 });
 
