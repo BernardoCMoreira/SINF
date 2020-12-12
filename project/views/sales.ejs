@@ -27,8 +27,8 @@
                                         </div>
                                         <select class="custom-select" id="gender3">
                                 <option selected>Choose...</option>
-                                <option value="1">2018/2019</option>
-                                <option value="2">2019/2020</option>
+                                <option value="1"><button onclick="href='/api/sales/2019'">2018/2019</button></option>
+                                <option value="2" href="/api/sales/2019">2019/2020</option>
                                 <option value="3">2020/2021</option>
                             </select>
                                     </div>
@@ -96,7 +96,6 @@
                                     </div>
                                 </div>
 
-
                                 <!-- Content Row -->
 
                                 <div class="row">
@@ -108,14 +107,17 @@
                                         <div class="card shadow mb-4">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h6 class="m-0 font-weight-bold text-primary">Sales Trends</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">Sales Trends ($m)</h6>
                                                 <div class="dropdown no-arrow">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                         <div class="dropdown-header">Dropdown Header:</div>
-                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <% yearsList %>
+                                                        <% for(let i= 0 ; i<yearsList.length; i++){ %>
+                                                            <a class="dropdown-item" href="/sales/<%= yearsList[i] %>"> <%= yearsList[i] %> </a>
+                                                        <% } %>
                                                         <a class="dropdown-item" href="#">Another action</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" href="#">Something else here</a>
@@ -180,21 +182,11 @@
                                                     <canvas id="myPieChart" data-top5 = "<%= top5 %>"></canvas>
                                                 </div>
                                                 <div class="mt-4 text-center small">
+            
                                                     <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Macbook Pro 13"
-                                        </span>
-                                                    <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Allienware m15
-                                        </span>
-                                                    <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Samsung S20+
-                                        </span>
-                                                    <span class="mr-2">
-                                            <i class="fas fa-circle text-danger"></i> iPhone 12 Pro
-                                        </span>
-                                                    <span class="mr-2">
-                                            <i class="fas fa-circle text-warning"></i> Xiaomi Mi 10
-                                        </span>
+                                                        <i hiddenclass="fas fa-circle text-primary"></i> This graph is a yearly graph that evaluates the top 5 products
+                                                    </span>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
