@@ -17,28 +17,28 @@
                             <!-- Page Heading -->
                             <%- include("partials/common/filterYear.ejs") %>
 
-                            <!-- Content Row -->
-                            <div class="row">
+                                <!-- Content Row -->
+                                <div class="row">
 
-                                <!-- Gross Margin (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gross Margin(%)
+                                    <!-- Gross Margin (Monthly) Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gross Margin(%)
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            <%= grossMargin %>
+                                                        </div>
                                                     </div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <%= grossMargin %>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-percentage fa-2x text-gray-300"></i>
                                                     </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-percentage fa-2x text-gray-300"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 <!-- Total revenue (Monthly) Card Example -->
                                 <div class="col-xl-3 col-md-6 mb-4">
@@ -53,6 +53,9 @@
                                                             <%= totalSales %>
                                                                 <% } %>
                                                     </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -60,7 +63,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 <!-- Total Purchases -->
                                 <div class="col-xl-3 col-md-6 mb-4">
@@ -69,9 +71,14 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Purchases(€m)
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            <% if (totalPurchases !== null){ %>
+                                                                <%- totalPurchases.toFixed(2) %>
+                                                                    <% } %>
+                                                        </div>
                                                     </div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <%- totalPurchases.toFixed(2) %> 
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
@@ -80,7 +87,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 <!-- Inventory Value Card Example -->
                                 <div class="col-xl-3 col-md-6 mb-4">
@@ -90,7 +96,12 @@
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Current inventory value(€m)</div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <%- totalInventoryValue.toFixed(2) %>
+                                                            <% if (totalInventoryValue!== null){ %>
+                                                                    <% } %>
+                                                                <%- totalInventoryValue.toFixed(2) %>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
@@ -99,68 +110,67 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Content Row -->
+                                    <!-- Content Row -->
 
-                                <div class="row">
+                                    <div class="row">
 
-                                    <!-- Area Chart -->
-                                    <div class="col-xl-8 col-lg-7">
-                                        <div class="card shadow mb-4">
-                                            <!-- Card Header - Dropdown -->
-                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h6 class="m-0 font-weight-bold text-primary">Sales Trends</h6>
-                                                <div class="dropdown no-arrow">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                    </a>
+                                        <!-- Area Chart -->
+                                        <div class="col-xl-8 col-lg-7">
+                                            <div class="card shadow mb-4">
+                                                <!-- Card Header - Dropdown -->
+                                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Sales Trends</h6>
+                                                    <div class="dropdown no-arrow">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                        </a>
 
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Card Body -->
-                                            <div class="card-body">
-                                                <div class="chart-area">
-                                                    <canvas id="myAreaChart" data-monthnet="<%= salesTrends%>"></canvas>
+                                                <!-- Card Body -->
+                                                <div class="card-body">
+                                                    <div class="table-responsive ">
+                                                        <canvas id="lineChartDashboard" data-salespurchases="<%= salesAndPurchases%>"></canvas>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Pie Chart -->
-                                    <div class="col-xl-4 col-lg-5">
-                                        <div class="card shadow mb-4">
-                                            <!-- Card Header - Dropdown -->
-                                            <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
-                                                <h6 class="m-0 font-weight-bold text-primary">Top 5 Products</h6>
-                                                <div class="dropdown no-arrow">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                    </a>
+                                        <!-- Pie Chart -->
+                                        <div class="col-xl-4 col-lg-5">
+                                            <div class="card shadow mb-4">
+                                                <!-- Card Header - Dropdown -->
+                                                <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Top 5 Products</h6>
+                                                    <div class="dropdown no-arrow">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                        </a>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- Card Body -->
-                                            <div class="card-body">
-                                                <div class="chart-pie pt-4 pb-2">
-                                                    <% if (top5Products !== null){ %>
-                                                        <canvas id="myPieChart" data-top5="<%= top5Products%>"></canvas>
-                                                        <% } %>
-                                                </div>
-                                                <div class="mt-4 text-center small">
-                                                    <span class="mr-2">
+                                                <!-- Card Body -->
+                                                <div class="card-body">
+                                                    <div class="chart-pie pt-4 pb-2">
+                                                        <% if (top5Products !== null){ %>
+                                                            <canvas id="myPieChart" data-top5="<%= top5Products%>"></canvas>
+                                                            <% } %>
+                                                    </div>
+                                                    <div class="mt-4 text-center small">
+                                                        <span class="mr-2">
                                                         <i class="fas fa-circle text-primary"></i> This graph is a yearly graph that evaluates the top 5 products
                                                     </span>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
+                                    <!-- /.container-fluid -->
                                 </div>
-                                <!-- /.container-fluid -->
-                            </div>
-                            <!-- End of Main Content -->
+                                <!-- End of Main Content -->
                         </div>
                         <!-- End of Content Wrapper -->
                 </div>

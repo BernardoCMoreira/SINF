@@ -19,44 +19,47 @@ router.get("/dashboard", auth.verifyJWT, async function(req, res) {
     }
 
     let totalSalesValue = null;
-    let monthNet = null;
+    let monthGross = null;
     let top5 = null;
     let grossMargin = null;
     let totalPurchases = null;
     let totalInventoryValue = null;
-
+    let purchasesMonth = null;
+    let salespurch = [
+        [],
+        []
+    ];
     if (fiscalYears.length > 0 && filterYear !== null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
 
         totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
-        monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
+        monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
         top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
         totalPurchases = await dataPurchases.getTotalPurchases();
         totalInventoryValue = await inventoryObject.currentInventoryValue();
+        purchasesMonth = await dataPurchases.getMonthlyPurchases();
 
     } else if (fiscalYears.length > 0 && filterYear === null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
 
         totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
-
-        monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
-
+        monthGross = dataSales.createGrossMonthlyArrayUploadedSaft(billingSAFTFile);
         top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
-
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
-
         totalPurchases = await dataPurchases.getTotalPurchases();
         totalInventoryValue = await inventoryObject.currentInventoryValue();
-
+        purchasesMonth = await dataPurchases.getMonthlyPurchases();
     }
+    salespurch[0] = monthGross;
+    salespurch[1] = purchasesMonth;
     res.render("dashboard", {
         title: "OVERVIEW",
         filterYear: filterYear,
         fiscalYears: fiscalYears,
         grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
         totalSales: Math.round((totalSalesValue + Number.EPSILON) * 100) / 100,
-        salesTrends: monthNet,
+        salesAndPurchases: salespurch,
         top5Products: top5,
         totalPurchases: totalPurchases,
         totalInventoryValue: totalInventoryValue
