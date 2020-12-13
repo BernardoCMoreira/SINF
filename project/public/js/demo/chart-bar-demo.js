@@ -44,7 +44,7 @@ var myBarChart = new Chart(ctx, {
     data: {
         labels: barsYears,
         datasets: [{
-            label: "Sales($M): ",
+            label: "Sales(€M): ",
             backgroundColor: "#4e73df",
             hoverBackgroundColor: "#2e59d9",
             borderColor: "#4e73df",

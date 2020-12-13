@@ -138,7 +138,7 @@ function parseItems(itemsJSON, pageNumber, billingSAFTFile) {
       }
       newObject.avgPrice = avgPrice / count;
     } else {
-      newObject.avgPrice = "-";
+      newObject.avgPrice = null;
     }
 
     itemList.push(newObject);

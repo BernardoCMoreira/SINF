@@ -27,7 +27,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Current inventory value (€m)</div>
+                                                Current inventory value (€M)
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <%= currentInventoryValue.toFixed(2) %>
                                             </div>
@@ -46,8 +47,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                                units in stock</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total units in stock
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <%= totalUnitsInStock %>
                                             </div>
@@ -59,24 +61,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Total Sales (Monthly) Card Example -->
-                        <!-- <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Average Inventory Period</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">31 days</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
 
@@ -113,12 +97,16 @@
                                     <tbody>
                                         <% for (var product in products) { %>
                                             <tr>
-                                                <td> <%= products[product].name.toFixed(2) %> </td>
-                                                <td> <%= products[product].description.toFixed(2) %> </td>
-                                                <td> <%= products[product].currentStock.toFixed(2) %> </td>
-                                                <td> <%= products[product].unitPrice.toFixed(2) %> </td>
-                                                <td> <%= products[product].lastUnitCost.toFixed(2) %> </td>
-                                                <td> <%= products[product].avgPrice.toFixed(2) %> </td>
+                                                <td> <%= products[product].name %> </td>
+                                                <td> <%= products[product].description %> </td>
+                                                <td> <%= products[product].currentStock %> </td>
+                                                <td> <%= parseFloat(products[product].unitPrice).toFixed(2) %> </td>
+                                                <td> <%= parseFloat(products[product].lastUnitCost).toFixed(2) %> </td>
+                                                <% if(products[product].avgPrice !== null) { %>
+                                                    <td> <%= products[product].avgPrice.toFixed(2) %> </td>
+                                                <% } else { %>
+                                                    <td> - </td>
+                                                <% } %>
                                             </tr>
                                         <% } %>
                                     </tbody>

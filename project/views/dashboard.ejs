@@ -48,11 +48,13 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                            Sales(€m)
+                                            Sales(€M)
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <% if(totalSales !== null) { %>
                                                 <%= totalSales %>
+                                            <% } else { %>
+                                                <%= 0 %>
                                             <% } %>
                                         </div>
                                     </div>
@@ -71,10 +73,12 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                            Purchases(€m)
+                                            Purchases(€M)
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <% if (totalPurchases !== null){ %>
-                                                <%- totalPurchases.toFixed(2) %>
+                                                    <%- totalPurchases.toFixed(2) %>
+                                                <% } else { %>
+                                                    <%= 0 %>
                                                 <% } %>
                                             </div>
                                         </div>
@@ -94,10 +98,12 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Current inventory value(€m)</div>
+                                            Current inventory value(€M)</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <% if (totalInventoryValue!== null){ %>
-                                            <%- totalInventoryValue.toFixed(2) %>
+                                                <%- totalInventoryValue.toFixed(2) %>
+                                            <% } else { %>
+                                                <%= 0 %>
                                             <% } %>
                                         </div>
                                     </div>

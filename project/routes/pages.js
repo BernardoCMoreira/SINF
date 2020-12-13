@@ -5,6 +5,8 @@ var uploadsObject = require("../data_processing/uploads");
 var dataSales = require("../data_processing/salesDataProcessing");
 var dataPurchases = require("../data_processing/processPurchases");
 var financialData = require("../data_processing/financial");
+var profit_loss = require("../utils/profit_loss");
+
 var auth = require("../middleware/auth");
 //nota: provavelmente o melhor é depois criar um ficheiro para cada pagina pq é preciso fazer os pedidos todos para a info
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
@@ -81,6 +83,13 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
     let accountsPayable = null;
     let equity = null;
     let liabilities = null;
+    let revenue = null;
+    let expenses = null;
+    let taxes = null;
+    let depreciation = null;
+    let interest = null;
+    let ebitda = null;
+    let ebit = null;
 
     if (pageQuery !== null) {
         filterYear = pageQuery.split("=")[1];
@@ -102,6 +111,15 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
 
         equity = financialData.getEquity(accountingSAFTFile);
         liabilities = financialData.getLiabilities(accountingSAFTFile);
+        revenue = (financialData.calculateProfitLoss(profit_loss.revenue, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        expenses = (financialData.calculateProfitLoss(profit_loss.expenses, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        depreciation = (financialData.calculateProfitLoss(profit_loss.depreciation, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        taxes = (financialData.calculateProfitLoss(profit_loss.taxes, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        interest = (financialData.calculateProfitLoss(profit_loss.interest, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));  
+
+        ebit = revenue.total + interest.total + taxes.total;
+        ebitda = ebit + depreciation.total;
+        
     } else if (fiscalYears.length > 0 && filterYear === null) {
         let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
             fiscalYears[0]
@@ -116,19 +134,36 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         );
         equity = financialData.getEquity(accountingSAFTFile);
         liabilities = financialData.getLiabilities(accountingSAFTFile);
+
+        revenue = (financialData.calculateProfitLoss(profit_loss.revenue, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        expenses = (financialData.calculateProfitLoss(profit_loss.expenses, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        depreciation = (financialData.calculateProfitLoss(profit_loss.depreciation, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        taxes = (financialData.calculateProfitLoss(profit_loss.taxes, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));
+        interest = (financialData.calculateProfitLoss(profit_loss.interest, accountingSAFTFile.AuditFile.MasterFiles.GeneralLedgerAccounts, accountingSAFTFile.AuditFile.GeneralLedgerEntries.Journal));  
+
+        ebit = revenue.total + interest.total + taxes.total;
+        ebitda = ebit + depreciation.total;
+
+        console.log(ebit, ebitda);
     }
 
     res.render("financial", {
         title: "Financial",
         fiscalYears: fiscalYears,
         filterYear: filterYear,
-        currentAssets: assets != null ? assets.current : null,
-        nonCurrentAssets: assets != null ? assets.nonCurrent : null,
+        currentAssets: assets !== null ? assets.current : null,
+        nonCurrentAssets: assets !== null ? assets.nonCurrent : null,
         accountsReceivable: accountsReceivable,
         equity: equity,
         liabilities: liabilities,
         accountsPayable: accountsPayable,
-        //ebitda: ebitda,
+        revenue: revenue,
+        expenses: expenses,
+        depreciation: depreciation,
+        taxes: taxes,
+        interest: interest,
+        ebitda: ebitda,
+        ebit: ebit
     });
 });
 
@@ -267,21 +302,6 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
     });
 });
 
-// router.get("/sales/:ano", function (req, res) {
-//   let year = req.params.ano;
-//   let map = uploadsObject.SAFTBillingFiles();
-//   console.log("YEARS : ");
-//   console.log(map.keys());
-//   res.render("sales", {
-//     title: "Sales",
-//     totalSalesValue: dataSales.addAllNetTotalUploadedSAFT(map.get(year)),
-//     monthGross: dataSales.createGrossMonthlyArrayUploadedSaft(map.get(year)),
-//     monthNet: dataSales.createNetMonthlyArrayUploadedSaft(map.get(year)),
-//     top5: dataSales.getTop5UploadedSaft(map.get(year)),
-//     yearsList: Array.from(map.keys()),
-//     //top5 : await dataSales.getTop5Dif(map.get("2022").AuditFile.SourceDocuments.SalesInvoices),
-//   });
-// });
 
 router.get("/purchases", auth.verifyJWT, async function(req, res) {
     let pageQuery = req._parsedOriginalUrl.query;

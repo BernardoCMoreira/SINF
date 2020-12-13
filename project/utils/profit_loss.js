@@ -364,15 +364,9 @@ const taxes = [
   },
 ];
 
-const ebit = 0;
-const ebitda = 0;
-const netIncome = 0;
 
 module.exports.revenue = revenue;
 module.exports.expenses = expenses;
 module.exports.depreciation = depreciation;
 module.exports.interest = interest;
 module.exports.taxes = taxes;
-module.exports.ebit = ebit;
-module.exports.ebitda = ebitda;
-module.exports.netIncome = netIncome;
