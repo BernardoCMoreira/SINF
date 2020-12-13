@@ -53,9 +53,9 @@
           <div class="col">
             <% if(accountsPayable !== null) { %> 
               <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Payable', value: (accountsPayable/100000).toFixed(2)}) %>
-              <% } else { %> 
+            <% } else { %> 
               <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Payable', value: "-"})%> 
-              <% } %>
+            <% } %>
           </div>
         </div>
 
