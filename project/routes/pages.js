@@ -143,8 +143,6 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
 
         ebit = revenue.total + interest.total + taxes.total;
         ebitda = ebit + depreciation.total;
-
-        console.log(ebit, ebitda);
     }
 
     res.render("financial", {
