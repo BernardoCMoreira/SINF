@@ -72,6 +72,7 @@ const getLiabilitiesMethod = (SAFTFile) => {
   return liabilities;
 };
 
+<<<<<<< HEAD
 const getCOGSMonthlyValues = async () => {
   return await axios
     .get(`http://localhost:${process.env.PORT}/api/sales/orders`)
@@ -112,11 +113,16 @@ const createCOGSMonthlyArray = async (data) => {
   return monthlyValues;
 };
 
+=======
+>>>>>>> 3c5f69e6ccab53c4cd44d2cc927f2fa7afa799f9
 module.exports = {
   getAssets: getAssetsMethod,
   getAccountsReceivable: getAccountsReceivableMethod,
   getAccountsPayableMethod: getAccountsPayableMethod,
   getEquity: getEquityMethod,
   getLiabilities: getLiabilitiesMethod,
+<<<<<<< HEAD
   getCOGS: getCOGSMonthlyValues,
+=======
+>>>>>>> 3c5f69e6ccab53c4cd44d2cc927f2fa7afa799f9
 };
