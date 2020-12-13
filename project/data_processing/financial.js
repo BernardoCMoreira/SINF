@@ -60,17 +60,10 @@ const getLiabilitiesMethod = (SAFTFile) => {
 
 
 
-const getEBITDAMethod = async () => {
-  return await axios
-    .get(`http://localhost:${process.env.PORT}/api/financial/ebitda`)
-    .catch((err) => console.error(err));
-};
-
 module.exports = {
   getAssets: getAssetsMethod,
   getAccountsReceivable: getAccountsReceivableMethod,
   getAccountsPayableMethod: getAccountsPayableMethod,
   getEquity: getEquityMethod,
   getLiabilities: getLiabilitiesMethod,
-  getEBITDA: getEBITDAMethod,
 };

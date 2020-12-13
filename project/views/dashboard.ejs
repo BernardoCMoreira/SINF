@@ -15,7 +15,7 @@
                         <div class="container-fluid">
 
                             <!-- Page Heading -->
-
+                            <%- include("partials/common/filterYear.ejs") %>
 
                             <!-- Content Row -->
                             <div class="row">
@@ -72,7 +72,7 @@
                                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Purchases($m)
                                                     </div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                                        <%- totalPurchases.toFixed(2) %> 
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
@@ -91,7 +91,7 @@
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Current inventory value($m)</div>
                                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-
+                                                        <%- totalInventoryValue.toFixed(2) %>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">

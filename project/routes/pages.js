@@ -10,7 +10,6 @@ var auth = require("../middleware/auth");
 //que se quer e vai ficar uma confusao se ficar assim...... mas para ja serve
 
 router.get("/dashboard", auth.verifyJWT, async function(req, res) {
-
     let pageQuery = req._parsedOriginalUrl.query;
     let filterYear = null;
     let fiscalYears = uploadsObject.billingFiscalYears();
@@ -23,18 +22,18 @@ router.get("/dashboard", auth.verifyJWT, async function(req, res) {
     let monthNet = null;
     let top5 = null;
     let grossMargin = null;
+    let totalPurchases = null;
+    let totalInventoryValue = null;
 
     if (fiscalYears.length > 0 && filterYear !== null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
 
         totalSalesValue = dataSales.addAllNetTotalUploadedSAFT(billingSAFTFile);
-
-
         monthNet = dataSales.createNetMonthlyArrayUploadedSaft(billingSAFTFile);
-
         top5 = dataSales.getTop5UploadedSaft(billingSAFTFile);
-
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
+        totalPurchases = await dataPurchases.getTotalPurchases();
+        totalInventoryValue = await inventoryObject.currentInventoryValue();
 
     } else if (fiscalYears.length > 0 && filterYear === null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(fiscalYears[0]);
@@ -47,15 +46,24 @@ router.get("/dashboard", auth.verifyJWT, async function(req, res) {
 
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
 
+        totalPurchases = await dataPurchases.getTotalPurchases();
+        totalInventoryValue = await inventoryObject.currentInventoryValue();
+
     }
     res.render("dashboard", {
         title: "OVERVIEW",
+        filterYear: filterYear,
+        fiscalYears: fiscalYears,
         grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
         totalSales: Math.round((totalSalesValue + Number.EPSILON) * 100) / 100,
         salesTrends: monthNet,
         top5Products: top5,
+        totalPurchases: totalPurchases,
+        totalInventoryValue: totalInventoryValue
+
     });
 });
+
 router.get("/", function(req, res) {
     res.render("login", {
         title: "LOGIN",
