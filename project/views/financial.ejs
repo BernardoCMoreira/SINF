@@ -16,28 +16,28 @@
         <!-- KPIS -->
         <div class="row">
           <div class="col-xl-3 col-md-6 mb-4">
-            <% if(currentAssets !== null && nonCurrentAssets !== null) { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Assets', value: (currentAssets.total+nonCurrentAssets.total)/100000 }) %>
-            <% } else { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Assets', value: '-'}) %>
-            <% } %>
+            <% if(currentAssets !== null && nonCurrentAssets !== null) { %> <%-
+            include ('partials/financial/financial_kpi.ejs', {type: 'Assets',
+            value: (currentAssets.total+nonCurrentAssets.total)/100000 }) %> <%
+            } else { %> <%- include ('partials/financial/financial_kpi.ejs',
+            {type: 'Assets', value: '-'}) %> <% } %>
           </div>
 
           <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <% if(equity !== null ) { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Liabilities', value: liabilities.total/100000 }) %>
-            <% } else { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Liabilities', value: '-'}) %>
-            <% } %>
+            <% if(equity !== null ) { %> <%- include
+            ('partials/financial/financial_kpi.ejs', {type: 'Liabilities',
+            value: liabilities.total/100000 }) %> <% } else { %> <%- include
+            ('partials/financial/financial_kpi.ejs', {type: 'Liabilities',
+            value: '-'}) %> <% } %>
           </div>
           <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <% if(equity !== null ) { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Equity', value: equity.total/100000 }) %>
-            <% } else { %>
-            <%- include ('partials/financial/financial_kpi.ejs', {type: 'Equity', value: '-'}) %>
-            <% } %>
+            <% if(equity !== null ) { %> <%- include
+            ('partials/financial/financial_kpi.ejs', {type: 'Equity', value:
+            equity.total/100000 }) %> <% } else { %> <%- include
+            ('partials/financial/financial_kpi.ejs', {type: 'Equity', value:
+            '-'}) %> <% } %>
           </div>
         </div>
 
@@ -45,15 +45,28 @@
         <div class="row">
           <div class="col-lg-6 mb-4">
             <div class="card shadow mb-4">
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h4 class="m-0 font-weight-bold text-primary"> Sales vs Cost of goods sold </h4>
+              <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+              >
+                <h4 class="m-0 font-weight-bold text-primary">
+                  Sales vs Cost of goods sold
+                </h4>
                 <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                  <a
+                    class="dropdown-toggle"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                   </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink">
+                  <div
+                    class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    aria-labelledby="dropdownMenuLink"
+                  >
                     <div class="dropdown-header">Period :</div>
                     <a class="dropdown-item" href="#">2018-2019</a>
                     <a class="dropdown-item" href="#">2017-2018</a>
@@ -62,19 +75,27 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <canvas id="lineChart"></canvas>
+                  <canvas
+                    id="lineChart"
+                    data-cogs="<%- cogs %>"
+                    data-sales="<%- sales %>"
+                  ></canvas>
                 </div>
               </div>
             </div>
             <div class="card border-left-primary shadow py-2">
-
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Accounts receivable ($m)</div>
+                    <div
+                      class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    >
+                      Accounts receivable ($m)
+                    </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <%- (Math.round(((accountsReceivable/100000)) * 100) / 100).toFixed(2); %> </div>
+                      <%- (Math.round(((accountsReceivable/100000)) * 100) /
+                      100).toFixed(2); %>
+                    </div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -82,15 +103,20 @@
                 </div>
               </div>
             </div>
-            <br>
+            <br />
             <div class="card border-left-primary shadow py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Accounts payable ($m)</div>
+                    <div
+                      class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    >
+                      Accounts payable ($m)
+                    </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <%- (Math.round(((accountsPayable/100000)) * 100) / 100).toFixed(2); %> </div>
+                      <%- (Math.round(((accountsPayable/100000)) * 100) /
+                      100).toFixed(2); %>
+                    </div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -102,28 +128,36 @@
           <div class="col-lg-6 mb-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h4 class="m-0 font-weight-bold text-primary"> Balance Sheet </h4>
+              <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+              >
+                <h4 class="m-0 font-weight-bold text-primary">Balance Sheet</h4>
               </div>
               <div class="card-body">
                 <div id="balanceSheet" class="container">
-
                   <ul class="nav nav-tabs">
-                    <li style="padding: 0.5rem;">
+                    <li style="padding: 0.5rem">
                       <a href="#assets" data-toggle="tab">Assets</a>
                     </li>
-                    <li style="padding: 0.5rem;">
+                    <li style="padding: 0.5rem">
                       <a href="#liabilities" data-toggle="tab">Liabilities</a>
                     </li>
-                    <li style="padding: 0.5rem;">
+                    <li style="padding: 0.5rem">
                       <a href="#equity" data-toggle="tab">Equity</a>
                     </li>
                   </ul>
 
-                  <div class="tab-content ">
+                  <div class="tab-content">
                     <div class="tab-pane active" id="assets">
-                      <p style="margin-bottom: 0;" class="text-center small">Assets</p>
-                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                      <p style="margin-bottom: 0" class="text-center small">
+                        Assets
+                      </p>
+                      <table
+                        class="table"
+                        id="dataTable"
+                        width="100%"
+                        cellspacing="0"
+                      >
                         <thead>
                           <tr>
                             <th>Type</th>
@@ -132,26 +166,26 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% if(currentAssets !== null && nonCurrentAssets !== null) { %>
-                          <% currentAssets.asset.forEach(asset =>{ %>
-                          <% if(asset.value !== 0) { %>
-                          <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                          <% } %>
-                          <% }); %>
-
-                          <% nonCurrentAssets.asset.forEach(asset =>{ %>
-                          <% if(asset.value !== 0) { %>
-                          <%- include('partials/financial/bs_assets', {asset: asset}); %>
-                          <% } %>
-                          <% }); %>
-                          <% } %>
+                          <% if(currentAssets !== null && nonCurrentAssets !==
+                          null) { %> <% currentAssets.asset.forEach(asset =>{ %>
+                          <% if(asset.value !== 0) { %> <%-
+                          include('partials/financial/bs_assets', {asset:
+                          asset}); %> <% } %> <% }); %> <%
+                          nonCurrentAssets.asset.forEach(asset =>{ %> <%
+                          if(asset.value !== 0) { %> <%-
+                          include('partials/financial/bs_assets', {asset:
+                          asset}); %> <% } %> <% }); %> <% } %>
                         </tbody>
                         <tfoot>
                           <tr>
                             <th>Total ($M)</th>
                             <th></th>
-                            <% if(currentAssets !== null && nonCurrentAssets !== null ) { %>
-                            <th><%- Math.round(((currentAssets.total + nonCurrentAssets.total)/100000)*100)/100 %></th>
+                            <% if(currentAssets !== null && nonCurrentAssets !==
+                            null ) { %>
+                            <th>
+                              <%- Math.round(((currentAssets.total +
+                              nonCurrentAssets.total)/100000)*100)/100 %>
+                            </th>
                             <% } %>
                           </tr>
                         </tfoot>
@@ -159,8 +193,15 @@
                     </div>
 
                     <div class="tab-pane" id="liabilities">
-                      <p style="margin-bottom: 0;" class="text-center small">Liabilities</p>
-                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                      <p style="margin-bottom: 0" class="text-center small">
+                        Liabilities
+                      </p>
+                      <table
+                        class="table"
+                        id="dataTable"
+                        width="100%"
+                        cellspacing="0"
+                      >
                         <thead>
                           <tr>
                             <th>Type</th>
@@ -169,26 +210,26 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% if(liabilities !== null) { %>
-                          <% liabilities.current.forEach(account =>{ %>
-                          <% if(account.value !== 0) { %>
-                          <%- include('partials/financial/bs_liabilities', {account: account}); %>
-                          <% } %>
-                          <% }); %>
-
-                          <% liabilities.nonCurrent.forEach(account =>{ %>
-                          <% if(account.value !== 0) { %>
-                          <%- include('partials/financial/bs_liabilities', {account: account}); %>
-                          <% } %>
-                          <% }); %>
-                          <% } %>
+                          <% if(liabilities !== null) { %> <%
+                          liabilities.current.forEach(account =>{ %> <%
+                          if(account.value !== 0) { %> <%-
+                          include('partials/financial/bs_liabilities', {account:
+                          account}); %> <% } %> <% }); %> <%
+                          liabilities.nonCurrent.forEach(account =>{ %> <%
+                          if(account.value !== 0) { %> <%-
+                          include('partials/financial/bs_liabilities', {account:
+                          account}); %> <% } %> <% }); %> <% } %>
                         </tbody>
                         <tfoot>
                           <tr>
                             <th>Total ($M)</th>
                             <th></th>
                             <% if(liabilities !== null) { %>
-                            <th><%- Math.round(((liabilities.total)/100000)*100)/100 %></th>
+                            <th>
+                              <%-
+                              Math.round(((liabilities.total)/100000)*100)/100
+                              %>
+                            </th>
                             <% } %>
                           </tr>
                         </tfoot>
@@ -196,8 +237,15 @@
                     </div>
 
                     <div class="tab-pane" id="equity">
-                      <p style="margin-bottom: 0;" class="text-center small">Equity</p>
-                      <table class="table" id="dataTable" width="100%" cellspacing="0">
+                      <p style="margin-bottom: 0" class="text-center small">
+                        Equity
+                      </p>
+                      <table
+                        class="table"
+                        id="dataTable"
+                        width="100%"
+                        cellspacing="0"
+                      >
                         <thead>
                           <tr>
                             <th>Type</th>
@@ -206,21 +254,20 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <% if(equity !== null) { %>
-                          <% equity.accounts.forEach(account =>{ %>
-                          <% if(account.value !== 0) { %>
-                          <%- include('partials/financial/bs_equity', {account: account}); %>
-                          <% } %>
-                          <% }); %>
-
-                          <% } %>
+                          <% if(equity !== null) { %> <%
+                          equity.accounts.forEach(account =>{ %> <%
+                          if(account.value !== 0) { %> <%-
+                          include('partials/financial/bs_equity', {account:
+                          account}); %> <% } %> <% }); %> <% } %>
                         </tbody>
                         <tfoot>
                           <tr>
                             <th>Total ($M)</th>
                             <th></th>
                             <% if(equity !== null) { %>
-                            <th><%- Math.round(((equity.total)/100000)*100)/100 %></th>
+                            <th>
+                              <%- Math.round(((equity.total)/100000)*100)/100 %>
+                            </th>
                             <% } %>
                           </tr>
                         </tfoot>

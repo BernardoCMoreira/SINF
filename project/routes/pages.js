@@ -22,7 +22,7 @@ router.get("/", function (req, res) {
   });
 });
 
-router.get("/financial", auth.verifyJWT, function (req, res) {
+router.get("/financial", auth.verifyJWT, async function (req, res) {
   let pageQuery = req._parsedOriginalUrl.query;
   let filterYear = null;
   let assets = null;
@@ -67,6 +67,8 @@ router.get("/financial", auth.verifyJWT, function (req, res) {
     liabilities = financialData.getLiabilities(accountingSAFTFile);
   }
 
+  console.log(sales);
+
   res.render("financial", {
     title: "Financial",
     fiscalYears: fiscalYears,
@@ -77,7 +79,8 @@ router.get("/financial", auth.verifyJWT, function (req, res) {
     equity: equity,
     liabilities: liabilities,
     accountsPayable: accountsPayable,
-    //ebitda: ebitda,
+    cogs: cogs,
+    sales: sales,
   });
 });
 
@@ -148,11 +151,12 @@ router.get("/sales", auth.verifyJWT, async function (req, res) {
 
   let totalSalesValue = null;
   let monthGross = null;
-  let monthNet = null;
+  let monthNet = null; //monthly sales
   let top5 = null;
   let grossMargin = null;
   let grossProfit = null;
   let barChartArray = [];
+  const cogs = await financialData.getCOGS();
 
   if (fiscalYears.length > 0 && filterYear !== null) {
     let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
@@ -207,6 +211,7 @@ router.get("/sales", auth.verifyJWT, async function (req, res) {
     grossProfit: Math.round((grossProfit + Number.EPSILON) * 100) / 100,
     grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
     barChartValues: barChartArray,
+    cogs: cogs,
   });
 });
 

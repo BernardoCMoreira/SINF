@@ -62,6 +62,37 @@ const getItemList = async (pageNumber, billingSAFTFile) => {
     .catch((err) => console.error(err));
 };
 
+const getVariableCost = async () => {
+  return await axios
+    .get(`http://localhost:${process.env.PORT}/api/inventory/products`)
+    .then((res) => getVariableCostArray(JSON.parse(res.data)))
+    .catch((err) => console.error(err));
+};
+
+function getVariableCostArray(itemsJSON) {
+  let itemList = [];
+
+  for (var object in itemsJSON) {
+    let newObject = {};
+
+    if (
+      itemsJSON[object].materialsItemWarehouses[0].calculatedUnitCost.amount ==
+        0 &&
+      itemsJSON[object].materialsItemWarehouses[0].lastUnitCost.amount == 0
+    ) {
+      continue;
+    }
+
+    newObject.name = itemsJSON[object].itemKey;
+    newObject.unitPrice =
+      itemsJSON[object].materialsItemWarehouses[0].calculatedUnitCost.amount;
+
+    itemList.push(newObject);
+  }
+
+  return itemList;
+}
+
 function parseItems(itemsJSON, pageNumber, billingSAFTFile) {
   let itemList = [];
 
@@ -199,4 +230,5 @@ module.exports = {
   totalUnitsInStock: getTotalUnitsInStock,
   itemList: getItemList,
   paginator: getPaginator,
+  getVariableCost: getVariableCost,
 };
