@@ -14,8 +14,8 @@
         <%- include('partials/common/filterYear.ejs') %>
 
         <!-- KPIS -->
-        <div class="row">
-          <div class="col-xl-3 col-md-6 mb-4">
+        <div class="d-flex flex-row justify-content-between mb-4">
+          <div class="col">
             <% if(currentAssets !== null && nonCurrentAssets !== null) { %> <%-
             include ('partials/financial/financial_kpi.ejs', {type: 'Assets',
             value: (currentAssets.total+nonCurrentAssets.total)/100000 }) %> <%
@@ -24,15 +24,16 @@
           </div>
 
           <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-3 col-md-6 mb-4">
+          <div class="col">
             <% if(equity !== null ) { %> <%- include
             ('partials/financial/financial_kpi.ejs', {type: 'Liabilities',
             value: liabilities.total/100000 }) %> <% } else { %> <%- include
             ('partials/financial/financial_kpi.ejs', {type: 'Liabilities',
             value: '-'}) %> <% } %>
           </div>
+
           <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-3 col-md-6 mb-4">
+          <div class="col">
             <% if(equity !== null ) { %> <%- include
             ('partials/financial/financial_kpi.ejs', {type: 'Equity', value:
             equity.total/100000 }) %> <% } else { %> <%- include
@@ -41,96 +42,30 @@
           </div>
         </div>
 
+        <div class="d-flex flex-row justify-content-between mb-4">
+          <div class="col">
+            <% if(accountsReceivable !== null) { %> 
+              <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Receivable', value: (accountsReceivable/100000).toFixed(2)}) %>
+              <% } else { %> 
+              <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Receivable', value: "-"})%> 
+              <% } %>
+          </div>
+          <div class="col">
+            <% if(accountsPayable !== null) { %> 
+              <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Payable', value: (accountsPayable/100000).toFixed(2)}) %>
+              <% } else { %> 
+              <%- include('partials/financial/financial_kpi.ejs', {type: 'Accounts Payable', value: "-"})%> 
+              <% } %>
+          </div>
+        </div>
+
         <!-- Content Row -->
         <div class="row">
-          <div class="col-lg-6 mb-4">
-            <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-              >
-                <h4 class="m-0 font-weight-bold text-primary">
-                  Sales vs Cost of goods sold
-                </h4>
-                <div class="dropdown no-arrow">
-                  <a
-                    class="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div
-                    class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <div class="dropdown-header">Period :</div>
-                    <a class="dropdown-item" href="#">2018-2019</a>
-                    <a class="dropdown-item" href="#">2017-2018</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <canvas
-                    id="lineChart"
-                    data-cogs="<%- cogs %>"
-                    data-sales="<%- sales %>"
-                  ></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card border-left-primary shadow py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div
-                      class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                    >
-                      Accounts receivable ($m)
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <%- (Math.round(((accountsReceivable/100000)) * 100) /
-                      100).toFixed(2); %>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="card border-left-primary shadow py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div
-                      class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                    >
-                      Accounts payable ($m)
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <%- (Math.round(((accountsPayable/100000)) * 100) /
-                      100).toFixed(2); %>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="col-lg-6 mb-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-              >
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h4 class="m-0 font-weight-bold text-primary">Balance Sheet</h4>
               </div>
               <div class="card-body">
@@ -162,7 +97,7 @@
                           <tr>
                             <th>Type</th>
                             <th>ID</th>
-                            <th>Value ($M)</th>
+                            <th>Value (€M)</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -178,7 +113,7 @@
                         </tbody>
                         <tfoot>
                           <tr>
-                            <th>Total ($M)</th>
+                            <th>Total (€M)</th>
                             <th></th>
                             <% if(currentAssets !== null && nonCurrentAssets !==
                             null ) { %>
@@ -206,7 +141,7 @@
                           <tr>
                             <th>Type</th>
                             <th>ID</th>
-                            <th>Value ($M)</th>
+                            <th>Value (€M)</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -222,7 +157,7 @@
                         </tbody>
                         <tfoot>
                           <tr>
-                            <th>Total ($M)</th>
+                            <th>Total (€M)</th>
                             <th></th>
                             <% if(liabilities !== null) { %>
                             <th>
@@ -250,7 +185,7 @@
                           <tr>
                             <th>Type</th>
                             <th>ID</th>
-                            <th>Value ($M)</th>
+                            <th>Value (€M)</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -262,7 +197,7 @@
                         </tbody>
                         <tfoot>
                           <tr>
-                            <th>Total ($M)</th>
+                            <th>Total (€M)</th>
                             <th></th>
                             <% if(equity !== null) { %>
                             <th>

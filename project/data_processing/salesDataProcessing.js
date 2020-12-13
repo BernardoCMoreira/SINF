@@ -85,9 +85,9 @@ function createNetMonthlyArray(data) {
     for (let i = 0; i < data.length; i++) {
         for (let k = 0; k < data[i].Invoice.length; k++) {
             var month = parseInt(data[i].Invoice[k].Period);
-            monthlyValues[month - 1] += parseFloat(
+            monthlyValues[month - 1] += (parseFloat(
                 data[i].Invoice[k].DocumentTotals[0].NetTotal
-            );
+            ));
         }
     }
     return monthlyValues;

@@ -113,12 +113,12 @@
                                     <tbody>
                                         <% for (var product in products) { %>
                                             <tr>
-                                                <td> <%= products[product].name %> </td>
-                                                <td> <%= products[product].description %> </td>
-                                                <td> <%= products[product].currentStock %> </td>
-                                                <td> <%= products[product].unitPrice %> </td>
-                                                <td> <%= products[product].lastUnitCost %> </td>
-                                                <td> <%= products[product].avgPrice %> </td>
+                                                <td> <%= products[product].name.toFixed(2) %> </td>
+                                                <td> <%= products[product].description.toFixed(2) %> </td>
+                                                <td> <%= products[product].currentStock.toFixed(2) %> </td>
+                                                <td> <%= products[product].unitPrice.toFixed(2) %> </td>
+                                                <td> <%= products[product].lastUnitCost.toFixed(2) %> </td>
+                                                <td> <%= products[product].avgPrice.toFixed(2) %> </td>
                                             </tr>
                                         <% } %>
                                     </tbody>

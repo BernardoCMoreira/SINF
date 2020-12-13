@@ -70,68 +70,6 @@ router.get("/", function(req, res) {
     });
 });
 
-<<<<<<< HEAD
-router.get("/financial", auth.verifyJWT, async function (req, res) {
-  let pageQuery = req._parsedOriginalUrl.query;
-  let filterYear = null;
-  let assets = null;
-  let accountsReceivable = null;
-  let accountsPayable = null;
-  let equity = null;
-  let liabilities = null;
-
-  if (pageQuery !== null) {
-    filterYear = pageQuery.split("=")[1];
-  }
-
-  let fiscalYears = uploadsObject.accountingFiscalYears();
-
-  if (fiscalYears.length > 0 && filterYear !== null) {
-    let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
-      filterYear
-    );
-    assets = financialData.getAssets(accountingSAFTFile);
-    accountsReceivable = financialData.getAccountsReceivable(
-      accountingSAFTFile
-    );
-    accountsPayable = financialData.getAccountsPayableMethod(
-      accountingSAFTFile
-    );
-
-    equity = financialData.getEquity(accountingSAFTFile);
-    liabilities = financialData.getLiabilities(accountingSAFTFile);
-  } else if (fiscalYears.length > 0 && filterYear === null) {
-    let accountingSAFTFile = uploadsObject.SAFTAccountingSpecificFile(
-      fiscalYears[0]
-    );
-
-    assets = financialData.getAssets(accountingSAFTFile);
-    accountsReceivable = financialData.getAccountsReceivable(
-      accountingSAFTFile
-    );
-    accountsPayable = financialData.getAccountsPayableMethod(
-      accountingSAFTFile
-    );
-    equity = financialData.getEquity(accountingSAFTFile);
-    liabilities = financialData.getLiabilities(accountingSAFTFile);
-  }
-
-  console.log(sales);
-
-  res.render("financial", {
-    title: "Financial",
-    fiscalYears: fiscalYears,
-    filterYear: filterYear,
-    currentAssets: assets != null ? assets.current : null,
-    nonCurrentAssets: assets != null ? assets.nonCurrent : null,
-    accountsReceivable: accountsReceivable,
-    equity: equity,
-    liabilities: liabilities,
-    accountsPayable: accountsPayable,
-    cogs: cogs,
-    sales: sales,
-  });
-=======
 router.get("/financial", auth.verifyJWT, function(req, res) {
     let pageQuery = req._parsedOriginalUrl.query;
     let filterYear = null;
@@ -189,7 +127,6 @@ router.get("/financial", auth.verifyJWT, function(req, res) {
         accountsPayable: accountsPayable,
         //ebitda: ebitda,
     });
->>>>>>> 3c5f69e6ccab53c4cd44d2cc927f2fa7afa799f9
 });
 
 router.get("/inventory", auth.verifyJWT, async function(req, res) {
@@ -257,16 +194,6 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         filterYear = pageQuery.split("=")[1];
     }
 
-<<<<<<< HEAD
-  let totalSalesValue = null;
-  let monthGross = null;
-  let monthNet = null; //monthly sales
-  let top5 = null;
-  let grossMargin = null;
-  let grossProfit = null;
-  let barChartArray = [];
-  const cogs = await financialData.getCOGS();
-=======
     let totalSalesValue = null;
     let monthGross = null;
     let monthNet = null;
@@ -274,7 +201,7 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
     let grossMargin = null;
     let grossProfit = null;
     let barChartArray = [];
->>>>>>> 3c5f69e6ccab53c4cd44d2cc927f2fa7afa799f9
+    let costOfGoodsSold = null;
 
     if (fiscalYears.length > 0 && filterYear !== null) {
         let billingSAFTFile = uploadsObject.SAFTBillingSpecificFile(filterYear);
@@ -290,6 +217,8 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         grossMargin = await dataSales.grossMarginCalc(totalSalesValue);
 
         grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
+
+        costOfGoodsSold = await financialData.getCOGS();
 
         for (let i = 0; i < fiscalYears.length; i++) {
             let aux = uploadsObject.SAFTBillingSpecificFile(fiscalYears[i]);
@@ -311,29 +240,14 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
 
         grossProfit = await dataSales.grossProfitCalc(totalSalesValue);
 
+        costOfGoodsSold = await financialData.getCOGS();
+
         for (let i = 0; i < fiscalYears.length; i++) {
             let aux = uploadsObject.SAFTBillingSpecificFile(fiscalYears[i]);
             let value = dataSales.addAllNetTotalUploadedSAFT(aux);
             barChartArray[i] = [fiscalYears[i], value];
         }
     }
-<<<<<<< HEAD
-  }
-
-  res.render("sales", {
-    title: "Sales",
-    fiscalYears: fiscalYears,
-    filterYear: filterYear,
-    totalSalesValue: Math.round((totalSalesValue + Number.EPSILON) * 100) / 100,
-    monthGross: monthGross,
-    monthNet: monthNet,
-    top5: top5,
-    grossProfit: Math.round((grossProfit + Number.EPSILON) * 100) / 100,
-    grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
-    barChartValues: barChartArray,
-    cogs: cogs,
-  });
-=======
 
     res.render("sales", {
         title: "Sales",
@@ -346,8 +260,8 @@ router.get("/sales", auth.verifyJWT, async function(req, res) {
         grossProfit: Math.round((grossProfit + Number.EPSILON) * 100) / 100,
         grossMargin: Math.round((grossMargin + Number.EPSILON) * 100) / 100,
         barChartValues: barChartArray,
+        costOfGoodsSold: costOfGoodsSold,
     });
->>>>>>> 3c5f69e6ccab53c4cd44d2cc927f2fa7afa799f9
 });
 
 // router.get("/sales/:ano", function (req, res) {
