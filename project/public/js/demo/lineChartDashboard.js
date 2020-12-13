@@ -15,7 +15,7 @@ var myLineChart = new Chart(ctxL, {
     data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
-                label: "Cost of goods sold",
+                label: "Sales",
                 data: graph1,
                 backgroundColor: [
                     'rgba(105, 0, 132, .2)',
@@ -26,7 +26,7 @@ var myLineChart = new Chart(ctxL, {
                 borderWidth: 2
             },
             {
-                label: "Sales",
+                label: "Purchases",
                 data: graph2,
                 backgroundColor: [
                     'rgba(0, 137, 132, .2)',
