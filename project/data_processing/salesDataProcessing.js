@@ -55,13 +55,9 @@ function createCustomersArray(data) {
 function addAllNetTotal(data) {
     let total = 0;
     for (let i = 0; i < data.length; i++) {
-        //if(Array.isArray(data[i].Invoice)){
         for (let k = 0; k < data[i].Invoice.length; k++) {
             total += parseFloat(data[i].Invoice[k].DocumentTotals[0].NetTotal);
         }
-        /*}else {
-                total += parseFloat(data[i].Invoice.DocumentTotals[0].NetTotal);
-            }*/
     }
     //The Total Sales value is considered in ($m) so we must divide by 1 000 000
     return total / 1000000;

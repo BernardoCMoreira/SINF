@@ -6,13 +6,7 @@ const getSuppliersInfo = async() => {
     try {
         let dataOrders = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`);
         let dataInvoices = await axios.get(`http://localhost:${process.env.PORT}/api/invoicesReceit/invoices`);
-        //var filterDataOrders = suppliersListP(JSON.parse(dataOrders.data));
-        //var filterDataInvoices = suppliersListD(JSON.parse(dataInvoices.data));
         var result = finalSupplierList(JSON.parse(dataOrders.data), JSON.parse(dataInvoices.data));
-        //console.log(filterDataOrders );
-        //console.log(filterDataInvoices);
-        //console.log("sdjnnckmx");
-        //console.log(result);
         return result
     } catch (error) {
         console.error(error)
@@ -22,11 +16,7 @@ const getSuppliersInfo = async() => {
 const getTop5 = async() => {
     try {
         let dataOrders = await axios.get(`http://localhost:${process.env.PORT}/api/purchases/orders`);
-
         var result = top5Suppliers(suppliersListP(JSON.parse(dataOrders.data)));
-
-        // console.log("sdjnnckmx");
-        //console.log(result);
         return result
     } catch (error) {
         console.error(error)
@@ -54,12 +44,9 @@ const getAllMonthlyPurchases = async() => {
 function totalPurchases(data) {
     var totalP = 0;
 
-    //filter para o ano em questão?
     data.forEach(({ documentStatusDescription, payableAmount }) => {
         if (documentStatusDescription == "Completed") totalP += payableAmount.amount;
-        // console.log(payableAmount.amount);
     });
-    // console.log(totalP);
     return totalP / 1000000;
 }
 
@@ -72,9 +59,6 @@ function monthlyPurchasesArray(data) {
 
         if (documentStatusDescription == "Completed") monthlyValues[month] += payableAmount.amount;
     });
-
-
-    // console.log(monthlyValues);
     return monthlyValues;
 }
 
@@ -92,15 +76,9 @@ function suppliersListP(data) {
                 value: Number(payableAmount.amount),
             };
         }
-
-
-        //console.log(sellerSupplierParty);
-        //console.log(sellerSupplierPartyName,);
-        //console.log(payableAmount.amount);
     });
 
     return listSuppliers;
-    //console.log(listSuppliers);
 }
 
 function suppliersListD(data) {
@@ -116,13 +94,7 @@ function suppliersListD(data) {
                 value: Number(payableAmount.amount),
             };
         }
-
-
-        //console.log(sellerSupplierParty);
-        //console.log(sellerSupplierPartyName,);
-        //console.log(payableAmount.amount);
     });
-    //console.log(listSuppliers2);
     return listSuppliers2;
 
 }
